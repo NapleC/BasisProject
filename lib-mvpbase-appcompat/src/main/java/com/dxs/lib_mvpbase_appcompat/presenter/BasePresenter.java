@@ -1,0 +1,84 @@
+package com.dxs.lib_mvpbase_appcompat.presenter;
+
+import android.content.Intent;
+import android.os.Bundle;
+
+import com.dxs.lib_mvpbase_appcompat.view.BaseView;
+
+/**
+ *  created by hl at 2018/5/7
+ *  BasePresenter
+ */
+public abstract class BasePresenter<T extends BaseView> {
+
+    protected T mView;
+
+    /**
+     * 绑定View
+     */
+    public void onAttach(T view) {
+        this.mView = view;
+    }
+
+
+    /**
+     * 做初始化的操作,需要在view的视图初始化完成之后才能调用
+     * 建议只初始化一些对象,而不要去做耗时操作.
+     */
+    public abstract void onCreate();
+
+    /**
+     * 运行在onCreate()之后,可能在onStart()之后调用.
+     * 建议加载数据,处理数据刷新页面的操作放在这里
+     */
+    public abstract void initData();
+
+    /**
+     * 在这里结束异步操作
+     */
+    public void onDestroy() {
+        cancelNetWork();
+    }
+
+    /**
+     * 解除绑定
+     */
+    public void onDetach() {
+        mView = null;
+    }
+
+
+    /**
+     * 取消网络请求回调
+     */
+    public abstract void cancelNetWork();
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+    }
+
+    public void onSaveInstanceState(Bundle outState) {
+
+    }
+
+    public void onStart() {
+
+    }
+
+    public void onResume() {
+
+    }
+
+    public void onRestart() {
+
+    }
+
+    public void onPause() {
+
+    }
+
+    public void onStop() {
+
+    }
+
+}

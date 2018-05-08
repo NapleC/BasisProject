@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2B2520</color>
+    <color name="colorPrimaryDark">#2B2520</color>
+    <color name="colorAccent">#CB9446</color>
+    <color name="textColorPrimary">#CB9446</color>
+    <color name="navColor">#2B2520</color>
+    <color name="mainColor">#CB9446</color>
+    <color name="color_63">#333333</color>
+    <color name="black">#000</color>
+    <color name="darkRed">#702216</color>
+    <color name="lightGray">#323232</color>
+    <color name="deepGray">#8B8B8B</color>
+    <color name="white">#fff</color>
+</resources>
