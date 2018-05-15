@@ -1,1 +1,1 @@
-include ':app', ':lib-mvpbase-appcompat'
+include ':app'
