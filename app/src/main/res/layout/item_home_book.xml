@@ -1,58 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cv_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    card_view:cardCornerRadius="8dp"
+    app:cardElevation="0px"
+    app:cardMaxElevation="2px"
+    app:cardUseCompatPadding="false"
+    card_view:cardCornerRadius="@dimen/dp_8"
     card_view:cardPreventCornerOverlap="false">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@drawable/card_shape_radius">
 
         <com.dxs.stc.widget.AutoHeightImageView
             android:id="@+id/iv_cover"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/jewelry"
             android:scaleType="center"
-            app:widthWeight="1"
             app:heightWeight="1"
-            android:src="@drawable/leak_canary_icon"
-            android:contentDescription="@string/jewelry" />
-
+            app:widthWeight="1" />
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/dp_10"
-            android:paddingLeft="@dimen/dp_10"
-            android:paddingRight="@dimen/dp_10"
             android:layout_below="@+id/iv_cover"
-            android:textSize="@dimen/sp_14"
-            android:text="标题" />
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="标题"
+            android:textColor="@color/color_63"
+            android:textSize="@dimen/sp_14" />
 
         <TextView
-            android:id="@+id/tv_directors"
-            android:layout_width="match_parent"
+            android:id="@+id/tv_count"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dp_10"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/tv_title"
-            android:textSize="@dimen/sp_12"
-            android:text="导演" />
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_4"
+            android:text="0人购买"
+            android:textSize="@dimen/sp_12" />
 
         <TextView
-            android:id="@+id/tv_casts"
-            android:layout_width="match_parent"
+            android:id="@+id/tv_free_shipping"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dp_10"
-            android:textSize="@dimen/sp_16"
-            android:layout_below="@+id/tv_directors"
-            android:text="主演" />
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_4"
+            android:background="@drawable/main_color_shape"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/free_shipping"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            android:id="@+id/tv_casts_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_count"
+            android:layout_margin="@dimen/dp_10"
+            android:gravity="bottom"
+            android:text="STC"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_count"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_toEndOf="@+id/tv_casts_left"
+            android:gravity="bottom"
+            android:includeFontPadding="false"
+            android:text="2000"
+            android:textColor="@color/price_color"
+            android:textSize="@dimen/sp_16" />
 
     </RelativeLayout>
 

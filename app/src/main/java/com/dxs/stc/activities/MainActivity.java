@@ -157,28 +157,18 @@ public class MainActivity extends CompatStatusBarActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll1:
-                setStatusBarPlaceVisible(true);
-                setViewColorStatusBar(true, getResources().getColor(R.color.colorPrimary));
                 selectFragment(0);
                 break;
             case R.id.ll2:
-                setStatusBarPlaceVisible(true);
-                setViewColorStatusBar(true, getResources().getColor(R.color.black));
                 selectFragment(1);
                 break;
             case R.id.ll3:
-                setStatusBarPlaceVisible(true);
-                setViewColorStatusBar(true, getResources().getColor(R.color.black));
                 selectFragment(2);
                 break;
             case R.id.ll4:
-                setStatusBarPlaceVisible(true);
-                setViewColorStatusBar(false, Color.WHITE);
                 selectFragment(3);
                 break;
             case R.id.ll5:
-                setStatusBarPlaceVisible(false);
-                setViewColorStatusBar(true, Color.WHITE);
                 selectFragment(4);
                 break;
         }
@@ -187,6 +177,8 @@ public class MainActivity extends CompatStatusBarActivity {
     private void setNavStyle(int selIndex, boolean isSel) {
         switch (selIndex) {
             case 0:
+                setStatusBarPlaceVisible(false);
+                setViewColorStatusBar(true, Color.WHITE);
                 if (isSel) {
                     mHomeTv.setTextColor(ContextCompat.getColor(
                             this, R.color.nav_selected_text));
@@ -200,6 +192,8 @@ public class MainActivity extends CompatStatusBarActivity {
                 }
                 break;
             case 1:
+                setStatusBarPlaceVisible(true);
+                setViewColorStatusBar(true, getResources().getColor(R.color.navColor));
                 if (isSel) {
                     mMallTv.setTextColor(ContextCompat.getColor(
                             this, R.color.nav_selected_text));
@@ -213,6 +207,8 @@ public class MainActivity extends CompatStatusBarActivity {
                 }
                 break;
             case 2:
+                setStatusBarPlaceVisible(true);
+                setViewColorStatusBar(true, getResources().getColor(R.color.navColor));
                 if (isSel) {
                     mAuctionTv.setTextColor(ContextCompat.getColor(
                             this, R.color.nav_selected_text));
@@ -226,6 +222,8 @@ public class MainActivity extends CompatStatusBarActivity {
                 }
                 break;
             case 3:
+                setStatusBarPlaceVisible(true);
+                setViewColorStatusBar(false, Color.WHITE);
                 if (isSel) {
                     mNewsTv.setTextColor(ContextCompat.getColor(
                             this, R.color.nav_selected_text));
@@ -239,6 +237,8 @@ public class MainActivity extends CompatStatusBarActivity {
                 }
                 break;
             case 4:
+                setStatusBarPlaceVisible(false);
+                setViewColorStatusBar(true, Color.WHITE);
                 if (isSel) {
                     mMineTv.setTextColor(ContextCompat.getColor(
                             this, R.color.nav_selected_text));

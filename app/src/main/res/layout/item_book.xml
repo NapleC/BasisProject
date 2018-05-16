@@ -19,8 +19,7 @@
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:layout_margin="@dimen/dp_10"
-            android:scaleType="fitCenter"
-            android:src="@drawable/leak_canary_icon" />
+            android:scaleType="fitCenter"/>
 
 
         <TextView

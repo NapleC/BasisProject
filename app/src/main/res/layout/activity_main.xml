@@ -18,7 +18,7 @@
         android:id="@+id/ll_bottom"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/white"
+        android:background="@drawable/line_shadow"
         android:baselineAligned="true"
         android:clipChildren="false"
         android:orientation="horizontal">

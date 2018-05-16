@@ -11,8 +11,8 @@ import com.dxs.stc.utils.imageloder.ImageLodeUtils;
 import java.util.List;
 
 /**
- * created by hl at 2018/5/14
- * com.naple.hldemo.adpater
+ *  created by hl at 2018/5/16
+ *  NormalRecyclerViewAdapter
  */
 public class NormalRecyclerViewAdapter extends BaseQuickAdapter<Movie.SubjectsBean, BaseViewHolder> {
 
