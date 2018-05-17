@@ -5,6 +5,8 @@ def libs = rootProject.ext.libraries
 
 android {
     compileSdkVersion cfg.compileVersion
+    buildToolsVersion cfg.buildToolsVersion
+
     defaultConfig {
         applicationId "com.dxs.stc"
         minSdkVersion cfg.minSdk
@@ -25,8 +27,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    buildToolsVersion cfg.buildToolsVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -54,10 +54,11 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    /**
+     * 检测溢出
+     */
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${libs.leakCanary}"
     debugImplementation "com.squareup.leakcanary:leakcanary-android:${libs.leakCanary}"
-    implementation 'me.yokeyword:fragmentation:1.2.5'
-    implementation 'q.rorbin:badgeview:1.1.0'
 
     /**
      * 图片加载工具
@@ -69,6 +70,21 @@ dependencies {
      *  https://github.com/CymChad/BaseRecyclerViewAdapterHelper
      */
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:${libs.brvah}"
+//
+//    /**
+//     *  https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+//     */
+//    implementation "com.youth.banner:banner:${libs.banner}"
+
+    /**
+     * https://github.com/YoKeyword/Fragmentation
+     */
+    implementation "me.yokeyword:fragmentation:${libs.fragmentation}"
+
+    /**
+     * https://github.com/qstumn/BadgeView
+     */
+    implementation "q.rorbin:badgeview:${libs.badgeview}"
 
     /**
      *    RxJava
@@ -103,4 +119,6 @@ dependencies {
      */
     implementation "com.facebook.stetho:stetho:${libs.stetho}"
     implementation "com.facebook.stetho:stetho-okhttp3:${libs.stetho}"
+
+    compile project(':banner')
 }

@@ -19,4 +19,5 @@
     <color name="price_color">#DC3721</color>
     <color name="home_search_bg">#33FFFFFF</color>
     <color name="home_search_text">#999999</color>
+    <color name="color_trans5">#80FFFFFF</color>
 </resources>

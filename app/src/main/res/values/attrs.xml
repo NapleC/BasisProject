@@ -5,4 +5,15 @@
         <attr name="heightWeight" format="integer"/>
     </declare-styleable>
 
+    <declare-styleable name="BannerView">
+        <attr name="aspectRatio" format="float" />   <!-- 宽高比 -->
+        <attr name="defaultSrc" format="integer|reference" />     <!-- 占位图 -->
+        <attr name="updateTime" format="integer" />     <!-- 图片切换时间 -->
+        <attr name="indicatorVisible" format="boolean" /> <!-- 是否显示指示器 -->
+        <attr name="indicatorHeight" format="dimension" /> <!-- 指示器的高度 -->
+        <attr name="indicatorBackground" format="color|reference" />    <!-- 指示器的背景颜色 -->
+        <attr name="indicatorPositionSize" format="dimension" /> <!-- 指示点的大小 -->
+        <attr name="indicator_drawable_sel" format="reference" />
+        <attr name="indicator_drawable_norm" format="reference" />
+    </declare-styleable>
 </resources>

@@ -32,12 +32,18 @@ import com.dxs.stc.utils.AppUtils;
 import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.ParseErrorMsgUtil;
 import com.dxs.stc.utils.ToastUtils;
+import com.dxs.stc.widget.GlideImageLoad;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -67,7 +73,16 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
     private Unbinder unbinder;
 
     private View mHeaderView;
+    private Banner mTopBanner;
+    private LinearLayout mTopNoticeArea;
 
+    private List<String> bannerImages;
+
+    String[] images= new String[] {
+            "http://img.zcool.cn/community/0166c756e1427432f875520f7cc838.jpg",
+            "http://img.zcool.cn/community/018fdb56e1428632f875520f7b67cb.jpg",
+            "http://img.zcool.cn/community/01c8dc56e1428e6ac72531cbaa5f2c.jpg",
+            "http://img.zcool.cn/community/01fda356640b706ac725b2c8b99b08.jpg"};
 
     @Override
     protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -85,6 +100,7 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
     private void initViews() {
 
         mData = new ArrayList<>();
+        bannerImages = new ArrayList<>();
         mAdapter = new HomeRecyclerViewAdapter(R.layout.item_home_book, mData);
 
         mHeaderView = LayoutInflater.from(getActivity()).inflate(R.layout.header_home, null);
@@ -107,8 +123,35 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
         });
 
         changeTopSearchStyle();
+        initHeaderView();
 
     }
+
+
+    @OnClick({R.id.iv_top_news })
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_top_news :
+                ToastUtils.showShort("进入消息");
+                break;
+        }
+    }
+
+    private void initHeaderView() {
+
+        mTopBanner = mHeaderView.findViewById(R.id.home_banner);
+        mTopNoticeArea = mHeaderView.findViewById(R.id.ll_notice_area);
+
+        mTopNoticeArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtils.showShort("进入预告");
+            }
+        });
+        mTopBanner.setImages(Arrays.asList(images)).setImageLoader(new GlideImageLoad()).start();
+
+    }
+
 
     @Override
     public void getBookSuccess(Movie movie) {
@@ -132,6 +175,10 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
     }
 
 
+    // banner 样式-----------------------------------------------------------------------------------
+
+
+    // 顶部滑动样式-----------------------------------------------------------------------------------
     int mDistanceY = 0;
     private Drawable mTopSearchDrawable;
     private boolean hadSetTop = false;
