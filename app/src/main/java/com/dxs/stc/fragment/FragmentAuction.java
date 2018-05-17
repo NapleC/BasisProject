@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.dxs.stc.R;
 import com.dxs.stc.adpater.NormalRecyclerViewAdapter;
@@ -17,7 +16,7 @@ import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.mvp.presenter.IGetBookPresenter;
 import com.dxs.stc.mvp.presenter.impl.GetBookPresenterImpl;
 import com.dxs.stc.mvp.view.IBookView;
-import com.dxs.stc.utils.ParseErrorMsgUtil;
+import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.utils.ToastUtils;
 
 import java.util.ArrayList;

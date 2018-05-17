@@ -2,22 +2,16 @@ package com.dxs.stc.fragment;
 
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.graphics.drawable.VectorDrawableCompat;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -30,12 +24,12 @@ import com.dxs.stc.mvp.presenter.impl.GetBookPresenterImpl;
 import com.dxs.stc.mvp.view.IBookView;
 import com.dxs.stc.utils.AppUtils;
 import com.dxs.stc.utils.Loger;
-import com.dxs.stc.utils.ParseErrorMsgUtil;
+import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.utils.ToastUtils;
+import com.dxs.stc.widget.CustomTextOnPic;
 import com.dxs.stc.widget.GlideImageLoad;
+import com.dxs.stc.widget.SpacesItemDecoration;
 import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
-import com.youth.banner.Transformer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,15 +68,20 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
 
     private View mHeaderView;
     private Banner mTopBanner;
-    private LinearLayout mTopNoticeArea;
+    private RelativeLayout mTopNoticeArea;
+    private CustomTextOnPic mCustomAuction1;
+    private CustomTextOnPic mCustomAuction2;
+    private CustomTextOnPic mCustomAuction3;
+    private TextView mJewelryText;
+    private TextView mOrnamentsText;
 
     private List<String> bannerImages;
 
-    String[] images= new String[] {
-            "http://img.zcool.cn/community/0166c756e1427432f875520f7cc838.jpg",
-            "http://img.zcool.cn/community/018fdb56e1428632f875520f7b67cb.jpg",
-            "http://img.zcool.cn/community/01c8dc56e1428e6ac72531cbaa5f2c.jpg",
-            "http://img.zcool.cn/community/01fda356640b706ac725b2c8b99b08.jpg"};
+    String[] images = new String[]{
+            "https://image2.wbiao.co/upload/default/201702/07/1486396886665233850.jpg",
+            "https://image2.wbiao.co/upload/default/201702/07/1486396886895810368.jpg",
+            "https://image2.wbiao.co/upload/article/201702/17/1487322373441497976.jpg",
+            "https://image2.wbiao.co/upload/default/201702/15/1487138933042431801.jpg"};
 
     @Override
     protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -109,6 +108,12 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
 //        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));//这里用线性显示 类似于listview
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));//这里用线性宫格显示 类似于grid view
 //        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));//这里用线性宫格显示 类似于瀑布流
+
+        SpacesItemDecoration decoration = new SpacesItemDecoration(
+                getResources().getDimensionPixelSize(R.dimen.dp_14),
+                getResources().getDimensionPixelSize(R.dimen.dp_10), 1);
+        mRecyclerView.addItemDecoration(decoration);
+
         mRecyclerView.setAdapter(mAdapter);
 
         iGetBookPresenter = new GetBookPresenterImpl(this);
@@ -128,11 +133,14 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
     }
 
 
-    @OnClick({R.id.iv_top_news })
+    @OnClick({R.id.iv_top_news,R.id.ll_title_bg_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.iv_top_news :
+            case R.id.iv_top_news:
                 ToastUtils.showShort("进入消息");
+                break;
+            case R.id.ll_title_bg_layout:
+                ToastUtils.showShort("开始搜索");
                 break;
         }
     }
@@ -141,13 +149,33 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
 
         mTopBanner = mHeaderView.findViewById(R.id.home_banner);
         mTopNoticeArea = mHeaderView.findViewById(R.id.ll_notice_area);
+        mCustomAuction1 = mHeaderView.findViewById(R.id.ctp_in_auction1);
+        mCustomAuction2 = mHeaderView.findViewById(R.id.ctp_in_auction2);
+        mCustomAuction3 = mHeaderView.findViewById(R.id.ctp_in_auction3);
+        mJewelryText = mHeaderView.findViewById(R.id.tv_topic3_jewelry);
+        mOrnamentsText = mHeaderView.findViewById(R.id.tv_topic3_ornaments);
 
         mTopNoticeArea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ToastUtils.showShort("进入预告");
+                mCustomAuction1.setImageUrl(getActivity(),"https://image2.wbiao.co/upload/article/201702/17/1487323723401153512.jpg");
+                mCustomAuction1.setTipText("拍卖已结束");
             }
         });
+        mJewelryText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtils.showShort("进入珠宝页面");
+            }
+        });
+        mOrnamentsText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtils.showShort("进入摆件页面");
+            }
+        });
+
         mTopBanner.setImages(Arrays.asList(images)).setImageLoader(new GlideImageLoad()).start();
 
     }
@@ -209,7 +237,7 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
                         mTopSearchText.setBackground(ContextCompat.getDrawable(
                                 AppUtils.INSTANCE, R.drawable.home_search_top));
                         // 设置 DrawableLeft
-                        mTopSearchDrawable = ContextCompat.getDrawable(AppUtils.INSTANCE,R.drawable.svg_search_norm);
+                        mTopSearchDrawable = ContextCompat.getDrawable(AppUtils.INSTANCE, R.drawable.svg_search_norm);
                         // 这一步必须要做, 否则不会显示.
                         mTopSearchDrawable.setBounds(0, 0, mTopSearchDrawable.getMinimumWidth(), mTopSearchDrawable.getMinimumHeight());
                         mTopSearchText.setCompoundDrawables(mTopSearchDrawable, null, null, null);
@@ -221,7 +249,7 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
                     mTitleLayout.setBackgroundColor(Color.argb((int) alpha, 0, 0, 0));
                     hadSetTop = false;
                 } else {
-                    if (!hadSetTop){
+                    if (!hadSetTop) {
                         hadSetTop = true;
                         //将标题栏的颜色设置为完全不透明状态
                         mTitleLayout.setBackgroundResource(R.color.navColor);
@@ -231,7 +259,7 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
                                 AppUtils.INSTANCE, R.drawable.home_search_top_sp));
 
                         // 设置 DrawableLeft
-                        mTopSearchDrawable = ContextCompat.getDrawable(AppUtils.INSTANCE,R.drawable.svg_search_sp);
+                        mTopSearchDrawable = ContextCompat.getDrawable(AppUtils.INSTANCE, R.drawable.svg_search_sp);
                         // 这一步必须要做, 否则不会显示.
                         mTopSearchDrawable.setBounds(0, 0, mTopSearchDrawable.getMinimumWidth(), mTopSearchDrawable.getMinimumHeight());
                         mTopSearchText.setCompoundDrawables(mTopSearchDrawable, null, null, null);
@@ -249,7 +277,7 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-        if (mTopSearchDrawable != null){
+        if (mTopSearchDrawable != null) {
             mTopSearchDrawable = null;
         }
     }

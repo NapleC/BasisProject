@@ -4,8 +4,8 @@ import com.dxs.stc.mvp.api.BookApi;
 import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.mvp.presenter.IGetBookPresenter;
 import com.dxs.stc.mvp.view.IBookView;
-import com.dxs.stc.utils.ParseErrorMsgUtil;
-import com.dxs.stc.utils.RetrofitUtil;
+import com.dxs.stc.utils.http.ParseErrorMsgUtil;
+import com.dxs.stc.utils.http.RetrofitUtil;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;

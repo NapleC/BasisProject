@@ -5,60 +5,256 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/jewelry"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/home_banner1"
-        android:visibility="gone" />
-
     <com.youth.banner.Banner
         android:id="@+id/home_banner"
         android:layout_width="match_parent"
-        app:indicator_drawable_selected="@drawable/indicator_sel"
-        app:indicator_drawable_unselected="@drawable/indicator_norm"
         android:layout_height="220dp"
-        android:background="@color/navColor" />
+        app:indicator_drawable_selected="@drawable/indicator_sel"
+        app:indicator_drawable_unselected="@drawable/indicator_norm" />
 
-    <LinearLayout
-        android:id="@+id/ll_notice_area"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_header_notice"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_14"
+        android:layout_marginRight="@dimen/dp_14"
         android:layout_marginTop="200dp"
-        android:background="@mipmap/home_notice_bg"
-        android:orientation="vertical"
-        android:paddingEnd="@dimen/dp_4"
-        android:paddingStart="90dp"
-        android:paddingTop="14dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:cardCornerRadius="@dimen/dp_8"
+        app:cardPreventCornerOverlap="false">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/home_notice_tips1"
-            android:textColor="@color/color_63"
-            android:textSize="@dimen/sp_14" />
+        <RelativeLayout
+            android:id="@+id/ll_notice_area"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_4"
-            android:text="@string/home_notice_tips2"
-            android:textColor="@color/color_66"
-            android:textSize="@dimen/sp_12" />
+            <ImageView
+                android:id="@+id/iv_notice_left"
+                android:layout_width="100dp"
+                android:layout_height="88dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:contentDescription="@string/jewelry"
+                app:srcCompat="@drawable/home_notice_bg_left" />
 
-        <TextView
-            android:layout_width="120dp"
+            <ImageView
+                android:id="@+id/iv_notice_right"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/dp_20"
+                android:contentDescription="@string/jewelry"
+                app:srcCompat="@drawable/home_notice_bg_right" />
+
+            <TextView
+                android:id="@+id/tv_notice_tips1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/iv_notice_left"
+                android:includeFontPadding="false"
+                android:paddingTop="14dp"
+                android:text="@string/home_notice_tips1"
+                android:textColor="@color/color_63"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:id="@+id/tv_notice_tips2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_notice_tips1"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_toEndOf="@+id/iv_notice_left"
+                android:includeFontPadding="false"
+                android:text="@string/home_notice_tips2"
+                android:textColor="@color/color_66"
+                android:textSize="@dimen/sp_12" />
+
+            <TextView
+                android:id="@+id/tv_notice_tips3"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_notice_tips2"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_toEndOf="@+id/iv_notice_left"
+                android:background="@drawable/red_shape"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="@string/home_notice_tips3"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cv_header_notice"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_topic2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_4"
-            android:background="@drawable/red_shape"
+            android:layout_marginTop="@dimen/dp_14"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_topic2_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:paddingEnd="@dimen/dp_4"
+                android:paddingStart="@dimen/dp_4"
+                android:text="@string/gemstone_notice"
+                android:textColor="@color/color_63"
+                android:textSize="@dimen/sp_18" />
+
+            <ImageView
+                android:id="@+id/iv_topic2_left"
+                android:layout_width="100dp"
+                android:layout_height="16dp"
+                android:layout_toStartOf="@+id/tv_topic2_title"
+                android:contentDescription="@string/gemstone_notice"
+                app:srcCompat="@drawable/home_tips_left" />
+
+            <ImageView
+                android:id="@+id/iv_topic2_right"
+                android:layout_width="100dp"
+                android:layout_height="16dp"
+                android:layout_toEndOf="@+id/tv_topic2_title"
+                android:contentDescription="@string/gemstone_notice"
+                app:srcCompat="@drawable/home_tips_right" />
+
+            <ImageView
+                android:id="@+id/iv_topic2_more"
+                android:layout_width="28dp"
+                android:layout_height="@dimen/dp_16"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="@dimen/dp_20"
+                android:contentDescription="@string/gemstone_notice"
+                app:srcCompat="@mipmap/ic_more" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_topic2_title"
+                android:minHeight="120dp"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_8">
+
+                <com.dxs.stc.widget.CustomTextOnPic
+                    android:id="@+id/ctp_in_auction1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:pic_background="@mipmap/auction_eg1"
+                    app:pic_text="拍卖中"
+                    app:pic_title="翡翠绿宝石1" />
+
+                <com.dxs.stc.widget.CustomTextOnPic
+                    android:id="@+id/ctp_in_auction2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:pic_background="@mipmap/auction_eg1"
+                    app:pic_text="拍卖中"
+                    app:pic_title="翡翠绿宝石2" />
+
+                <com.dxs.stc.widget.CustomTextOnPic
+                    android:id="@+id/ctp_in_auction3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:pic_background="@mipmap/auction_eg1"
+                    app:pic_text="拍卖中"
+                    app:pic_title="翡翠绿宝石3" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/rl_topic3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_E6"
             android:gravity="center"
-            android:text="@string/home_notice_tips3"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_12" />
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_14">
 
+            <TextView
+                android:id="@+id/tv_topic3_jewelry"
+                android:layout_width="wrap_content"
+                android:layout_height="86dp"
+                android:layout_marginEnd="@dimen/dp_6"
+                android:layout_weight="1"
+                android:background="@drawable/ic_home_jewelry"
+                android:includeFontPadding="false"
+                android:text="@string/jewelry"
+                android:textColor="@color/color_63"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_topic3_ornaments"
+                android:layout_width="wrap_content"
+                android:layout_height="86dp"
+                android:layout_marginStart="@dimen/dp_6"
+                android:layout_weight="1"
+                android:background="@drawable/ic_home_ornaments"
+                android:includeFontPadding="false"
+                android:text="@string/ornaments"
+                android:textColor="@color/color_63"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rl_topic_goods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/dp_14"
+            android:paddingTop="@dimen/dp_14">
+
+            <ImageView
+                android:id="@+id/iv_topic_goods_left"
+                android:layout_width="100dp"
+                android:layout_height="16dp"
+                android:contentDescription="@string/high_quality_recommendation"
+                app:srcCompat="@drawable/home_tips_left" />
+
+            <TextView
+                android:id="@+id/tv_topic_goods_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:paddingEnd="@dimen/dp_4"
+                android:paddingStart="@dimen/dp_4"
+                android:text="@string/high_quality_recommendation"
+                android:textColor="@color/color_63"
+                android:textSize="@dimen/sp_18" />
+
+            <ImageView
+                android:id="@+id/iv_topic_goods_right"
+                android:layout_width="100dp"
+                android:layout_height="16dp"
+                android:contentDescription="@string/high_quality_recommendation"
+                app:srcCompat="@drawable/home_tips_right" />
+
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

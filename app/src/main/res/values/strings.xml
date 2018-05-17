@@ -26,4 +26,6 @@
     <string name="home_notice_tips1">提前关注，第一时间收到开拍消息</string>
     <string name="home_notice_tips2">预告早知道，你想要的这里都有</string>
     <string name="home_notice_tips3"><![CDATA[GO >>]]></string>
+    <string name="gemstone_notice">原石预告</string>
+    <string name="high_quality_recommendation">优选推荐</string>
 </resources>

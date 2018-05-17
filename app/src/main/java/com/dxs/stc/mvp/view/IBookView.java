@@ -1,8 +1,8 @@
 package com.dxs.stc.mvp.view;
 
 import com.dxs.stc.mvp.bean.Movie;
-import com.dxs.stc.utils.IShowAndHideDialog;
-import com.dxs.stc.utils.ParseErrorMsgUtil;
+import com.dxs.stc.utils.http.IShowAndHideDialog;
+import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 
 /**
  * created by hl at 2018/5/14

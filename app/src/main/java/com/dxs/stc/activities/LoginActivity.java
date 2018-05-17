@@ -19,12 +19,12 @@ import com.dxs.stc.R;
 import com.dxs.stc.base.BaseActivity;
 import com.dxs.stc.mvp.api.BookApi;
 import com.dxs.stc.mvp.bean.Movie;
-import com.dxs.stc.utils.ApiMethods;
+import com.dxs.stc.utils.http.ApiMethods;
 import com.dxs.stc.utils.Loger;
-import com.dxs.stc.utils.MyObserver;
-import com.dxs.stc.utils.ObserverOnNextListener;
-import com.dxs.stc.utils.ParseErrorMsgUtil;
-import com.dxs.stc.utils.RetrofitUtil;
+import com.dxs.stc.utils.http.MyObserver;
+import com.dxs.stc.utils.http.ObserverOnNextListener;
+import com.dxs.stc.utils.http.ParseErrorMsgUtil;
+import com.dxs.stc.utils.http.RetrofitUtil;
 import com.dxs.stc.utils.ToastUtils;
 
 import java.util.List;

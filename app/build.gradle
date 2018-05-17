@@ -120,5 +120,5 @@ dependencies {
     implementation "com.facebook.stetho:stetho:${libs.stetho}"
     implementation "com.facebook.stetho:stetho-okhttp3:${libs.stetho}"
 
-    compile project(':banner')
+    implementation project(':banner')
 }

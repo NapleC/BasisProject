@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
@@ -38,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="22dp"
                 android:contentDescription="@string/title_home"
-                android:src="@drawable/svg_home_norm" />
+                app:srcCompat="@drawable/svg_home_norm" />
 
             <TextView
                 android:id="@+id/tv1"
@@ -64,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="22dp"
                 android:contentDescription="@string/title_mall"
-                android:src="@drawable/svg_mall_norm" />
+                app:srcCompat="@drawable/svg_mall_norm" />
 
             <TextView
                 android:id="@+id/tv2"
@@ -90,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="22dp"
                 android:contentDescription="@string/title_auction"
-                android:src="@drawable/svg_auction_norm" />
+                app:srcCompat="@drawable/svg_auction_norm" />
 
             <TextView
                 android:id="@+id/tv3"
@@ -116,7 +117,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="22dp"
                 android:contentDescription="@string/title_news"
-                android:src="@drawable/svg_news_norm" />
+                app:srcCompat="@drawable/svg_news_norm" />
 
             <TextView
                 android:id="@+id/tv4"
@@ -142,7 +143,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="22dp"
                 android:contentDescription="@string/title_person"
-                android:src="@drawable/svg_mine_norm" />
+                app:srcCompat="@drawable/svg_mine_norm" />
 
             <TextView
                 android:id="@+id/tv5"
