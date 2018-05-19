@@ -1,6 +1,7 @@
 package com.dxs.stc.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -18,8 +19,8 @@ import com.dxs.stc.mvp.presenter.IGetBookPresenter;
 import com.dxs.stc.mvp.presenter.impl.GetBookPresenterImpl;
 import com.dxs.stc.mvp.view.IBookView;
 import com.dxs.stc.utils.Loger;
-import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.utils.ToastUtils;
+import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.widget.GlideImageLoad;
 import com.dxs.stc.widget.SpacesItemDecoration;
 import com.youth.banner.Banner;
@@ -61,9 +62,8 @@ public class FragmentAuction extends Fragment implements IBookView {
             "https://image2.wbiao.co/upload/article/201702/17/1487322373441497976.jpg",
             "https://image2.wbiao.co/upload/default/201702/15/1487138933042431801.jpg"};
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_auction, null);
         //返回一个Unbinder值（进行解绑），注意这里的this不能使用getActivity()
         unbinder = ButterKnife.bind(this, view);
@@ -75,9 +75,9 @@ public class FragmentAuction extends Fragment implements IBookView {
         super.onViewCreated(view, savedInstanceState);
         initViews();
         initHeaderView();
-        Loger.debug("mData"+mData.size());
-        Loger.debug("mSiteData"+mSiteData.size());
-        Loger.debug("mSiteAdapter.getData()"+mSiteAdapter.getData().size());
+        Loger.debug("mData" + mData.size());
+        Loger.debug("mSiteData" + mSiteData.size());
+        Loger.debug("mSiteAdapter.getData()" + mSiteAdapter.getData().size());
         getServerData();
     }
 
@@ -110,7 +110,7 @@ public class FragmentAuction extends Fragment implements IBookView {
 
     private void initHeaderView() {
 
-        mSiteData= new ArrayList<>();
+        mSiteData = new ArrayList<>();
         mTopBanner = mHeaderView.findViewById(R.id.auction_banner);
         mHeaderSiteRv = mHeaderView.findViewById(R.id.rv_header_auction_site);
         mTopBanner.setImages(Arrays.asList(images)).setImageLoader(new GlideImageLoad()).start();
@@ -128,9 +128,9 @@ public class FragmentAuction extends Fragment implements IBookView {
 
         mAdapter.addData(list);
         mSiteAdapter.addData(list);
-        Loger.debug("mData"+mData.size());
-        Loger.debug("mSiteData"+mSiteData.size());
-        Loger.debug("mSiteAdapter.getData()"+mSiteAdapter.getData().size());
+        Loger.debug("mData" + mData.size());
+        Loger.debug("mSiteData" + mSiteData.size());
+        Loger.debug("mSiteAdapter.getData()" + mSiteAdapter.getData().size());
 
     }
 

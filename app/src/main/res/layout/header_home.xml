@@ -8,6 +8,7 @@
         android:id="@+id/home_banner"
         android:layout_width="match_parent"
         android:layout_height="220dp"
+        app:bottom_margin="@dimen/dp_20"
         app:indicator_drawable_selected="@drawable/indicator_sel"
         app:indicator_drawable_unselected="@drawable/indicator_norm" />
 
