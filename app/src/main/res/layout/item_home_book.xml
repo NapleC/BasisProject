@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="@string/jewelry"
-            android:scaleType="center"
+            android:scaleType="centerCrop"
             app:heightWeight="1"
             app:widthWeight="1" />
 

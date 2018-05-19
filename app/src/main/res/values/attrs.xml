@@ -3,8 +3,6 @@
     <declare-styleable name="AutoHeightImageView">
         <attr name="widthWeight" format="integer"/>
         <attr name="heightWeight" format="integer"/>
-        <attr name="isRound" format="boolean"/>
-        <attr name="roundPx" format="integer"/>
     </declare-styleable>
 
     <declare-styleable name="ImageTextView">

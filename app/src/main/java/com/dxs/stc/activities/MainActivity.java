@@ -207,8 +207,8 @@ public class MainActivity extends CompatStatusBarActivity {
                 }
                 break;
             case 2:
-                setStatusBarPlaceVisible(true);
-                setViewColorStatusBar(true, getResources().getColor(R.color.navColor));
+                setStatusBarPlaceVisible(false);
+                setViewColorStatusBar(true, getResources().getColor(R.color.white));
                 if (isSel) {
                     mAuctionTv.setTextColor(ContextCompat.getColor(
                             this, R.color.nav_selected_text));

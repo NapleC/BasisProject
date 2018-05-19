@@ -28,4 +28,10 @@
     <string name="home_notice_tips3"><![CDATA[GO >>]]></string>
     <string name="gemstone_notice">原石预告</string>
     <string name="high_quality_recommendation">优选推荐</string>
+    <string name="the_auction_is_active">即将结拍</string>
+    <string name="gemstone_site">预告主场</string>
+    <string name="in_auction_title">直播中</string>
+    <string name="watch_this_space">期待更多</string>
+    <string name="auction_title">【拍卖】%1$s</string>
+    <string name="auction_notice_title">预告篇</string>
 </resources>

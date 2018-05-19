@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.youth.banner.Banner
+        android:id="@+id/auction_banner"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        app:indicator_drawable_selected="@drawable/indicator_sel"
+        app:indicator_drawable_unselected="@drawable/indicator_norm" />
+
+    <LinearLayout
+        android:id="@+id/ll_topic1"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_10">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:paddingStart="@dimen/dp_6">
+
+            <TextView
+                android:id="@+id/tv_topic1_left_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="最新预告"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:textColor="@color/color_63"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_topic1_left_title"
+                android:includeFontPadding="false"
+                android:text="你想要的这里都有"
+                android:textColor="@color/color_69"
+                android:textSize="@dimen/sp_12"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/iv_topic1_left"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="@string/gemstone_site"
+                app:srcCompat="@mipmap/auction_eg1" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_E6" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingEnd="@dimen/dp_4"
+                android:paddingStart="@dimen/dp_16">
+
+                <TextView
+                    android:id="@+id/tv_topic1_top_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:includeFontPadding="false"
+                    android:text="热拍中"
+                    android:textColor="@color/color_63"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_topic1_top_title"
+                    android:includeFontPadding="false"
+                    android:text="每场拍卖都不再错过"
+                    android:textColor="@color/color_69"
+                    android:textSize="@dimen/sp_12"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_topic1_top"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/gemstone_site"
+                    app:srcCompat="@mipmap/auction_eg1" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_E6" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingEnd="@dimen/dp_4"
+                android:paddingStart="@dimen/dp_16">
+
+                <TextView
+                    android:id="@+id/tv_topic1_bottom_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:layout_marginTop="@dimen/dp_14"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:text="历史拍品"
+                    android:textColor="@color/color_63"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_topic1_bottom_title"
+                    android:includeFontPadding="false"
+                    android:text="精彩回放"
+                    android:textColor="@color/color_69"
+                    android:textSize="@dimen/sp_12"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_topic1_bottom"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/gemstone_site"
+                    app:srcCompat="@mipmap/auction_eg1" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_14"
+        android:background="@color/color_E6" />
+
+    <LinearLayout
+        android:id="@+id/ll_site_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_14"
+        android:paddingTop="@dimen/dp_14">
+
+        <ImageView
+            android:id="@+id/iv_site_title_left"
+            android:layout_width="100dp"
+            android:layout_height="16dp"
+            android:contentDescription="@string/gemstone_site"
+            app:srcCompat="@drawable/home_tips_left" />
+
+        <TextView
+            android:id="@+id/tv_site_title_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingEnd="@dimen/dp_4"
+            android:paddingStart="@dimen/dp_4"
+            android:text="@string/gemstone_site"
+            android:textColor="@color/color_63"
+            android:textSize="@dimen/sp_18" />
+
+        <ImageView
+            android:id="@+id/iv_site_title_right"
+            android:layout_width="100dp"
+            android:layout_height="16dp"
+            android:contentDescription="@string/gemstone_site"
+            app:srcCompat="@drawable/home_tips_right" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_header_auction_site"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_14"
+        android:background="@color/color_E6" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_14"
+        android:paddingTop="@dimen/dp_14">
+
+        <ImageView
+            android:id="@+id/iv_topic_goods_left"
+            android:layout_width="100dp"
+            android:layout_height="16dp"
+            android:contentDescription="@string/the_auction_is_active"
+            app:srcCompat="@drawable/home_tips_left" />
+
+        <TextView
+            android:id="@+id/tv_topic_goods_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingEnd="@dimen/dp_4"
+            android:paddingStart="@dimen/dp_4"
+            android:text="@string/the_auction_is_active"
+            android:textColor="@color/color_63"
+            android:textSize="@dimen/sp_18" />
+
+        <ImageView
+            android:id="@+id/iv_topic_goods_right"
+            android:layout_width="100dp"
+            android:layout_height="16dp"
+            android:contentDescription="@string/the_auction_is_active"
+            app:srcCompat="@drawable/home_tips_right" />
+
+    </LinearLayout>
+</LinearLayout>

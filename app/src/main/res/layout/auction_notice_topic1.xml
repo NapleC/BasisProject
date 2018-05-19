@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:alignmentMode="alignBounds"
+    android:columnCount="5"
+    android:columnOrderPreserved="false"
+    android:useDefaultMargins="true">
+
+        <TextView
+            android:id="@+id/tv_topic1_left_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="最新预告"
+            android:textColor="@color/color_63"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_topic1_left_title"
+            android:layout_marginTop="@dimen/dp_10"
+            android:includeFontPadding="false"
+            android:text="你想要的这里都有"
+            android:textColor="@color/color_69"
+            android:textSize="@dimen/sp_12"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_topic1_top_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="最新预告"
+            android:textColor="@color/color_63"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_topic1_top_title"
+            android:layout_marginTop="@dimen/dp_10"
+            android:includeFontPadding="false"
+            android:text="你想要的这里都有"
+            android:textColor="@color/color_69"
+            android:textSize="@dimen/sp_12"
+            android:textStyle="bold" />
+
+
+    <TextView
+        android:layout_columnSpan="5"
+        android:layout_gravity="center_horizontal"
+        android:text="Email setup"
+        android:textSize="32dip" />
+
+    <TextView
+        android:layout_columnSpan="5"
+        android:layout_gravity="left"
+        android:text="You can configure email in just a few steps:"
+        android:textSize="16dip" />
+
+    <TextView
+        android:layout_gravity="right"
+        android:text="Email address:" />
+
+    <EditText android:ems="10" />
+
+    <TextView
+        android:layout_column="0"
+        android:layout_gravity="right"
+        android:text="Password:" />
+
+    <EditText android:ems="8" />
+
+    <Space
+        android:layout_column="0"
+        android:layout_columnSpan="4"
+        android:layout_gravity="fill"
+        android:layout_row="5" />
+
+    <Button
+        android:layout_column="0"
+        android:layout_row="5"
+        android:text="Next" />
+</GridLayout>

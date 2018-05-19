@@ -1,8 +1,24 @@
-<vector android:height="24dp" android:viewportHeight="44"
-    android:viewportWidth="44" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
-    <path android:fillColor="#FF000000" android:fillType="evenOdd" android:pathData="M33.764,34.6a21.244,21.244 0,0 1,6.124 6.4h-2.415a18.963,18.963 0,0 0,-30.946 0h-2.415a21.244,21.244 0,0 1,6.124 -6.4A18,18 0,1 1,33.764 34.6ZM22,5a15.991,15.991 0,0 0,-9.959 28.51,21.012 21.012,0 0,1 19.918,0A15.991,15.991 0,0 0,22 5Z"/>
-    <path android:fillColor="#FF000000" android:fillType="evenOdd" android:pathData="M22,27a6,6 0,1 1,6 -6A6,6 0,0 1,22 27ZM22,17a4,4 0,1 0,4 4A4,4 0,0 0,22 17Z"/>
-    <path android:fillColor="#FF000000" android:pathData="M6,39h12v2h-12z"/>
-    <path android:fillColor="#FF000000" android:pathData="M26,39h12v2h-12z"/>
-    <path android:fillColor="#FF000000" android:fillType="evenOdd" android:pathData="M22,38a3,3 0,0 0,-3 3h-2a5,5 0,0 1,10 0h-2A3,3 0,0 0,22 38Z"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportHeight="44"
+    android:viewportWidth="44">
+    <path
+        android:fillColor="#FF000000"
+        android:fillType="evenOdd"
+        android:pathData="M33.764,34.6a21.244,21.244 0,0 1,6.124 6.4h-2.415a18.963,18.963 0,0 0,-30.946 0h-2.415a21.244,21.244 0,0 1,6.124 -6.4A18,18 0,1 1,33.764 34.6ZM22,5a15.991,15.991 0,0 0,-9.959 28.51,21.012 21.012,0 0,1 19.918,0A15.991,15.991 0,0 0,22 5Z" />
+    <path
+        android:fillColor="#FF000000"
+        android:fillType="evenOdd"
+        android:pathData="M22,27a6,6 0,1 1,6 -6A6,6 0,0 1,22 27ZM22,17a4,4 0,1 0,4 4A4,4 0,0 0,22 17Z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M6,39h12v2h-12z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M26,39h12v2h-12z" />
+    <path
+        android:fillColor="#FF000000"
+        android:fillType="evenOdd"
+        android:pathData="M22,38a3,3 0,0 0,-3 3h-2a5,5 0,0 1,10 0h-2A3,3 0,0 0,22 38Z" />
 </vector>

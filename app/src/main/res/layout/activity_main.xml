@@ -36,8 +36,9 @@
 
             <ImageView
                 android:id="@+id/iv1"
-                android:layout_width="wrap_content"
+                android:layout_width="22dp"
                 android:layout_height="22dp"
+                android:scaleType="centerCrop"
                 android:contentDescription="@string/title_home"
                 app:srcCompat="@drawable/svg_home_norm" />
 
@@ -62,8 +63,9 @@
 
             <ImageView
                 android:id="@+id/iv2"
-                android:layout_width="wrap_content"
+                android:layout_width="22dp"
                 android:layout_height="22dp"
+                android:scaleType="centerCrop"
                 android:contentDescription="@string/title_mall"
                 app:srcCompat="@drawable/svg_mall_norm" />
 
@@ -88,8 +90,9 @@
 
             <ImageView
                 android:id="@+id/iv3"
-                android:layout_width="wrap_content"
+                android:layout_width="22dp"
                 android:layout_height="22dp"
+                android:scaleType="centerCrop"
                 android:contentDescription="@string/title_auction"
                 app:srcCompat="@drawable/svg_auction_norm" />
 
@@ -114,8 +117,9 @@
 
             <ImageView
                 android:id="@+id/iv4"
-                android:layout_width="wrap_content"
+                android:layout_width="22dp"
                 android:layout_height="22dp"
+                android:scaleType="centerCrop"
                 android:contentDescription="@string/title_news"
                 app:srcCompat="@drawable/svg_news_norm" />
 
@@ -140,8 +144,9 @@
 
             <ImageView
                 android:id="@+id/iv5"
-                android:layout_width="wrap_content"
+                android:layout_width="22dp"
                 android:layout_height="22dp"
+                android:scaleType="centerCrop"
                 android:contentDescription="@string/title_person"
                 app:srcCompat="@drawable/svg_mine_norm" />
 
