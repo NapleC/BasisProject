@@ -43,8 +43,7 @@
                 android:includeFontPadding="false"
                 android:text="你想要的这里都有"
                 android:textColor="@color/color_69"
-                android:textSize="@dimen/sp_12"
-                android:textStyle="bold" />
+                android:textSize="@dimen/sp_12" />
 
             <ImageView
                 android:id="@+id/iv_topic1_left"
@@ -93,8 +92,7 @@
                     android:includeFontPadding="false"
                     android:text="每场拍卖都不再错过"
                     android:textColor="@color/color_69"
-                    android:textSize="@dimen/sp_12"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_12" />
 
                 <ImageView
                     android:id="@+id/iv_topic1_top"
@@ -137,8 +135,7 @@
                     android:includeFontPadding="false"
                     android:text="精彩回放"
                     android:textColor="@color/color_69"
-                    android:textSize="@dimen/sp_12"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_12" />
 
                 <ImageView
                     android:id="@+id/iv_topic1_bottom"

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.dxs.stc.R;
 import com.dxs.stc.adpater.AuctionHeaderSiteAdapter;
 import com.dxs.stc.adpater.AuctionRecyclerViewAdapter;
+import com.dxs.stc.base.LazyBaseFragment;
 import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.mvp.presenter.IGetBookPresenter;
 import com.dxs.stc.mvp.presenter.impl.GetBookPresenterImpl;
@@ -37,7 +38,7 @@ import butterknife.Unbinder;
  * created by hl at 2018/5/15
  * FragmentAuction
  */
-public class FragmentAuction extends Fragment implements IBookView {
+public class FragmentAuction extends LazyBaseFragment implements IBookView {
 
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
@@ -62,8 +63,14 @@ public class FragmentAuction extends Fragment implements IBookView {
             "https://image2.wbiao.co/upload/article/201702/17/1487322373441497976.jpg",
             "https://image2.wbiao.co/upload/default/201702/15/1487138933042431801.jpg"};
 
+
+    public static FragmentAuction newInstance() {
+        FragmentAuction fragment = new FragmentAuction();
+        return fragment;
+    }
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_auction, null);
         //返回一个Unbinder值（进行解绑），注意这里的this不能使用getActivity()
         unbinder = ButterKnife.bind(this, view);
@@ -71,8 +78,7 @@ public class FragmentAuction extends Fragment implements IBookView {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void initData() {
         initViews();
         initHeaderView();
         Loger.debug("mData" + mData.size());
@@ -81,8 +87,8 @@ public class FragmentAuction extends Fragment implements IBookView {
         getServerData();
     }
 
-    private void getServerData() {
 
+    private void getServerData() {
 
         iGetBookPresenter = new GetBookPresenterImpl(this);
         iGetBookPresenter.getBook(0, 6);

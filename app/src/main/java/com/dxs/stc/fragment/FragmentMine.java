@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dxs.stc.R;
+import com.dxs.stc.base.LazyBaseFragment;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -16,14 +17,19 @@ import butterknife.Unbinder;
  *  created by hl at 2018/5/8
  *  FragmentMine
  */
-public class FragmentMine extends Fragment {
+public class FragmentMine extends LazyBaseFragment {
 
     private View view;
     private Unbinder unbinder;
 
-    @Nullable
+
+    public static FragmentMine newInstance() {
+        FragmentMine fragment = new FragmentMine();
+        return fragment;
+    }
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_mine, null);
         //返回一个Unbinder值（进行解绑），注意这里的this不能使用getActivity()
         unbinder = ButterKnife.bind(this, view);
@@ -31,16 +37,9 @@ public class FragmentMine extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initViews();
-    }
-
-    private void initViews() {
+    protected void initData() {
 
     }
-
-
 
     /**
      * onDestroyView中进行解绑操作

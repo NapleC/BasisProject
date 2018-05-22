@@ -1,14 +1,11 @@
 package com.dxs.stc.adpater;
 
 import android.support.annotation.Nullable;
-import android.view.View;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dxs.stc.R;
 import com.dxs.stc.mvp.bean.Movie;
-import com.dxs.stc.utils.imageloder.ImageLodeUtils;
 
 import java.util.List;
 
@@ -25,8 +22,7 @@ public class AuctionHeaderSiteAdapter extends BaseQuickAdapter<Movie.SubjectsBea
 
     @Override
     protected void convert(BaseViewHolder helper, Movie.SubjectsBean item) {
-        TextView mSiteTitle = helper.getView(R.id.tv_header_site_tip);
-        mSiteTitle.setText("预告篇 " + helper.getLayoutPosition());
+        helper.setText(R.id.tv_header_site_tip, "预告篇 " + helper.getLayoutPosition());
 //        ImageLodeUtils.loadingImage(mContext, item.getImages().getSmall(),
 //                helper.getView(R.id.iv_header_site_cover));
     }

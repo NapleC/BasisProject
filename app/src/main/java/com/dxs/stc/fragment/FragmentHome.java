@@ -24,8 +24,8 @@ import com.dxs.stc.mvp.presenter.impl.GetBookPresenterImpl;
 import com.dxs.stc.mvp.view.IBookView;
 import com.dxs.stc.utils.AppUtils;
 import com.dxs.stc.utils.Loger;
-import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.utils.ToastUtils;
+import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.widget.CustomTextOnPic;
 import com.dxs.stc.widget.GlideImageLoad;
 import com.dxs.stc.widget.SpacesItemDecoration;
@@ -83,6 +83,12 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
             "https://image2.wbiao.co/upload/article/201702/17/1487322373441497976.jpg",
             "https://image2.wbiao.co/upload/default/201702/15/1487138933042431801.jpg"};
 
+
+    public static FragmentHome newInstance() {
+        FragmentHome fragment = new FragmentHome();
+        return fragment;
+    }
+
     @Override
     protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -133,7 +139,7 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
     }
 
 
-    @OnClick({R.id.iv_top_news,R.id.ll_title_bg_layout})
+    @OnClick({R.id.iv_top_news, R.id.ll_title_bg_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_top_news:
@@ -159,7 +165,7 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
             @Override
             public void onClick(View v) {
                 ToastUtils.showShort("进入预告");
-                mCustomAuction1.setImageUrl(getActivity(),"https://image2.wbiao.co/upload/article/201702/17/1487323723401153512.jpg");
+                mCustomAuction1.setImageUrl(getActivity(), "https://image2.wbiao.co/upload/article/201702/17/1487323723401153512.jpg");
                 mCustomAuction1.setTipText("拍卖已结束");
             }
         });

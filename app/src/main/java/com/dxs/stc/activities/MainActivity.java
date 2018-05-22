@@ -91,11 +91,11 @@ public class MainActivity extends CompatStatusBarActivity {
     }
 
     private void initFragment() {
-        mFragmentHome = new FragmentHome();
+        mFragmentHome = FragmentHome.newInstance();
         mFragmentMall = FragmentMall.newInstance();
-        mFragmentAuction = new FragmentAuction();
+        mFragmentAuction = FragmentAuction.newInstance();
         mFragmentNews = FragmentNews.newInstance();
-        mFragmentMine = new FragmentMine();
+        mFragmentMine = FragmentMine.newInstance();
         mFragments = new ArrayList<>();
         mFragments.add(mFragmentHome);
         mFragments.add(mFragmentMall);
@@ -129,7 +129,7 @@ public class MainActivity extends CompatStatusBarActivity {
     }
 
     private void selectFragment(int index) {
-        setNavStyle(selPosition,false);
+        setNavStyle(selPosition, false);
         selPosition = index;
         if (mFragments != null && mFragments.size() > 0) {
             mFragmentTransaction = mSupportFragmentManager.beginTransaction();
@@ -150,7 +150,7 @@ public class MainActivity extends CompatStatusBarActivity {
             mFragmentTransaction.commitAllowingStateLoss();
             mLastFragment = baseFragment;
         }
-        setNavStyle(selPosition,true);
+        setNavStyle(selPosition, true);
     }
 
     @OnClick({R.id.ll1, R.id.ll2, R.id.ll3, R.id.ll4, R.id.ll5})
@@ -192,8 +192,8 @@ public class MainActivity extends CompatStatusBarActivity {
                 }
                 break;
             case 1:
-                setStatusBarPlaceVisible(true);
-                setViewColorStatusBar(true, getResources().getColor(R.color.navColor));
+                setStatusBarPlaceVisible(false);
+                setViewColorStatusBar(true, Color.WHITE);
                 if (isSel) {
                     mMallTv.setTextColor(ContextCompat.getColor(
                             this, R.color.nav_selected_text));
