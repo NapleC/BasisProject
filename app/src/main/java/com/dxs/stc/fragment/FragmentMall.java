@@ -5,21 +5,20 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dxs.stc.R;
 import com.dxs.stc.adpater.MallHeaderProductsAdapter;
+import com.dxs.stc.adpater.MallHeaderTopicAdapter;
 import com.dxs.stc.adpater.MallRecyclerViewAdapter;
 import com.dxs.stc.base.LazyBaseFragment;
+import com.dxs.stc.mvp.bean.MallTopicBean;
 import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.mvp.presenter.IGetBookPresenter;
 import com.dxs.stc.mvp.presenter.impl.GetBookPresenterImpl;
@@ -69,13 +68,20 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
 
     private MallHeaderProductsAdapter mProductsAdapter;
     private RecyclerView mHeaderProductsRv;
+    private MallHeaderTopicAdapter mTopicAdapter;
+    private RecyclerView mHeaderTopicRv;
     List<Movie.SubjectsBean> mProductsData;
+    List<MallTopicBean> mTopicData;
 
     String[] images = new String[]{
             "https://image2.wbiao.co/upload/default/201702/07/1486396886665233850.jpg",
             "https://image2.wbiao.co/upload/default/201702/07/1486396886895810368.jpg",
             "https://image2.wbiao.co/upload/article/201702/17/1487322373441497976.jpg",
             "https://image2.wbiao.co/upload/default/201702/15/1487138933042431801.jpg"};
+
+    int[] topicImages = new int[]{R.mipmap.ic_mall_bracelet, R.mipmap.ic_mall_ornaments,
+            R.mipmap.ic_mall_pendant, R.mipmap.ic_mall_ring, R.mipmap.ic_mall_badge,
+            R.mipmap.ic_mall_diamond, R.mipmap.ic_mall_earring, R.mipmap.ic_mall_bracelet};
 
     public static FragmentMall newInstance() {
         FragmentMall fragment = new FragmentMall();
@@ -97,10 +103,17 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
     }
 
     private void initViews() {
+        mTopicData = new ArrayList<>();
+        String[] topicTitle = getResources().getStringArray(R.array.mall_header_topic_title);
+        for (int k = 0, lenK = topicImages.length; k < lenK; k++) {
+            MallTopicBean mallTopicBean = new MallTopicBean("1245" + k, topicTitle[k], topicImages[k]);
+            mTopicData.add(mallTopicBean);
+            mallTopicBean = null;
+        }
 
+        //-------------------------------------------------------------------
         mData = new ArrayList<>();
         mAdapter = new MallRecyclerViewAdapter(R.layout.item_home_book, mData);
-
         mHeaderView = LayoutInflater.from(getActivity()).inflate(R.layout.header_mall, null);
         mAdapter.setHeaderView(mHeaderView);
 
@@ -132,7 +145,7 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
     }
 
 
-    @OnClick({ R.id.ll_title_bg_layout})
+    @OnClick({R.id.ll_title_bg_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_title_bg_layout:
@@ -146,17 +159,21 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
         mTopBanner = mHeaderView.findViewById(R.id.mall_banner);
         mTopBanner.setImages(Arrays.asList(images)).setImageLoader(new GlideImageLoad()).start();
 
-        mHeaderProductsRv = mHeaderView.findViewById(R.id.rv_header_auction_mall);
+        mHeaderProductsRv = mHeaderView.findViewById(R.id.rv_header_products_mall);
+        mHeaderTopicRv = mHeaderView.findViewById(R.id.rv_header_mall_topic);
         mTopBanner.setImages(Arrays.asList(images)).setImageLoader(new GlideImageLoad()).start();
         mProductsAdapter = new MallHeaderProductsAdapter(R.layout.item_mall_header_products, mProductsData);
+        mTopicAdapter = new MallHeaderTopicAdapter(R.layout.item_mall_header_topic, mTopicData);
 
 //        LinearLayoutManager ms = new LinearLayoutManager(getActivity());
 //        ms.setOrientation(LinearLayoutManager.HORIZONTAL);// 设置 RecyclerView 布局方式为横向布局
 //        mHeaderProductsRv.setLayoutManager(ms); // 给 RecyclerView 添加设置好的布局样式
 
         mHeaderProductsRv.setLayoutManager(new GridLayoutManager(getActivity(), 3));//这里用线性宫格显示 类似于grid view
-
         mHeaderProductsRv.setAdapter(mProductsAdapter);
+
+        mHeaderTopicRv.setLayoutManager(new GridLayoutManager(getActivity(), 4));//这里用线性宫格显示 类似于grid view
+        mHeaderTopicRv.setAdapter(mTopicAdapter);
 
     }
 
@@ -165,7 +182,7 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
     public void getBookSuccess(Movie movie) {
         List<Movie.SubjectsBean> list = movie.getSubjects();
         mAdapter.addData(list);
-        mProductsAdapter.addData(list.subList(0,3));
+        mProductsAdapter.addData(list.subList(0, 3));
     }
 
     @Override

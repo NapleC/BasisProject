@@ -36,4 +36,16 @@
     <string name="auction_notice_title">预告篇</string>
     <string name="new_product_exhibition">新品展示</string>
     <string name="mall_ingenuity_title">匠心好物</string>
+
+
+    <string-array name="mall_header_topic_title">
+        <item>手镯</item>
+        <item>摆件</item>
+        <item>吊坠</item>
+        <item>戒指</item>
+        <item>胸牌</item>
+        <item>玉石</item>
+        <item>耳坠</item>
+        <item>更多</item>
+    </string-array>
 </resources>
