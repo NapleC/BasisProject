@@ -36,6 +36,9 @@
     <string name="auction_notice_title">预告篇</string>
     <string name="new_product_exhibition">新品展示</string>
     <string name="mall_ingenuity_title">匠心好物</string>
+    <string name="search_history">历史纪录</string>
+    <string name="search_wanna">猜你想搜</string>
+    <string name="search">搜索</string>
 
 
     <string-array name="mall_header_topic_title">
