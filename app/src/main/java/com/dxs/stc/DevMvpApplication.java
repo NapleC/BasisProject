@@ -4,7 +4,9 @@ import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
 
+import com.dxs.stc.base.Constant;
 import com.dxs.stc.utils.Loger;
+import com.dxs.stc.utils.SPUtil;
 
 /**
  * Created by HL on 2017/9/7.
@@ -34,6 +36,7 @@ public class DevMvpApplication extends Application {
         super.onCreate();
         app = this;
         initView();
+        SPUtil.getInstance(app, Constant.CATCH_DIR);
 
     }
 

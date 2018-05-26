@@ -1,5 +1,6 @@
 package com.dxs.stc.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dxs.stc.R;
+import com.dxs.stc.activities.SearchActivity;
 import com.dxs.stc.adpater.MallHeaderProductsAdapter;
 import com.dxs.stc.adpater.MallHeaderTopicAdapter;
 import com.dxs.stc.adpater.MallRecyclerViewAdapter;
@@ -149,7 +151,7 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_title_bg_layout:
-                ToastUtils.showShort("开始搜索");
+                startActivity(new Intent(getActivity(), SearchActivity.class));
                 break;
         }
     }

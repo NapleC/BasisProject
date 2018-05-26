@@ -10,7 +10,7 @@ import com.youth.banner.loader.ImageLoader;
  * created by hl at 2018/5/16
  * com.dxs.stc.widget.GlideImageLoad
  *
- * @version V1.0 <描述当前版本功能>
+ * @version V1.0 为banner做的图片加载
  */
 public class GlideImageLoad extends ImageLoader {
     /**
