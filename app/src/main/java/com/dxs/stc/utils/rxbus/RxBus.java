@@ -1,4 +1,4 @@
-package com.dxs.stc.utils;
+package com.dxs.stc.utils.rxbus;
 
 import android.support.annotation.NonNull;
 

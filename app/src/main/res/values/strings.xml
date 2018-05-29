@@ -40,6 +40,7 @@
     <string name="search_history">历史纪录</string>
     <string name="search_wanna">猜你想搜</string>
     <string name="search">搜索</string>
+    <string name="mall_switch">切换视图</string>
 
 
     <string-array name="mall_header_topic_title">

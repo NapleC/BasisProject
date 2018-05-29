@@ -27,5 +27,6 @@ ext {
             banner           : "1.4.10",
             badgeview        : "1.1.3",
             fragmentation    : "1.2.5",
+            flexbox          : "1.0.0",
     ]
 }

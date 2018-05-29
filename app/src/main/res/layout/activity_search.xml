@@ -29,7 +29,9 @@
             android:layout_weight="1"
             android:background="@drawable/search_input_bg"
             android:hint="@string/app_name"
-            android:maxLines="1"
+            android:singleLine="true"
+            android:imeOptions="actionSearch"
+            android:imeActionLabel="@string/search"
             android:minHeight="28dp"
             android:textSize="16sp" />
 

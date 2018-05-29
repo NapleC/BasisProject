@@ -3,7 +3,9 @@ package com.dxs.stc.activities;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,7 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SearchActivity extends CompatStatusBarActivity {
+public class SearchActivity extends CompatStatusBarActivity implements TextView.OnEditorActionListener{
 
     @BindView(R.id.iv_back)
     ImageView mSearchBackIv;
@@ -87,6 +89,9 @@ public class SearchActivity extends CompatStatusBarActivity {
 
         mHistoryListRv.setAdapter(mHistoryAdapter);
         mWannaListRv.setAdapter(mWannaAdapter);
+
+
+        mSearchEt.setOnEditorActionListener(this);
     }
 
     @Override
@@ -112,20 +117,24 @@ public class SearchActivity extends CompatStatusBarActivity {
                 onBackPressed();
                 break;
             case R.id.tv_search:
-                if (mSearchEt.getText().toString().isEmpty()) {
-                    ToastUtils.showShort("搜索内容不能为空！");
-                } else {
-                    mHistoryDelTv.setVisibility(View.VISIBLE);
-                    mHistoryListRv.setVisibility(View.VISIBLE);
-                    mHistoryAdapter.addData(mSearchEt.getText().toString());
-                    mHistoryTags = mHistoryAdapter.getData();
-                    boolean resultTag = SPUtil.putListData(Constant.SEARCH_HISTORY,mHistoryTags);
-                    Loger.debug("是否存储成功："+resultTag);
-                }
+                searchAction();
                 break;
             case R.id.tv_history_del:
                 judgeDelAllHistory();
                 break;
+        }
+    }
+
+    private void searchAction() {
+        if (mSearchEt.getText().toString().isEmpty()) {
+            ToastUtils.showShort("搜索内容不能为空！");
+        } else {
+            mHistoryDelTv.setVisibility(View.VISIBLE);
+            mHistoryListRv.setVisibility(View.VISIBLE);
+            mHistoryAdapter.addData(mSearchEt.getText().toString());
+            mHistoryTags = mHistoryAdapter.getData();
+            boolean resultTag = SPUtil.putListData(Constant.SEARCH_HISTORY,mHistoryTags);
+            Loger.debug("是否存储成功："+resultTag);
         }
     }
 
@@ -148,5 +157,31 @@ public class SearchActivity extends CompatStatusBarActivity {
             }
         }).show();
 
+    }
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        boolean handled = false;
+        switch (actionId) {
+            case EditorInfo.IME_ACTION_NEXT:
+                handled = true;
+                break;
+            case  EditorInfo.IME_ACTION_SEND:
+                handled = true;
+                break;
+            case EditorInfo.IME_ACTION_GO:
+                handled = true;
+                break;
+            case EditorInfo.IME_ACTION_DONE:
+                handled = true;
+                break;
+            case EditorInfo.IME_ACTION_SEARCH:
+                searchAction();
+                handled = true;
+                break;
+            default:
+                break;
+        }
+        return handled;
     }
 }

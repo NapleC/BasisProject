@@ -1,4 +1,4 @@
-package com.dxs.stc.utils;
+package com.dxs.stc.utils.rxbus;
 
 /**
  * created by hl at 2018/5/9
