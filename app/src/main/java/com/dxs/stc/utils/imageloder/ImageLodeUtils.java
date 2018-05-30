@@ -9,10 +9,8 @@ import android.support.annotation.RawRes;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.dxs.stc.R;
-import com.dxs.stc.utils.imageloder.transformations.RoundedCornersTransformation;
 
 /**
  * created by hl at 2018/5/14
@@ -43,13 +41,13 @@ public class ImageLodeUtils {
     }
 
     public static void bindImage(Fragment fragment, String path, ImageView imageView) {
-        Glide.with(fragment)
+        Glide.with(fragment.getActivity())
                 .load(path)
                 .into(imageView);
     }
 
     public static void bindImage(Fragment fragment, int res, ImageView imageView) {
-        Glide.with(fragment)
+        Glide.with(fragment.getActivity())
                 .load(res)
                 .into(imageView);
     }
@@ -57,11 +55,11 @@ public class ImageLodeUtils {
     /**
      * 加载原图
      *
-     * @param mContext
-     * @param path
-     * @param mImageView
-     * @param loadingImage
-     * @param errorImageView
+     * @param mContext        上下文
+     * @param path            路径
+     * @param mImageView      控件
+     * @param loadingImage    加载中显示的图片
+     * @param errorImageView  加载错误显示得图片
      */
     public static void loadOriginalImage(Context mContext, String path,
                                          ImageView mImageView, int loadingImage, int errorImageView) {
@@ -87,20 +85,18 @@ public class ImageLodeUtils {
     /**
      * 加载设定宽高的图片
      *
-     * @param mContext
-     * @param path
-     * @param mImageView
-     * @param loadingImage
-     * @param errorImageView
-     * @param width
-     * @param height
+     * @param mContext        上下文
+     * @param path            路径
+     * @param mImageView      控件
+     * @param width           宽度
+     * @param height          高度
      */
     public static void loadingSizeImage(Context mContext, String path, ImageView mImageView,
-                                        int loadingImage, int errorImageView, int width, int height) {
+                                        int width, int height) {
 
         RequestOptions options = new RequestOptions()
-                .placeholder(loadingImage)
-                .error(errorImageView)
+                .placeholder(R.color.white)
+                .error(R.color.white)
                 .override(width, height);
         Glide.with(mContext).load(path).apply(options).into(mImageView);
     }
@@ -164,61 +160,6 @@ public class ImageLodeUtils {
                 .override(com.bumptech.glide.request.target.Target.SIZE_ORIGINAL);
         Glide.with(mContext).asDrawable().load(resourceId).apply(options).into(imageView);
     }
-
-
-    /**
-     * 加载45圆角的图片
-     *
-     * @param context
-     * @param url
-     * @param imageView
-     */
-    public static void loadRoundImage(Context context, String url, ImageView imageView) {
-        RequestOptions options = RequestOptions
-                .bitmapTransform(
-                        new RoundedCornersTransformation(
-                                45, 0, RoundedCornersTransformation.CornerType.ALL))
-                .diskCacheStrategy(DiskCacheStrategy.ALL);
-        Glide.with(context).load(url).apply(options).into(imageView);
-
-    }
-
-    /**
-     * 加载圆角图片自定义圆角
-     *
-     * @param context
-     * @param url
-     * @param imageView
-     * @param radius
-     */
-    public static void loadRoundRadiusImage(Context context, String url, ImageView imageView, int radius) {
-        RequestOptions options = RequestOptions
-                .bitmapTransform(
-                        new RoundedCornersTransformation(
-                                radius, 0, RoundedCornersTransformation.CornerType.ALL))
-                .diskCacheStrategy(DiskCacheStrategy.ALL);
-        Glide.with(context).load(url).apply(options).into(imageView);
-
-    }
-
-    /**
-     * 加载圆角图片-指定任意部分圆角（图片上、下、左、右四个角度任意定义）
-     *
-     * @param context
-     * @param url
-     * @param imageView
-     * @param type
-     */
-    public static void loadCustRoundCircleImage(Context context, String url, ImageView imageView,
-                                                RoundedCornersTransformation.CornerType type) {
-
-        RequestOptions options = RequestOptions
-                .bitmapTransform(new RoundedCornersTransformation(45, 0, type))
-                .diskCacheStrategy(DiskCacheStrategy.ALL);
-
-        Glide.with(context).load(url).apply(options).into(imageView);
-    }
-
 
     public static int dip2px(Context context, float dp) {
         float scale = context.getResources().getDisplayMetrics().density;

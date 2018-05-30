@@ -83,7 +83,7 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
 
     int[] topicImages = new int[]{R.mipmap.ic_mall_bracelet, R.mipmap.ic_mall_ornaments,
             R.mipmap.ic_mall_pendant, R.mipmap.ic_mall_ring, R.mipmap.ic_mall_badge,
-            R.mipmap.ic_mall_diamond, R.mipmap.ic_mall_earring, R.mipmap.ic_mall_bracelet};
+            R.mipmap.ic_mall_diamond, R.mipmap.ic_mall_earring, R.drawable.svg_mall_more};
 
     public static FragmentMall newInstance() {
         FragmentMall fragment = new FragmentMall();

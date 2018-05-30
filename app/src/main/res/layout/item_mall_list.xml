@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="132dp"
@@ -7,12 +8,15 @@
     android:paddingStart="@dimen/dp_14"
     android:paddingTop="@dimen/dp_14">
 
-    <ImageView
+    <com.dxs.stc.glideimageview.GlideImageView
         android:id="@+id/iv_cover"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:clickable="true"
         android:contentDescription="@string/jewelry"
-        android:scaleType="centerCrop" />
+        android:focusable="true"
+        app:riv_corner_radius="10dp"
+        app:riv_pressed_mask_color="@color/transparent20" />
 
     <TextView
         android:id="@+id/tv_title"
@@ -37,8 +41,8 @@
         android:layout_below="@+id/tv_title"
         android:layout_margin="@dimen/dp_10"
         android:layout_toEndOf="@+id/iv_cover"
-        android:textSize="@dimen/sp_12"
         android:textColor="@color/color_66"
+        android:textSize="@dimen/sp_12"
         tools:text="0人购买" />
 
     <TextView
@@ -49,8 +53,8 @@
         android:layout_margin="@dimen/dp_10"
         android:layout_toEndOf="@+id/iv_cover"
         android:gravity="bottom"
-        android:textSize="@dimen/sp_14"
         android:textColor="@color/color_63"
+        android:textSize="@dimen/sp_14"
         tools:text="STC" />
 
     <TextView
@@ -63,21 +67,21 @@
         android:layout_marginTop="@dimen/dp_2"
         android:background="@drawable/main_color_shape"
         android:gravity="center"
-        android:visibility="gone"
         android:includeFontPadding="false"
         android:text="@string/free_shipping"
         android:textColor="@color/white"
-        android:textSize="@dimen/sp_10" />
+        android:textSize="@dimen/sp_10"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/tv_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/iv_cover"
-        android:layout_toStartOf="@+id/tv_free_shipping"
         android:layout_marginBottom="@dimen/dp_10"
         android:layout_marginTop="@dimen/dp_2"
         android:layout_toEndOf="@+id/tv_casts_left"
+        android:layout_toStartOf="@+id/tv_free_shipping"
         android:gravity="bottom"
         android:includeFontPadding="false"
         android:textColor="@color/price_color"
