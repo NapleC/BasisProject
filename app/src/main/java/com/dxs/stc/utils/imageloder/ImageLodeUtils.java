@@ -9,6 +9,8 @@ import android.support.annotation.RawRes;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.dxs.stc.R;
 
@@ -55,11 +57,11 @@ public class ImageLodeUtils {
     /**
      * 加载原图
      *
-     * @param mContext        上下文
-     * @param path            路径
-     * @param mImageView      控件
-     * @param loadingImage    加载中显示的图片
-     * @param errorImageView  加载错误显示得图片
+     * @param mContext       上下文
+     * @param path           路径
+     * @param mImageView     控件
+     * @param loadingImage   加载中显示的图片
+     * @param errorImageView 加载错误显示得图片
      */
     public static void loadOriginalImage(Context mContext, String path,
                                          ImageView mImageView, int loadingImage, int errorImageView) {
@@ -85,11 +87,11 @@ public class ImageLodeUtils {
     /**
      * 加载设定宽高的图片
      *
-     * @param mContext        上下文
-     * @param path            路径
-     * @param mImageView      控件
-     * @param width           宽度
-     * @param height          高度
+     * @param mContext   上下文
+     * @param path       路径
+     * @param mImageView 控件
+     * @param width      宽度
+     * @param height     高度
      */
     public static void loadingSizeImage(Context mContext, String path, ImageView mImageView,
                                         int width, int height) {
@@ -111,14 +113,25 @@ public class ImageLodeUtils {
     public static void loadingCircleImage(Context mContext, String path, ImageView mImageView) {
 
         RequestOptions requestOptions = RequestOptions.circleCropTransform();
-//        RequestOptions options = new RequestOptions()
-//                .centerCrop()
-//                .circleCrop()//设置圆形
-//                .placeholder(R.color.white)
-//                .error(R.color.white)
-//                .diskCacheStrategy(DiskCacheStrategy.ALL);
-//        Glide.with(mContext).load(path).apply(options).into(mImageView);
         Glide.with(mContext).load(path).apply(requestOptions).into(mImageView);
+
+    }
+
+    /**
+     *
+     * @param mContext    上下文
+     * @param path        路径
+     * @param mImageView  控件
+     *                    只能是正方形的，自定义的
+     */
+    public static void loadingRoundImage(Context mContext, String path, ImageView mImageView) {
+
+        RequestOptions options = new RequestOptions()
+                .centerCrop()
+                .placeholder(R.color.white)
+                .error(R.color.white)
+                .transform(new GlideRoundTransform());
+        Glide.with(mContext).load(path).apply(options).into(mImageView);
 
     }
 

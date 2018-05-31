@@ -1,6 +1,7 @@
 package com.dxs.stc.base;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -20,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.dxs.stc.R;
+import com.dxs.stc.activities.MainActivity;
 import com.dxs.stc.utils.SystemBarTintManager;
 import com.dxs.stc.utils.ToastUtils;
 
@@ -63,7 +65,7 @@ public abstract class BaseActivity extends SupportActivity implements BaseView, 
             View rootView = getLayoutInflater().inflate(layoutId, rootLinearLayout, true);
             setContentView(rootView);
         }
-        stateBar(ContextCompat.getColor(this,R.color.navColor));
+//        stateBar(ContextCompat.getColor(this,R.color.navColor));
         initBaseView();
         initBaseData();
         setOnClick(R.id.tv_back_base_activity);
@@ -89,8 +91,8 @@ public abstract class BaseActivity extends SupportActivity implements BaseView, 
         if (null != actionBar) {
             if (isShowToolbar) {
                 actionBar.show();
-                tvBack = findViewById(R.id.tv_back_base_activity);
-                TextView textView = findViewById(R.id.tv_right_base_activity);
+                tvBack = (TextView) findViewById(R.id.tv_back_base_activity);
+                TextView textView = (TextView) findViewById(R.id.tv_right_base_activity);
                 if (null != tvBack && null != textView) {
                     tvBack.setVisibility(isShowBack ? View.VISIBLE : View.INVISIBLE);
                     textView.setVisibility(isShowMore ? View.VISIBLE : View.INVISIBLE);
@@ -208,9 +210,9 @@ public abstract class BaseActivity extends SupportActivity implements BaseView, 
     }
 
     protected void initBaseView() {
-        toolbar = findViewById(R.id.toolbar_base_activity);
-        tvToolbarTitle = findViewById(R.id.tv_title_base_activity);
-        tvToolbarRight = findViewById(R.id.tv_right_base_activity);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_base_activity);
+        tvToolbarTitle = (TextView) findViewById(R.id.tv_title_base_activity);
+        tvToolbarRight = (TextView) findViewById(R.id.tv_right_base_activity);
     }
 
     /**
@@ -222,7 +224,7 @@ public abstract class BaseActivity extends SupportActivity implements BaseView, 
             SystemBarTintManager tintManager = new SystemBarTintManager(this);
             tintManager.setStatusBarTintEnabled(true);
             tintManager.setNavigationBarTintEnabled(true);
-//            tintManager.setTintColor(color);
+            tintManager.setTintColor(color);
             tintManager.setStatusBarTintColor(color);
         }
     }
@@ -293,6 +295,37 @@ public abstract class BaseActivity extends SupportActivity implements BaseView, 
     public void invalidToken() {
         //用于检测你当前用户的token是否有效，无效就返回登录界面，具体的业务逻辑你自己实现
         //如果需要做到实时检测，推荐用socket长连接，每隔10秒发送一个验证当前登录用户token是否过期的请求
+    }
+
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        if (intent == null) return;
+        if (intent.getComponent() == null) return;
+        String className = intent.getComponent().getClassName();
+        if (!className.equals(MainActivity.class.getName())) {
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        }
+    }
+
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode) {
+        super.startActivityForResult(intent, requestCode);
+        if (intent == null) return;
+        if (intent.getComponent() == null) return;
+        String className = intent.getComponent().getClassName();
+        if (!className.equals(MainActivity.class.getName())) {
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        if (!((Object) this).getClass().equals(MainActivity.class)) {
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        }
     }
 
     /**

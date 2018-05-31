@@ -42,21 +42,30 @@
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name">
+
         </activity>
         <activity
             android:name=".activities.LoginActivity"
             android:label="@string/title_activity_login">
 
         </activity>
-        <activity android:name=".activities.SearchActivity">
+        <activity
+            android:name=".activities.SearchActivity"
+            android:label="@string/search">
 
         </activity>
-        <activity android:name=".activities.MallListActivity">
+        <activity
+            android:name=".activities.MallListActivity"
+            android:label="@string/title_mall">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.ForgetPasswordActivity"
+            android:label="@string/forget_password">
         </activity>
     </application>
 

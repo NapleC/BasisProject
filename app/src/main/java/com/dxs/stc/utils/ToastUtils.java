@@ -19,7 +19,7 @@ import android.widget.Toast;
  * 5. 支持取消显示
  * 6. 支持避免多次弹出 toast，后面的覆盖前面的
  * <p>
- * 该工具类使用到了 ThreadUtils（切换线程）,AppUtils（获取 application）
+ * 该工具类使用到了 ThreadUtils（切换线程）,AppUtil（获取 application）
  * </p>
  *
  *
@@ -62,7 +62,7 @@ public class ToastUtils {
      * @param layoutId 视图
      */
     public static void setView(@LayoutRes int layoutId) {
-        ToastUtils.customView = View.inflate(AppUtils.INSTANCE, layoutId, null);
+        ToastUtils.customView = View.inflate(AppUtil.INSTANCE, layoutId, null);
     }
 
     /**
@@ -286,7 +286,7 @@ public class ToastUtils {
      * @param duration 显示时长
      */
     private static void show(@StringRes int resId, int duration) {
-        show(AppUtils.INSTANCE.getResources().getText(resId).toString(), duration);
+        show(AppUtil.INSTANCE.getResources().getText(resId).toString(), duration);
     }
 
     /**
@@ -297,7 +297,7 @@ public class ToastUtils {
      * @param args     参数
      */
     private static void show(@StringRes int resId, int duration, Object... args) {
-        show(String.format(AppUtils.INSTANCE.getResources().getString(resId), args), duration);
+        show(String.format(AppUtil.INSTANCE.getResources().getString(resId), args), duration);
     }
 
     /**
@@ -320,13 +320,13 @@ public class ToastUtils {
     private static void show(CharSequence text, int duration) {
         cancel();
         if (customView != null) {
-            sToast = new Toast(AppUtils.INSTANCE);
+            sToast = new Toast(AppUtil.INSTANCE);
             sToast.setView(customView);
             sToast.setDuration(duration);
             sToast.setText(text);
             sToast.setGravity(gravity, xOffset, yOffset);
         } else {
-            sToast = Toast.makeText(AppUtils.INSTANCE, text, duration);
+            sToast = Toast.makeText(AppUtil.INSTANCE, text, duration);
         }
 
         sToast.show();

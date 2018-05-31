@@ -1,5 +1,6 @@
 package com.dxs.stc.base;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.dxs.stc.R;
+import com.dxs.stc.activities.MainActivity;
 import com.dxs.stc.utils.OsUtil;
 
 /**
@@ -78,6 +80,37 @@ public class CompatStatusBarActivity extends StatusBarBaseActivity {
     protected void setStatusBarPlaceColor(int statusColor) {
         if (mViewStatusBarPlace != null) {
             mViewStatusBarPlace.setBackgroundColor(statusColor);
+        }
+    }
+
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        if (intent == null) return;
+        if (intent.getComponent() == null) return;
+        String className = intent.getComponent().getClassName();
+        if (!className.equals(MainActivity.class.getName())) {
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        }
+    }
+
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode) {
+        super.startActivityForResult(intent, requestCode);
+        if (intent == null) return;
+        if (intent.getComponent() == null) return;
+        String className = intent.getComponent().getClassName();
+        if (!className.equals(MainActivity.class.getName())) {
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        if (!((Object) this).getClass().equals(MainActivity.class)) {
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
     }
 }

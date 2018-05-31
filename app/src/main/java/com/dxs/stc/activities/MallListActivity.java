@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
 import com.dxs.stc.R;
 import com.dxs.stc.adpater.MallGridAdapter;
 import com.dxs.stc.adpater.MallListAdapter;
@@ -80,6 +81,23 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
 //                ToastUtils.showShortSafe("点击的是第：" + position);
 //            }
 //        });
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                switch (newState){
+
+                    case 0:
+                    case 1:
+                        Glide.with(MallListActivity.this).resumeRequests();
+                        break;
+                    case 2:
+                        Glide.with(MallListActivity.this).pauseRequests();
+                        break;
+                }
+
+            }
+        });
     }
 
 

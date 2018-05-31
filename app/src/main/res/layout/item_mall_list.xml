@@ -8,15 +8,13 @@
     android:paddingStart="@dimen/dp_14"
     android:paddingTop="@dimen/dp_14">
 
-    <com.dxs.stc.glideimageview.GlideImageView
+    <ImageView
         android:id="@+id/iv_cover"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:clickable="true"
         android:contentDescription="@string/jewelry"
-        android:focusable="true"
-        app:riv_corner_radius="10dp"
-        app:riv_pressed_mask_color="@color/transparent20" />
+        android:focusable="true"/>
 
     <TextView
         android:id="@+id/tv_title"

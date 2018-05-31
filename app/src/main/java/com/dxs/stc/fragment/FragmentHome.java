@@ -24,7 +24,7 @@ import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.mvp.presenter.IGetBookPresenter;
 import com.dxs.stc.mvp.presenter.impl.GetBookPresenterImpl;
 import com.dxs.stc.mvp.view.IBookView;
-import com.dxs.stc.utils.AppUtils;
+import com.dxs.stc.utils.AppUtil;
 import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.ToastUtils;
 import com.dxs.stc.utils.http.ParseErrorMsgUtil;
@@ -243,9 +243,9 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
                         mTopSearchText.setTextColor(ContextCompat.getColor(
                                 getActivity(), R.color.home_search_text));
                         mTopSearchText.setBackground(ContextCompat.getDrawable(
-                                AppUtils.INSTANCE, R.drawable.home_search_top));
+                                AppUtil.INSTANCE, R.drawable.home_search_top));
                         // 设置 DrawableLeft
-                        mTopSearchDrawable = ContextCompat.getDrawable(AppUtils.INSTANCE, R.drawable.svg_search_norm);
+                        mTopSearchDrawable = ContextCompat.getDrawable(AppUtil.INSTANCE, R.drawable.svg_search_norm);
                         // 这一步必须要做, 否则不会显示.
                         mTopSearchDrawable.setBounds(0, 0, mTopSearchDrawable.getMinimumWidth(), mTopSearchDrawable.getMinimumHeight());
                         mTopSearchText.setCompoundDrawables(mTopSearchDrawable, null, null, null);
@@ -264,10 +264,10 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
                         mTopSearchText.setTextColor(ContextCompat.getColor(
                                 getActivity(), R.color.color_66));
                         mTopSearchText.setBackground(ContextCompat.getDrawable(
-                                AppUtils.INSTANCE, R.drawable.home_search_top_sp));
+                                AppUtil.INSTANCE, R.drawable.home_search_top_sp));
 
                         // 设置 DrawableLeft
-                        mTopSearchDrawable = ContextCompat.getDrawable(AppUtils.INSTANCE, R.drawable.svg_search_sp);
+                        mTopSearchDrawable = ContextCompat.getDrawable(AppUtil.INSTANCE, R.drawable.svg_search_sp);
                         // 这一步必须要做, 否则不会显示.
                         mTopSearchDrawable.setBounds(0, 0, mTopSearchDrawable.getMinimumWidth(), mTopSearchDrawable.getMinimumHeight());
                         mTopSearchText.setCompoundDrawables(mTopSearchDrawable, null, null, null);

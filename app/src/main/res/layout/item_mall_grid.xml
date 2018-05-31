@@ -24,7 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:padding="2dp"
             android:contentDescription="@string/jewelry"
             android:scaleType="centerCrop"
             app:heightWeight="1"

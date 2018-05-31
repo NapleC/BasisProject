@@ -24,7 +24,7 @@ public class MallListAdapter extends BaseQuickAdapter<Movie.SubjectsBean, BaseVi
                 item.getOriginal_title() + "(" + item.getYear() + ")");
         helper.setText(R.id.tv_count, item.getCollect_count() + "人购买");
         helper.setText(R.id.tv_price, item.getYear());
-        ImageLodeUtils.loadingImage(mContext, item.getImages().getSmall(),
+        ImageLodeUtils.loadingRoundImage(mContext, item.getImages().getSmall(),
                 helper.getView(R.id.iv_cover));
 
 

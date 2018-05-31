@@ -54,8 +54,7 @@ public class LoginActivity extends BaseActivity {
     protected void initBaseData() {
         super.initBaseData();
         ButterKnife.bind(this);
-        initToolbar(true, false, true)
-                .setMyTitle("").setMoreTitle(R.string.cancel);
+        initToolbar(true, false, true).setMoreTitle(R.string.cancel);
         // Set up the login form.
         populateAutoComplete();
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -70,7 +69,7 @@ public class LoginActivity extends BaseActivity {
         });
     }
 
-    @OnClick({R.id.fl_toolbar_more, R.id.tv_title_base_activity,R.id.email_sign_in_button})
+    @OnClick({R.id.fl_toolbar_more, R.id.tv_title_base_activity, R.id.email_sign_in_button})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.fl_toolbar_more:
