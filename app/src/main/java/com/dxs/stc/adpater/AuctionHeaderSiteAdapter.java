@@ -6,6 +6,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dxs.stc.R;
 import com.dxs.stc.mvp.bean.Movie;
+import com.dxs.stc.utils.imageloder.ImageLodeUtils;
 
 import java.util.List;
 
@@ -16,6 +17,8 @@ import java.util.List;
  */
 public class AuctionHeaderSiteAdapter extends BaseQuickAdapter<Movie.SubjectsBean, BaseViewHolder> {
 
+    private String tempImg = "https://image2.wbiao.co/upload/article/201702/17/1487322373441497976.jpg";
+
     public AuctionHeaderSiteAdapter(int layoutResId, @Nullable List<Movie.SubjectsBean> data) {
         super(layoutResId, data);
     }
@@ -23,7 +26,6 @@ public class AuctionHeaderSiteAdapter extends BaseQuickAdapter<Movie.SubjectsBea
     @Override
     protected void convert(BaseViewHolder helper, Movie.SubjectsBean item) {
         helper.setText(R.id.tv_header_site_tip, "预告篇 " + helper.getLayoutPosition());
-//        ImageLodeUtils.loadingImage(mContext, item.getImages().getSmall(),
-//                helper.getView(R.id.iv_header_site_cover));
+        ImageLodeUtils.loadingRoundImage(mContext, tempImg, helper.getView(R.id.iv_header_site_cover));
     }
 }

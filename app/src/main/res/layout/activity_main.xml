@@ -5,8 +5,8 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:clipChildren="false"
+    android:orientation="vertical"
     tools:context=".activities.MainActivity">
 
     <FrameLayout
@@ -38,15 +38,16 @@
                 android:id="@+id/iv1"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:scaleType="centerCrop"
                 android:contentDescription="@string/title_home"
-                app:srcCompat="@drawable/svg_home_norm" />
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/selector_icon_home"/>
 
             <TextView
                 android:id="@+id/tv1"
                 android:layout_width="wrap_content"
                 android:layout_height="18dp"
                 android:text="@string/title_home"
+                android:textColor="@color/selector_tab_text"
                 android:textSize="@dimen/sp_12" />
 
         </LinearLayout>
@@ -65,15 +66,16 @@
                 android:id="@+id/iv2"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:scaleType="centerCrop"
                 android:contentDescription="@string/title_mall"
-                app:srcCompat="@drawable/svg_mall_norm" />
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/selector_icon_mall" />
 
             <TextView
                 android:id="@+id/tv2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_mall"
+                android:textColor="@color/selector_tab_text"
                 android:textSize="@dimen/sp_12" />
 
         </LinearLayout>
@@ -92,15 +94,16 @@
                 android:id="@+id/iv3"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:scaleType="centerCrop"
                 android:contentDescription="@string/title_auction"
-                app:srcCompat="@drawable/svg_auction_norm" />
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/selector_icon_auction" />
 
             <TextView
                 android:id="@+id/tv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_auction"
+                android:textColor="@color/selector_tab_text"
                 android:textSize="@dimen/sp_12" />
 
         </LinearLayout>
@@ -119,15 +122,16 @@
                 android:id="@+id/iv4"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:scaleType="centerCrop"
                 android:contentDescription="@string/title_news"
-                app:srcCompat="@drawable/svg_news_norm" />
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/selector_icon_news" />
 
             <TextView
                 android:id="@+id/tv4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_news"
+                android:textColor="@color/selector_tab_text"
                 android:textSize="@dimen/sp_12" />
 
         </LinearLayout>
@@ -146,15 +150,16 @@
                 android:id="@+id/iv5"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:scaleType="centerCrop"
                 android:contentDescription="@string/title_person"
-                app:srcCompat="@drawable/svg_mine_norm" />
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/selector_icon_mine" />
 
             <TextView
                 android:id="@+id/tv5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_person"
+                android:textColor="@color/selector_tab_text"
                 android:textSize="@dimen/sp_12" />
 
         </LinearLayout>

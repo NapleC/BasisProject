@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- https://blog.csdn.net/yuzhiqiang_1993/article/details/78032465 ，目前只能设置为bg-->
+    <item android:drawable="@drawable/ic_back" />
+</selector>

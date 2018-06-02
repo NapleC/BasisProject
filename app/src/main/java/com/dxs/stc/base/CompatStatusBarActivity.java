@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,8 @@ import com.dxs.stc.activities.MainActivity;
 import com.dxs.stc.utils.OsUtil;
 
 /**
- *  created by hl at 2018/5/8
- *  CompatStatusBarActivity
+ * created by hl at 2018/5/8
+ * CompatStatusBarActivity
  */
 
 public class CompatStatusBarActivity extends StatusBarBaseActivity {
@@ -28,6 +29,7 @@ public class CompatStatusBarActivity extends StatusBarBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_compat_status_bar);
+//        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         mViewStatusBarPlace = findViewById(R.id.view_status_bar_place);
         mFrameLayoutContent = (FrameLayout) findViewById(R.id.frame_layout_content_place);

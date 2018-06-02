@@ -12,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
@@ -52,6 +53,8 @@ public abstract class BaseActivity extends SupportActivity implements BaseView, 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         activities.add(this);
         //强制竖屏(不强制加)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);

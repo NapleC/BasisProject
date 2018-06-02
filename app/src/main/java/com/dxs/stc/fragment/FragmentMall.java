@@ -2,16 +2,13 @@ package com.dxs.stc.fragment;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dxs.stc.R;
@@ -25,11 +22,11 @@ import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.mvp.presenter.IGetBookPresenter;
 import com.dxs.stc.mvp.presenter.impl.GetBookPresenterImpl;
 import com.dxs.stc.mvp.view.IBookView;
-import com.dxs.stc.utils.AppUtil;
 import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.ToastUtils;
 import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.widget.GlideImageLoad;
+import com.dxs.stc.widget.ImageTextView;
 import com.dxs.stc.widget.SpacesItemDecoration;
 import com.youth.banner.Banner;
 
@@ -55,7 +52,7 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
     @BindView(R.id.ll_title_bg_layout)
     LinearLayout mTitleLayout;
     @BindView(R.id.fragment_title_text)
-    TextView mTopSearchText;
+    ImageTextView mTopSearchText;
 
     private MallRecyclerViewAdapter mAdapter;
     List<Movie.SubjectsBean> mData;
@@ -180,7 +177,7 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
         mTopicAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                switch (position){
+                switch (position) {
                     case 0:
                         break;
                     case 1:
@@ -232,7 +229,6 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
 
     // 顶部滑动样式-----------------------------------------------------------------------------------
     int mDistanceY = 0;
-    private Drawable mTopSearchDrawable;
     private boolean hadSetTop = false;
 
     private void changeTopSearchStyle() {
@@ -256,16 +252,7 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
                 //当滑动的距离 <= toolbar高度的时候，改变Toolbar背景色的透明度，达到渐变的效果
                 if (mDistanceY <= toolbarHeight) {
                     if (mDistanceY == 0) {
-                        mTopSearchText.setTextColor(ContextCompat.getColor(
-                                getActivity(), R.color.home_search_text));
-                        mTopSearchText.setBackground(ContextCompat.getDrawable(
-                                AppUtil.INSTANCE, R.drawable.home_search_top));
-                        // 设置 DrawableLeft
-                        mTopSearchDrawable = ContextCompat.getDrawable(AppUtil.INSTANCE, R.drawable.svg_search_norm);
-                        // 这一步必须要做, 否则不会显示.
-                        mTopSearchDrawable.setBounds(0, 0, mTopSearchDrawable.getMinimumWidth(), mTopSearchDrawable.getMinimumHeight());
-                        mTopSearchText.setCompoundDrawables(mTopSearchDrawable, null, null, null);
-                        mTopSearchDrawable = null;
+                        mTopSearchText.setSelected(false);
                     }
                     float scale = (float) mDistanceY / toolbarHeight;
                     float alpha = scale * 255;
@@ -277,17 +264,7 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
                         hadSetTop = true;
                         //将标题栏的颜色设置为完全不透明状态
                         mTitleLayout.setBackgroundResource(R.color.navColor);
-                        mTopSearchText.setTextColor(ContextCompat.getColor(
-                                getActivity(), R.color.color_66));
-                        mTopSearchText.setBackground(ContextCompat.getDrawable(
-                                AppUtil.INSTANCE, R.drawable.home_search_top_sp));
-
-                        // 设置 DrawableLeft
-                        mTopSearchDrawable = ContextCompat.getDrawable(AppUtil.INSTANCE, R.drawable.svg_search_sp);
-                        // 这一步必须要做, 否则不会显示.
-                        mTopSearchDrawable.setBounds(0, 0, mTopSearchDrawable.getMinimumWidth(), mTopSearchDrawable.getMinimumHeight());
-                        mTopSearchText.setCompoundDrawables(mTopSearchDrawable, null, null, null);
-                        mTopSearchDrawable = null;
+                        mTopSearchText.setSelected(true);
                     }
                 }
             }

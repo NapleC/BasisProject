@@ -10,29 +10,34 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <LinearLayout
         android:id="@+id/ll_title_bg_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="30dp"
+        android:paddingBottom="@dimen/dp_14"
         android:paddingLeft="@dimen/dp_14"
         android:paddingRight="@dimen/dp_14"
-        android:paddingBottom="@dimen/dp_14" >
+        android:paddingTop="30dp">
 
-        <TextView
+        <com.dxs.stc.widget.ImageTextView
             android:id="@+id/fragment_title_text"
             android:layout_width="0dp"
             android:layout_height="28dp"
             android:layout_marginRight="@dimen/dp_10"
             android:layout_weight="1"
-            android:background="@drawable/home_search_top"
+            android:background="@drawable/selector_search_bg"
             android:drawablePadding="@dimen/dp_6"
-            android:drawableStart="@drawable/svg_search_norm"
             android:gravity="center_vertical|start"
+            android:minHeight="28dp"
             android:text="@string/home_search_tip"
-            android:textColor="@color/home_search_text" />
+            android:textColor="@color/selector_search_text"
+            android:textSize="@dimen/sp_16"
+            app:drawable="@drawable/selector_search_left"
+            app:drawableHeight="@dimen/dp_18"
+            app:drawableWidth="@dimen/dp_18"
+            app:position="1" />
 
         <ImageView
             android:id="@+id/iv_top_news"

@@ -18,6 +18,7 @@ import java.util.List;
  */
 public class AuctionRecyclerViewAdapter extends BaseQuickAdapter<Movie.SubjectsBean, BaseViewHolder> {
 
+    private String temAuction = "https://image2.wbiao.co/upload/article/201702/17/1487322373441497976.jpg";
     public AuctionRecyclerViewAdapter(int layoutResId, @Nullable List<Movie.SubjectsBean> data) {
         super(layoutResId, data);
     }
@@ -35,7 +36,7 @@ public class AuctionRecyclerViewAdapter extends BaseQuickAdapter<Movie.SubjectsB
                 helper.getLayoutPosition() == (getData().size()) ? View.VISIBLE : View.GONE);
         mBottomTitle.setText(String.format(mContext.getResources().getString(R.string.auction_title),
                 item.getTitle() + item.getOriginal_title() + "(" + item.getYear() + ")"));
-        ImageLodeUtils.loadingImage(mContext, item.getImages().getSmall(),
+        ImageLodeUtils.loadingRoundImage(mContext, item.getImages().getSmall(),
                 helper.getView(R.id.iv_auction_cover));
     }
 }

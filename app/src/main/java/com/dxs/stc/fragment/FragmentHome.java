@@ -2,9 +2,7 @@ package com.dxs.stc.fragment;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,12 +22,12 @@ import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.mvp.presenter.IGetBookPresenter;
 import com.dxs.stc.mvp.presenter.impl.GetBookPresenterImpl;
 import com.dxs.stc.mvp.view.IBookView;
-import com.dxs.stc.utils.AppUtil;
 import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.ToastUtils;
 import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.widget.CustomTextOnPic;
 import com.dxs.stc.widget.GlideImageLoad;
+import com.dxs.stc.widget.ImageTextView;
 import com.dxs.stc.widget.SpacesItemDecoration;
 import com.youth.banner.Banner;
 
@@ -58,7 +56,7 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
     @BindView(R.id.iv_top_news)
     ImageView mTopNews;
     @BindView(R.id.fragment_title_text)
-    TextView mTopSearchText;
+    ImageTextView mTopSearchText;
 
     private HomeRecyclerViewAdapter mAdapter;
     List<Movie.SubjectsBean> mData;
@@ -113,9 +111,7 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
         mHeaderView = LayoutInflater.from(getActivity()).inflate(R.layout.header_home, null);
         mAdapter.setHeaderView(mHeaderView);
 
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));//这里用线性显示 类似于listview
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));//这里用线性宫格显示 类似于grid view
-//        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));//这里用线性宫格显示 类似于瀑布流
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
         SpacesItemDecoration decoration = new SpacesItemDecoration(
                 getResources().getDimensionPixelSize(R.dimen.dp_14),
@@ -188,7 +184,6 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
 
     }
 
-
     @Override
     public void getBookSuccess(Movie movie) {
         List<Movie.SubjectsBean> list = movie.getSubjects();
@@ -216,7 +211,6 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
 
     // 顶部滑动样式-----------------------------------------------------------------------------------
     int mDistanceY = 0;
-    private Drawable mTopSearchDrawable;
     private boolean hadSetTop = false;
 
     private void changeTopSearchStyle() {
@@ -240,16 +234,7 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
                 //当滑动的距离 <= toolbar高度的时候，改变Toolbar背景色的透明度，达到渐变的效果
                 if (mDistanceY <= toolbarHeight) {
                     if (mDistanceY == 0) {
-                        mTopSearchText.setTextColor(ContextCompat.getColor(
-                                getActivity(), R.color.home_search_text));
-                        mTopSearchText.setBackground(ContextCompat.getDrawable(
-                                AppUtil.INSTANCE, R.drawable.home_search_top));
-                        // 设置 DrawableLeft
-                        mTopSearchDrawable = ContextCompat.getDrawable(AppUtil.INSTANCE, R.drawable.svg_search_norm);
-                        // 这一步必须要做, 否则不会显示.
-                        mTopSearchDrawable.setBounds(0, 0, mTopSearchDrawable.getMinimumWidth(), mTopSearchDrawable.getMinimumHeight());
-                        mTopSearchText.setCompoundDrawables(mTopSearchDrawable, null, null, null);
-                        mTopSearchDrawable = null;
+                        mTopSearchText.setSelected(false);
                     }
                     float scale = (float) mDistanceY / toolbarHeight;
                     float alpha = scale * 255;
@@ -261,17 +246,7 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
                         hadSetTop = true;
                         //将标题栏的颜色设置为完全不透明状态
                         mTitleLayout.setBackgroundResource(R.color.navColor);
-                        mTopSearchText.setTextColor(ContextCompat.getColor(
-                                getActivity(), R.color.color_66));
-                        mTopSearchText.setBackground(ContextCompat.getDrawable(
-                                AppUtil.INSTANCE, R.drawable.home_search_top_sp));
-
-                        // 设置 DrawableLeft
-                        mTopSearchDrawable = ContextCompat.getDrawable(AppUtil.INSTANCE, R.drawable.svg_search_sp);
-                        // 这一步必须要做, 否则不会显示.
-                        mTopSearchDrawable.setBounds(0, 0, mTopSearchDrawable.getMinimumWidth(), mTopSearchDrawable.getMinimumHeight());
-                        mTopSearchText.setCompoundDrawables(mTopSearchDrawable, null, null, null);
-                        mTopSearchDrawable = null;
+                        mTopSearchText.setSelected(true);
                     }
                 }
             }
@@ -285,8 +260,5 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-        if (mTopSearchDrawable != null) {
-            mTopSearchDrawable = null;
-        }
     }
 }

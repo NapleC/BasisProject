@@ -90,174 +90,172 @@
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 
-    <LinearLayout
+
+    <RelativeLayout
+        android:id="@+id/rl_topic2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cv_header_notice"
-        android:orientation="vertical">
+        android:layout_marginTop="@dimen/dp_14"
+        android:orientation="horizontal">
 
-        <RelativeLayout
-            android:id="@+id/rl_topic2"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_topic2_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_14"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_topic2_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:gravity="center"
-                android:includeFontPadding="false"
-                android:paddingEnd="@dimen/dp_4"
-                android:paddingStart="@dimen/dp_4"
-                android:text="@string/gemstone_notice"
-                android:textColor="@color/color_63"
-                android:textSize="@dimen/sp_18" />
-
-            <ImageView
-                android:id="@+id/iv_topic2_left"
-                android:layout_width="100dp"
-                android:layout_height="16dp"
-                android:layout_margin="3dp"
-                android:layout_toStartOf="@+id/tv_topic2_title"
-                android:contentDescription="@string/gemstone_notice"
-                app:srcCompat="@drawable/home_tips_left" />
-
-            <ImageView
-                android:id="@+id/iv_topic2_right"
-                android:layout_width="100dp"
-                android:layout_height="16dp"
-                android:layout_margin="3dp"
-                android:layout_toEndOf="@+id/tv_topic2_title"
-                android:contentDescription="@string/gemstone_notice"
-                app:srcCompat="@drawable/home_tips_right" />
-
-            <ImageView
-                android:id="@+id/iv_topic2_more"
-                android:layout_width="18dp"
-                android:layout_height="@dimen/dp_16"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginEnd="@dimen/dp_14"
-                android:layout_marginTop="2dp"
-                android:contentDescription="@string/gemstone_notice"
-                app:srcCompat="@drawable/svg_home_more"  />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_topic2_title"
-                android:minHeight="120dp"
-                android:orientation="horizontal"
-                android:padding="@dimen/dp_8">
-
-                <com.dxs.stc.widget.CustomTextOnPic
-                    android:id="@+id/ctp_in_auction1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:pic_background="@mipmap/auction_eg1"
-                    app:pic_text="拍卖中"
-                    app:pic_title="翡翠绿宝石1" />
-
-                <com.dxs.stc.widget.CustomTextOnPic
-                    android:id="@+id/ctp_in_auction2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:pic_background="@mipmap/auction_eg1"
-                    app:pic_text="拍卖中"
-                    app:pic_title="翡翠绿宝石2" />
-
-                <com.dxs.stc.widget.CustomTextOnPic
-                    android:id="@+id/ctp_in_auction3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:pic_background="@mipmap/auction_eg1"
-                    app:pic_text="拍卖中"
-                    app:pic_title="翡翠绿宝石3" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-
-        <LinearLayout
-            android:id="@+id/rl_topic3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/color_E6"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="@dimen/dp_14">
+            android:includeFontPadding="false"
+            android:paddingEnd="@dimen/dp_4"
+            android:paddingStart="@dimen/dp_4"
+            android:text="@string/gemstone_notice"
+            android:textColor="@color/color_63"
+            android:textSize="@dimen/sp_18" />
 
-            <TextView
-                android:id="@+id/tv_topic3_jewelry"
-                android:layout_width="wrap_content"
-                android:layout_height="86dp"
-                android:layout_marginEnd="@dimen/dp_6"
-                android:layout_weight="1"
-                android:background="@drawable/ic_home_jewelry"
-                android:includeFontPadding="false"
-                android:text="@string/jewelry"
-                android:textColor="@color/color_63"
-                android:textSize="@dimen/sp_18"
-                android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/iv_topic2_left"
+            android:layout_width="100dp"
+            android:layout_height="16dp"
+            android:layout_margin="3dp"
+            android:layout_toStartOf="@+id/tv_topic2_title"
+            android:contentDescription="@string/gemstone_notice"
+            app:srcCompat="@drawable/home_tips_left" />
 
-            <TextView
-                android:id="@+id/tv_topic3_ornaments"
-                android:layout_width="wrap_content"
-                android:layout_height="86dp"
-                android:layout_marginStart="@dimen/dp_6"
-                android:layout_weight="1"
-                android:background="@drawable/ic_home_ornaments"
-                android:includeFontPadding="false"
-                android:text="@string/ornaments"
-                android:textColor="@color/color_63"
-                android:textSize="@dimen/sp_18"
-                android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/iv_topic2_right"
+            android:layout_width="100dp"
+            android:layout_height="16dp"
+            android:layout_margin="3dp"
+            android:layout_toEndOf="@+id/tv_topic2_title"
+            android:contentDescription="@string/gemstone_notice"
+            app:srcCompat="@drawable/home_tips_right" />
 
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/iv_topic2_more"
+            android:layout_width="18dp"
+            android:layout_height="@dimen/dp_16"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="@dimen/dp_14"
+            android:layout_marginTop="2dp"
+            android:contentDescription="@string/gemstone_notice"
+            app:srcCompat="@drawable/svg_home_more" />
 
-        <LinearLayout
-            android:id="@+id/rl_topic_goods"
-            android:layout_width="match_parent"
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_auction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_topic2"
+        android:minHeight="120dp"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_8">
+
+        <com.dxs.stc.widget.CustomTextOnPic
+            android:id="@+id/ctp_in_auction1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:pic_background="@mipmap/auction_eg1"
+            app:pic_text="拍卖中"
+            app:pic_title="翡翠绿宝石1" />
+
+        <com.dxs.stc.widget.CustomTextOnPic
+            android:id="@+id/ctp_in_auction2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:pic_background="@mipmap/auction_eg1"
+            app:pic_text="拍卖中"
+            app:pic_title="翡翠绿宝石2" />
+
+        <com.dxs.stc.widget.CustomTextOnPic
+            android:id="@+id/ctp_in_auction3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:pic_background="@mipmap/auction_eg1"
+            app:pic_text="拍卖中"
+            app:pic_title="翡翠绿宝石3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rl_topic3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_auction"
+        android:background="@color/color_E6"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_14">
+
+        <TextView
+            android:id="@+id/tv_topic3_jewelry"
+            android:layout_width="wrap_content"
+            android:layout_height="86dp"
+            android:layout_marginEnd="@dimen/dp_6"
+            android:layout_weight="1"
+            android:background="@drawable/ic_home_jewelry"
+            android:includeFontPadding="false"
+            android:text="@string/jewelry"
+            android:textColor="@color/color_63"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_topic3_ornaments"
+            android:layout_width="wrap_content"
+            android:layout_height="86dp"
+            android:layout_marginStart="@dimen/dp_6"
+            android:layout_weight="1"
+            android:background="@drawable/ic_home_ornaments"
+            android:includeFontPadding="false"
+            android:text="@string/ornaments"
+            android:textColor="@color/color_63"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rl_topic_goods"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_topic3"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_14"
+        android:paddingTop="@dimen/dp_14">
+
+        <ImageView
+            android:id="@+id/iv_topic_goods_left"
+            android:layout_width="100dp"
+            android:layout_height="16dp"
+            android:contentDescription="@string/high_quality_recommendation"
+            app:srcCompat="@drawable/home_tips_left" />
+
+        <TextView
+            android:id="@+id/tv_topic_goods_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/dp_14"
-            android:paddingTop="@dimen/dp_14">
+            android:includeFontPadding="false"
+            android:paddingEnd="@dimen/dp_4"
+            android:paddingStart="@dimen/dp_4"
+            android:text="@string/high_quality_recommendation"
+            android:textColor="@color/color_63"
+            android:textSize="@dimen/sp_18" />
 
-            <ImageView
-                android:id="@+id/iv_topic_goods_left"
-                android:layout_width="100dp"
-                android:layout_height="16dp"
-                android:contentDescription="@string/high_quality_recommendation"
-                app:srcCompat="@drawable/home_tips_left" />
+        <ImageView
+            android:id="@+id/iv_topic_goods_right"
+            android:layout_width="100dp"
+            android:layout_height="16dp"
+            android:contentDescription="@string/high_quality_recommendation"
+            app:srcCompat="@drawable/home_tips_right" />
 
-            <TextView
-                android:id="@+id/tv_topic_goods_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:includeFontPadding="false"
-                android:paddingEnd="@dimen/dp_4"
-                android:paddingStart="@dimen/dp_4"
-                android:text="@string/high_quality_recommendation"
-                android:textColor="@color/color_63"
-                android:textSize="@dimen/sp_18" />
-
-            <ImageView
-                android:id="@+id/iv_topic_goods_right"
-                android:layout_width="100dp"
-                android:layout_height="16dp"
-                android:contentDescription="@string/high_quality_recommendation"
-                app:srcCompat="@drawable/home_tips_right" />
-
-        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

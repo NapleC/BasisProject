@@ -37,6 +37,10 @@ android {
         abortOnError false
         disable 'GradleDependency'
     }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
 }
 
 dependencies {

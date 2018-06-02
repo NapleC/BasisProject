@@ -4,12 +4,15 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
 import com.dxs.stc.R;
 import com.dxs.stc.utils.DensityUtils;
+import com.dxs.stc.utils.Loger;
 
 /**
  * created by hl at 2018/5/17
@@ -42,7 +45,14 @@ public class ImageTextView extends AppCompatTextView {
         TypedArray typedArray = context.obtainStyledAttributes(attrs,
                 R.styleable.ImageTextView);
         if (null != typedArray) {
-            mDrawable = typedArray.getDrawable(R.styleable.ImageTextView_drawable);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                mDrawable = typedArray.getDrawable(R.styleable.ImageTextView_drawable);
+            } else {
+                int mDrawableId = typedArray.getResourceId(R.styleable.ImageTextView_drawable, -1);
+                if (mDrawableId != -1)
+                    mDrawable = AppCompatResources.getDrawable(context, mDrawableId);
+            }
             mScaleWidth = typedArray
                     .getDimensionPixelOffset(
                             R.styleable.ImageTextView_drawableWidth,
@@ -51,7 +61,7 @@ public class ImageTextView extends AppCompatTextView {
                     R.styleable.ImageTextView_drawableHeight,
                     DensityUtils.dip2px(context, 20));
             mPosition = typedArray.getInt(R.styleable.ImageTextView_position, 3);
-
+            Loger.debug("mScaleWidth:"+mScaleWidth+" -- mScaleHeight:"+mScaleHeight);
             typedArray.recycle();
         }
     }
@@ -68,6 +78,7 @@ public class ImageTextView extends AppCompatTextView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        // https://blog.csdn.net/vqqYuAn/article/details/44173737
         switch (mPosition) {
             case 1:
                 this.setCompoundDrawables(mDrawable, null, null, null);
@@ -93,17 +104,6 @@ public class ImageTextView extends AppCompatTextView {
      */
     public void setDrawableLeft(Drawable drawable) {
         this.mDrawable = drawable;
-        invalidate();
-    }
-
-    /**
-     * 设置左侧图片并重绘
-     *
-     * @param drawableRes
-     * @param context
-     */
-    public void setDrawableLeft(int drawableRes, Context context) {
-        this.mDrawable = ContextCompat.getDrawable(context, drawableRes);
         invalidate();
     }
 }

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -180,75 +180,55 @@ public class MainActivity extends CompatStatusBarActivity {
                 setStatusBarPlaceVisible(false);
                 setViewColorStatusBar(true, Color.WHITE);
                 if (isSel) {
-                    mHomeTv.setTextColor(ContextCompat.getColor(
-                            this, R.color.nav_selected_text));
-                    mHomeIv.setImageDrawable(ContextCompat.getDrawable(
-                            this, R.drawable.svg_home_sel));
+                    mHomeTv.setSelected(true);
+                    mHomeIv.setSelected(true);
                 } else {
-                    mHomeTv.setTextColor(ContextCompat.getColor(
-                            this, R.color.color_66));
-                    mHomeIv.setImageDrawable(ContextCompat.getDrawable(
-                            this, R.drawable.svg_home_norm));
+                    mHomeTv.setSelected(false);
+                    mHomeIv.setSelected(false);
                 }
                 break;
             case 1:
                 setStatusBarPlaceVisible(false);
                 setViewColorStatusBar(true, Color.WHITE);
                 if (isSel) {
-                    mMallTv.setTextColor(ContextCompat.getColor(
-                            this, R.color.nav_selected_text));
-                    mMallIv.setImageDrawable(ContextCompat.getDrawable(
-                            this, R.drawable.svg_mall_sel));
+                    mMallTv.setSelected(true);
+                    mMallIv.setSelected(true);
                 } else {
-                    mMallTv.setTextColor(ContextCompat.getColor(
-                            this, R.color.color_66));
-                    mMallIv.setImageDrawable(ContextCompat.getDrawable(
-                            this, R.drawable.svg_mall_norm));
+                    mMallTv.setSelected(false);
+                    mMallIv.setSelected(false);
                 }
                 break;
             case 2:
                 setStatusBarPlaceVisible(false);
                 setViewColorStatusBar(true, getResources().getColor(R.color.white));
                 if (isSel) {
-                    mAuctionTv.setTextColor(ContextCompat.getColor(
-                            this, R.color.nav_selected_text));
-                    mAuctionIv.setImageDrawable(ContextCompat.getDrawable(
-                            this, R.drawable.svg_auction_sel));
+                    mAuctionTv.setSelected(true);
+                    mAuctionIv.setSelected(true);
                 } else {
-                    mAuctionTv.setTextColor(ContextCompat.getColor(
-                            this, R.color.color_66));
-                    mAuctionIv.setImageDrawable(ContextCompat.getDrawable(
-                            this, R.drawable.svg_auction_norm));
+                    mAuctionTv.setSelected(false);
+                    mAuctionIv.setSelected(false);
                 }
                 break;
             case 3:
                 setStatusBarPlaceVisible(true);
                 setViewColorStatusBar(false, Color.WHITE);
                 if (isSel) {
-                    mNewsTv.setTextColor(ContextCompat.getColor(
-                            this, R.color.nav_selected_text));
-                    mNewsIv.setImageDrawable(ContextCompat.getDrawable(
-                            this, R.drawable.svg_news_sel));
+                    mNewsTv.setSelected(true);
+                    mNewsIv.setSelected(true);
                 } else {
-                    mNewsTv.setTextColor(ContextCompat.getColor(
-                            this, R.color.color_66));
-                    mNewsIv.setImageDrawable(ContextCompat.getDrawable(
-                            this, R.drawable.svg_news_norm));
+                    mNewsTv.setSelected(false);
+                    mNewsIv.setSelected(false);
                 }
                 break;
             case 4:
                 setStatusBarPlaceVisible(false);
                 setViewColorStatusBar(true, Color.WHITE);
                 if (isSel) {
-                    mMineTv.setTextColor(ContextCompat.getColor(
-                            this, R.color.nav_selected_text));
-                    mMineIv.setImageDrawable(ContextCompat.getDrawable(
-                            this, R.drawable.svg_mine_sel));
+                    mMineTv.setSelected(true);
+                    mMineIv.setSelected(true);
                 } else {
-                    mMineTv.setTextColor(ContextCompat.getColor(
-                            this, R.color.color_66));
-                    mMineIv.setImageDrawable(ContextCompat.getDrawable(
-                            this, R.drawable.svg_mine_norm));
+                    mMineTv.setSelected(false);
+                    mMineIv.setSelected(false);
                 }
                 break;
         }
