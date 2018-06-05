@@ -3,6 +3,7 @@
     <declare-styleable name="AutoHeightImageView">
         <attr name="widthWeight" format="integer"/>
         <attr name="heightWeight" format="integer"/>
+        <attr name="cornerRadius" format="dimension"/>
     </declare-styleable>
 
     <declare-styleable name="ImageTextView">
@@ -17,12 +18,13 @@
         <attr name="pic_background" format="reference"/>
         <attr name="pic_background_width" format="dimension"/>
         <attr name="pic_background_height" format="dimension"/>
+        <attr name="pic_is_round" format="boolean"/>
         <attr name="pic_text" format="string"/>
         <attr name="pic_text_color" format="color"/>
-        <attr name="pic_text_size" format="integer"/>
+        <attr name="pic_text_size" format="dimension"/>
         <attr name="pic_title" format="string"/>
         <attr name="pic_title_color" format="color"/>
-        <attr name="pic_title_size" format="integer"/>
+        <attr name="pic_title_size" format="dimension"/>
     </declare-styleable>
 
     <declare-styleable name="ShapeImageViewStyle">
@@ -61,6 +63,26 @@
         <attr name="cpv_outerColor" format="color"/>
         <attr name="cpv_outerSize" format="dimension"/>
         <attr name="cpv_reachCapRound" format="boolean"/>
+    </declare-styleable>
+
+    <!-- CustomArrowSort 商品筛选按钮 -->
+    <declare-styleable name="CustomArrowSort">
+        <attr name="sort_is_selected" format="boolean"/>
+        <attr name="sort_rise_visible" format="boolean"/>
+        <attr name="sort_drop_visible" format="boolean"/>
+        <attr name="sort_is_rise" format="boolean"/>
+        <attr name="sort_is_drop" format="boolean"/>
+        <attr name="sort_title" format="string"/>
+        <attr name="sort_title_color" format="color"/>
+        <attr name="sort_title_size" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="RoundCornerFrameLayout">
+        <attr name="frameRadius" format="dimension" />
+        <attr name="topLeftRadius" format="dimension" />
+        <attr name="topRightRadius" format="dimension" />
+        <attr name="bottomLeftRadius" format="dimension" />
+        <attr name="bottomRightRadius" format="dimension" />
     </declare-styleable>
 
 </resources>

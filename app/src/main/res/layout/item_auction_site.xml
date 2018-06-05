@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.dxs.stc.widget.RoundCornerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cv_item"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    app:frameRadius="8dp"
     android:layout_marginEnd="@dimen/dp_10">
 
     <com.dxs.stc.widget.AutoHeightImageView
@@ -36,4 +37,4 @@
         app:drawableWidth="@dimen/dp_8"
         app:position="1" />
 
-</RelativeLayout>
+</com.dxs.stc.widget.RoundCornerFrameLayout>

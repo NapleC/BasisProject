@@ -33,7 +33,8 @@ public class AutoHeightImageView extends AppCompatImageView {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int w = this.getMeasuredWidth();
         int h = w * heightWeight / widthWeight;
-        setMeasuredDimension(w + getPaddingLeft() + getPaddingRight(), h + getPaddingTop() + getPaddingBottom());
+        setMeasuredDimension(w + getPaddingLeft() + getPaddingRight(),
+                h + getPaddingTop() + getPaddingBottom());
     }
 
 }

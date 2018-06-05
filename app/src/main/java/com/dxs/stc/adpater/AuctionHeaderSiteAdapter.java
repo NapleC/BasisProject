@@ -26,6 +26,6 @@ public class AuctionHeaderSiteAdapter extends BaseQuickAdapter<Movie.SubjectsBea
     @Override
     protected void convert(BaseViewHolder helper, Movie.SubjectsBean item) {
         helper.setText(R.id.tv_header_site_tip, "预告篇 " + helper.getLayoutPosition());
-        ImageLodeUtils.loadingRoundImage(mContext, tempImg, helper.getView(R.id.iv_header_site_cover));
+        ImageLodeUtils.loadingImage(mContext, tempImg, helper.getView(R.id.iv_header_site_cover));
     }
 }

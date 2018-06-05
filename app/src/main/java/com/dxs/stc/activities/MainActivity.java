@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -129,7 +128,7 @@ public class MainActivity extends CompatStatusBarActivity {
     }
 
     private void selectFragment(int index) {
-        setNavStyle(selPosition, false);
+        setNavStyle(false);
         selPosition = index;
         if (mFragments != null && mFragments.size() > 0) {
             mFragmentTransaction = mSupportFragmentManager.beginTransaction();
@@ -150,7 +149,7 @@ public class MainActivity extends CompatStatusBarActivity {
             mFragmentTransaction.commitAllowingStateLoss();
             mLastFragment = baseFragment;
         }
-        setNavStyle(selPosition, true);
+        setNavStyle(true);
     }
 
     @OnClick({R.id.ll1, R.id.ll2, R.id.ll3, R.id.ll4, R.id.ll5})
@@ -174,8 +173,8 @@ public class MainActivity extends CompatStatusBarActivity {
         }
     }
 
-    private void setNavStyle(int selIndex, boolean isSel) {
-        switch (selIndex) {
+    private void setNavStyle(boolean isSel) {
+        switch (selPosition) {
             case 0:
                 setStatusBarPlaceVisible(false);
                 setViewColorStatusBar(true, Color.WHITE);

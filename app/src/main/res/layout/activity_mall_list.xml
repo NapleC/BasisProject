@@ -30,19 +30,55 @@
         <TextView
             android:id="@+id/tv_switch"
             android:layout_width="wrap_content"
-            android:minWidth="60dp"
-            android:paddingStart="@dimen/dp_10"
-            android:paddingEnd="@dimen/dp_10"
             android:layout_height="44dp"
             android:gravity="center"
+            android:minWidth="60dp"
+            android:paddingEnd="@dimen/dp_10"
+            android:paddingStart="@dimen/dp_10"
             android:text="@string/mall_switch"
             android:textColor="@color/white"
             android:textSize="16sp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.dxs.stc.widget.CustomSortArrow
+            android:id="@+id/sort_type"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:sort_drop_visible="false"
+            app:sort_is_rise="true"
+            app:sort_is_selected="true"
+            app:sort_title="@string/all" />
+
+        <com.dxs.stc.widget.CustomSortArrow
+            android:id="@+id/sort_volume"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:sort_title="销量" />
+
+        <com.dxs.stc.widget.CustomSortArrow
+            android:id="@+id/sort_price"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:sort_title="价格" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_10"
+        android:background="@color/color_E6" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

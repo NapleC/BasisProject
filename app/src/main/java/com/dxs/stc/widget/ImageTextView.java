@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
@@ -61,7 +60,7 @@ public class ImageTextView extends AppCompatTextView {
                     R.styleable.ImageTextView_drawableHeight,
                     DensityUtils.dip2px(context, 20));
             mPosition = typedArray.getInt(R.styleable.ImageTextView_position, 3);
-            Loger.debug("mScaleWidth:"+mScaleWidth+" -- mScaleHeight:"+mScaleHeight);
+            Loger.debug("mScaleWidth:" + mScaleWidth + " -- mScaleHeight:" + mScaleHeight);
             typedArray.recycle();
         }
     }

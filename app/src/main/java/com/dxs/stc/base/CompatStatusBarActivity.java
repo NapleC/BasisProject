@@ -29,7 +29,7 @@ public class CompatStatusBarActivity extends StatusBarBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_compat_status_bar);
-//        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         mViewStatusBarPlace = findViewById(R.id.view_status_bar_place);
         mFrameLayoutContent = (FrameLayout) findViewById(R.id.frame_layout_content_place);

@@ -163,7 +163,7 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
             @Override
             public void onClick(View v) {
                 ToastUtils.showShort("进入预告");
-                mCustomAuction1.setImageUrl(getActivity(), "https://image2.wbiao.co/upload/article/201702/17/1487323723401153512.jpg");
+                mCustomAuction1.setRoundImageUrl(getActivity(), "https://image2.wbiao.co/upload/article/201702/17/1487323723401153512.jpg");
                 mCustomAuction1.setTipText("拍卖已结束");
             }
         });

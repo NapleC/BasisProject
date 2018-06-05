@@ -36,7 +36,7 @@ public class AuctionRecyclerViewAdapter extends BaseQuickAdapter<Movie.SubjectsB
                 helper.getLayoutPosition() == (getData().size()) ? View.VISIBLE : View.GONE);
         mBottomTitle.setText(String.format(mContext.getResources().getString(R.string.auction_title),
                 item.getTitle() + item.getOriginal_title() + "(" + item.getYear() + ")"));
-        ImageLodeUtils.loadingRoundImage(mContext, item.getImages().getSmall(),
+        ImageLodeUtils.loadingImage(mContext, item.getImages().getSmall(),
                 helper.getView(R.id.iv_auction_cover));
     }
 }

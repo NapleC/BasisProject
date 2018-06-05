@@ -118,11 +118,10 @@ public class ImageLodeUtils {
     }
 
     /**
-     *
-     * @param mContext    上下文
-     * @param path        路径
-     * @param mImageView  控件
-     *                    只能是正方形的，自定义的
+     * @param mContext   上下文
+     * @param path       路径
+     * @param mImageView 控件
+     *                   只能是正方形的，自定义的
      */
     public static void loadingRoundImage(Context mContext, String path, ImageView mImageView) {
 
@@ -166,11 +165,23 @@ public class ImageLodeUtils {
      * ----------------------------------------------------------------------------------------------------
      */
     public static void loadDrawable(Context mContext,
-                                    @RawRes @DrawableRes @Nullable Integer resourceId, ImageView imageView) {
+                                    @RawRes @DrawableRes @Nullable Integer resourceId,
+                                    ImageView imageView) {
         RequestOptions options = new RequestOptions()
                 .placeholder(R.color.white)
                 .error(R.color.white)
                 .override(com.bumptech.glide.request.target.Target.SIZE_ORIGINAL);
+        Glide.with(mContext).asDrawable().load(resourceId).apply(options).into(imageView);
+    }
+
+    public static void loadDrawable(Context mContext,
+                                    @RawRes @DrawableRes @Nullable Integer resourceId,
+                                    ImageView imageView, boolean isRound) {
+        RequestOptions options = new RequestOptions()
+                .placeholder(R.color.white)
+                .error(R.color.white)
+                .override(com.bumptech.glide.request.target.Target.SIZE_ORIGINAL)
+                .transform(new GlideRoundTransform());
         Glide.with(mContext).asDrawable().load(resourceId).apply(options).into(imageView);
     }
 

@@ -160,6 +160,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:pic_background="@mipmap/auction_eg1"
+            app:pic_is_round="true"
             app:pic_text="拍卖中"
             app:pic_title="翡翠绿宝石1" />
 
@@ -169,6 +170,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:pic_background="@mipmap/auction_eg1"
+            app:pic_is_round="true"
             app:pic_text="拍卖中"
             app:pic_title="翡翠绿宝石2" />
 
@@ -178,6 +180,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:pic_background="@mipmap/auction_eg1"
+            app:pic_is_round="true"
             app:pic_text="拍卖中"
             app:pic_title="翡翠绿宝石3" />
 

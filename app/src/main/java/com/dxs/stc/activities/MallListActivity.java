@@ -1,11 +1,14 @@
 package com.dxs.stc.activities;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ArrayAdapter;
 
 import com.bumptech.glide.Glide;
 import com.dxs.stc.R;
@@ -19,10 +22,13 @@ import com.dxs.stc.mvp.view.IBookView;
 import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.ToastUtils;
 import com.dxs.stc.utils.http.ParseErrorMsgUtil;
+import com.dxs.stc.widget.CustomSortArrow;
 import com.dxs.stc.widget.SpacesItemDecoration;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,6 +38,13 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
 
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
+
+    @BindView(R.id.sort_type)
+    CustomSortArrow mSortType;
+    @BindView(R.id.sort_volume)
+    CustomSortArrow mSortVolume;
+    @BindView(R.id.sort_price)
+    CustomSortArrow mSortPrice;
 
     private MallListAdapter mListAdapter;
     private MallGridAdapter mGridAdapter;
@@ -43,6 +56,10 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
     private GridLayoutManager gridLayoutManager;
     SpacesItemDecoration decoration;
     private int needScrollPosition = 0;
+
+    private int selTopIndex = -1;
+    private boolean topIsRise = false;
+    private List<Map<String,String>> menuData1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +102,7 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                switch (newState){
+                switch (newState) {
 
                     case 0:
                     case 1:
@@ -98,6 +115,11 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
 
             }
         });
+
+
+        initMenuData();
+        initPopMenu();
+        setNavStyle(0);
     }
 
 
@@ -123,8 +145,7 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
 
     }
 
-
-    @OnClick({R.id.iv_back, R.id.tv_switch})
+    @OnClick({R.id.iv_back, R.id.tv_switch, R.id.sort_type, R.id.sort_volume, R.id.sort_price})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -139,15 +160,93 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
                     setGridAdapter();
                 }
                 break;
+            case R.id.sort_type:
+                setNavStyle(0);
+                break;
+            case R.id.sort_volume:
+                setNavStyle(1);
+                break;
+            case R.id.sort_price:
+                setNavStyle(2);
+                break;
         }
     }
 
+
+    //-------------------------------------筛选样式 begin----------------------------------------
+
+    private void initMenuData() {
+        menuData1 = new ArrayList<Map<String, String>>();
+        String[] menuStr1 = new String[] { "全部", "粮油", "衣服", "图书", "电子产品",
+                "酒水饮料", "水果" };
+        Map<String, String> map1;
+        for (int i = 0, len = menuStr1.length; i < len; ++i) {
+            map1 = new HashMap<String, String>();
+            map1.put("name", menuStr1[i]);
+            menuData1.add(map1);
+        }
+    }
+    private void initPopMenu(){
+
+        String[] list1 = new String[]{"1","2","3"};
+        ArrayAdapter<String> adapter=new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, list1);
+    }
+
+    private void setNavStyle(int clickIndex) {
+
+        if (selTopIndex == clickIndex) {
+            // 再次选中当前选项
+            if (topIsRise) {
+                Loger.debug(clickIndex + " 选择改为从低到高,(关闭类别选择)");
+            } else {
+                Loger.debug(clickIndex + "选择改为从高到低,(点开类别选择)");
+            }
+        } else {
+            // 从其他选项切换至当前选项
+            topIsRise = true;
+            if (clickIndex == 0) {
+                Loger.debug(clickIndex + "点开类别选择,但不展开");
+            } else {
+                Loger.debug(clickIndex + "选择 为从低到高");
+            }
+
+        }
+
+        switch (clickIndex) {
+            case 0:
+                mSortType.setSelected(true);
+                mSortVolume.setSelected(false);
+                mSortPrice.setSelected(false);
+                mSortType.setSortIsRise(topIsRise);
+                mSortType.setRiseVisible(topIsRise);
+                mSortType.setDropVisible(!topIsRise);
+                break;
+            case 1:
+                mSortType.setSelected(false);
+                mSortVolume.setSelected(true);
+                mSortPrice.setSelected(false);
+                mSortVolume.setSortIsRise(topIsRise);
+                break;
+            case 2:
+                mSortType.setSelected(false);
+                mSortVolume.setSelected(false);
+                mSortPrice.setSelected(true);
+                mSortPrice.setSortIsRise(topIsRise);
+                break;
+        }
+        Loger.debug("topIsRise:" + topIsRise);
+        topIsRise = !topIsRise;
+        selTopIndex = clickIndex;
+    }
+
+    //-------------------------------------筛选样式 end----------------------------------------
+
     private void setListAdapter(boolean needScroll) {
         needScrollPosition = gridLayoutManager.findFirstVisibleItemPosition();
-        Loger.debug("setListAdapter needScrollPosition:"+needScrollPosition);
+        Loger.debug("setListAdapter needScrollPosition:" + needScrollPosition);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setAdapter(mListAdapter);
-        if (needScroll){
+        if (needScroll) {
             moveToPosition(linearLayoutManager, mRecyclerView, needScrollPosition);
         }
         goodsType = 1;
@@ -156,7 +255,7 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
 
     private void setGridAdapter() {
         needScrollPosition = linearLayoutManager.findFirstVisibleItemPosition();
-        Loger.debug("setGridAdapter needScrollPosition:"+needScrollPosition);
+        Loger.debug("setGridAdapter needScrollPosition:" + needScrollPosition);
         mRecyclerView.setLayoutManager(gridLayoutManager);//这里用线性宫格显示 类似于grid view
         mRecyclerView.setAdapter(mGridAdapter);
         moveToPosition(gridLayoutManager, mRecyclerView, needScrollPosition);
@@ -183,5 +282,37 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
             mRecyclerView.scrollToPosition(n);
         }
 
+    }
+
+    //----------------------------------旋转动画------------------------------------
+    //当前旋转的度数
+    private int rotate = 0;
+    //每次旋转的度数
+    private int rotation = 360;
+    //判断顺时针转还是逆时针转
+    private boolean rotateDirection = true;
+
+    /**
+     * 悬浮菜单动画效果
+     * @param v
+     */
+    private void mRotate(View v) {
+
+        ObjectAnimator animator;
+
+        //判断是顺时针旋转还是逆时针旋转
+        if(rotateDirection){
+            animator = ObjectAnimator.ofFloat(v, "rotation", rotate,rotate-rotation);
+            rotate = rotate+rotation;
+
+        }else{
+            animator = ObjectAnimator.ofFloat(v, "rotation", rotate,rotate+rotation);
+            rotate = rotate-rotation;
+        }
+
+        //持续时间
+        animator.setDuration(350);
+        animator.start();
+        rotateDirection = !rotateDirection;
     }
 }
