@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-    <corners android:radius="8dp" />
-    <stroke
-        android:width="1dp"
-        android:color="#E6E6E6" />
-</shape>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Non focused states -->
+    <item android:drawable="@drawable/shape_radius_norm" android:state_focused="false" android:state_pressed="false" android:state_selected="false" />
+    <item android:drawable="@drawable/shape_radius_sel" android:state_focused="false" android:state_pressed="false" android:state_selected="true" />
+    <!-- Focused states -->
+    <item android:drawable="@drawable/shape_radius_sel" android:state_focused="true" android:state_pressed="false" android:state_selected="false" />
+    <item android:drawable="@drawable/shape_radius_sel" android:state_focused="true" android:state_pressed="false" android:state_selected="true" />
+    <!-- Pressed -->
+    <item android:drawable="@drawable/shape_radius_sel" android:state_pressed="true" android:state_selected="true" />
+    <item android:drawable="@drawable/shape_radius_sel" android:state_pressed="true" />
+</selector>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="132dp"
+    android:background="@drawable/ll_customer_selector"
     android:paddingEnd="@dimen/dp_14"
     android:paddingStart="@dimen/dp_14"
     android:paddingTop="@dimen/dp_14">
@@ -14,7 +15,7 @@
         android:layout_height="100dp"
         android:clickable="true"
         android:contentDescription="@string/jewelry"
-        android:focusable="true"/>
+        android:focusable="true" />
 
     <TextView
         android:id="@+id/tv_title"

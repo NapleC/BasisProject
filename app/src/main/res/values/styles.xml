@@ -63,4 +63,8 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
+    <style name="AnimTopMiddle" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
 </resources>

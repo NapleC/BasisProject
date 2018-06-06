@@ -2,7 +2,6 @@ package com.dxs.stc.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Paint;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 
@@ -14,7 +13,6 @@ import com.dxs.stc.R;
  */
 public class AutoHeightImageView extends AppCompatImageView {
 
-    private Paint paint;
     private int widthWeight = 1;
     private int heightWeight = 1;
 
@@ -24,8 +22,6 @@ public class AutoHeightImageView extends AppCompatImageView {
         widthWeight = a.getInteger(R.styleable.AutoHeightImageView_widthWeight, 1);
         heightWeight = a.getInteger(R.styleable.AutoHeightImageView_heightWeight, 1);
         a.recycle();
-
-        paint = new Paint();
     }
 
     @Override
