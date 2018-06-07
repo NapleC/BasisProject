@@ -8,10 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dxs.stc.R;
-import com.dxs.stc.adpater.MallGridAdapter;
-import com.dxs.stc.adpater.MallListAdapter;
+import com.dxs.stc.adpater.MallMoreAdapter;
 import com.dxs.stc.base.CompatStatusBarActivity;
 import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.mvp.presenter.IGetBookPresenter;
@@ -23,8 +21,10 @@ import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.widget.CustomSortArrow;
 import com.dxs.stc.widget.SpacesItemDecoration;
 import com.dxs.stc.widget.TopMiddlePopup;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -43,22 +43,24 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
     @BindView(R.id.sort_price)
     CustomSortArrow mSortPrice;
 
-    private MallListAdapter mListAdapter;
-    private MallGridAdapter mGridAdapter;
+    @BindView(R.id.refreshLayout)
+    RefreshLayout refreshLayout;
+
+    private MallMoreAdapter mAdapter;
     List<Movie.SubjectsBean> mData;
 
     private IGetBookPresenter iGetBookPresenter;
-    private int goodsType = 0;
+    private boolean typeIsGrid = false;
     private LinearLayoutManager linearLayoutManager;
     private GridLayoutManager gridLayoutManager;
     SpacesItemDecoration decoration;
-    private int needScrollPosition = 0;
 
     private int selTopIndex = -1;
     private boolean topIsRise = false;
 
     List<String> typeItems;
     private TopMiddlePopup middlePopup;
+    private int thePageIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,12 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
         setContentView(R.layout.activity_mall_list);
         ButterKnife.bind(this);
         setStatus();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        selTopIndex = -1;
         initView();
     }
 
@@ -77,8 +85,9 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
     private void initView() {
 
         mData = new ArrayList<>();
-        mListAdapter = new MallListAdapter(R.layout.item_mall_list, mData);
-        mGridAdapter = new MallGridAdapter(R.layout.item_mall_grid, mData);
+        mData.clear();
+        mAdapter = new MallMoreAdapter(this, mData);
+        mRecyclerView.setAdapter(mAdapter);
 
         linearLayoutManager = new LinearLayoutManager(this);
         gridLayoutManager = new GridLayoutManager(this, 2);
@@ -86,25 +95,15 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
                 getResources().getDimensionPixelSize(R.dimen.dp_14),
                 getResources().getDimensionPixelSize(R.dimen.dp_10), 0);
 
-        setListAdapter(false);
+        setRecyclerViewLayoutManager();
         iGetBookPresenter = new GetBookPresenterImpl(this);
-        iGetBookPresenter.getBook(10, 10);
+        iGetBookPresenter.getBook(10 * thePageIndex, 10);
+        mAdapter.setOnItemClickListener(position -> {
+            Loger.debug("点击的是第：" + position);
+            ToastUtils.showShortSafe("点击的是第：" + position);
 
-        mListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Loger.debug("列表模式点击的是第：" + position);
-                ToastUtils.showShortSafe("列表模式点击的是第：" + position);
-            }
         });
 
-        mGridAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Loger.debug("宫格模式点击的是第：" + position);
-                ToastUtils.showShortSafe("宫格模式点击的是第：" + position);
-            }
-        });
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -125,29 +124,72 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
 
         initPopMenu();
         setNavChange(0);
+
+        refreshLayout.setOnRefreshListener(refreshlayout -> {
+            Loger.debug("onRefresh the start:" + thePageIndex);
+            iGetBookPresenter.getBook(10 * thePageIndex, 10);
+        });
+
+        refreshLayout.setOnLoadMoreListener(refreshlayout -> {
+            Loger.debug("onLoadMore the start:" + thePageIndex);
+            iGetBookPresenter.getBook(10 * thePageIndex, 10);
+        });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mAdapter.setOnItemClickListener(null);
     }
 
 
     @Override
     public void getBookSuccess(Movie movie) {
-        List<Movie.SubjectsBean> list = movie.getSubjects();
-        mGridAdapter.addData(list);
-        mListAdapter.addData(list);
+//        Loger.debug("adapter.size" + mListAdapter.getData().size());
+        Loger.debug("adapter.size" + mAdapter.getData().size());
+        if (movie != null && movie.getCount() > 0) {
+            Loger.debug("movie" + movie.toString());
+            List<Movie.SubjectsBean> list = movie.getSubjects();
+//            mGridAdapter.addData(list);
+//            mListAdapter.addData(list);
+            mAdapter.addData(list);
+            if (thePageIndex == 0) {
+                refreshLayout.finishRefresh(true);
+            } else {
+                refreshLayout.finishLoadMore(true);
+            }
+        } else {
+            if (thePageIndex == 0) {
+                refreshLayout.finishRefresh(false);
+            } else {
+                refreshLayout.finishLoadMore(false);
+            }
+        }
+        thePageIndex += 1;
     }
 
     @Override
     public void getBookFailed(ParseErrorMsgUtil.ErrorMessage errorMessage) {
         ToastUtils.showShort(errorMessage.toString());
+        if (thePageIndex == 0) {
+            refreshLayout.finishRefresh(false);
+        } else {
+            refreshLayout.finishLoadMore(false);
+        }
     }
 
     @Override
     public void showDialog(String title, String content) {
-
+        if (thePageIndex == 0) {
+            showLoading();
+        }
     }
 
     @Override
     public void hideDialog() {
-
+        if (thePageIndex == 0) {
+            hideLoading();
+        }
     }
 
     @OnClick({R.id.iv_back, R.id.tv_switch, R.id.sort_type, R.id.sort_volume, R.id.sort_price})
@@ -158,12 +200,7 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
                 startActivity(new Intent(MallListActivity.this, LoginActivity.class));
                 break;
             case R.id.tv_switch:
-                // 切换开关
-                if (goodsType == 0) {
-                    setListAdapter(true);
-                } else {
-                    setGridAdapter();
-                }
+                setRecyclerViewLayoutManager();
                 break;
             case R.id.sort_type:
                 setNavChange(0);
@@ -182,22 +219,20 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
 
     /**
      * 设置弹窗内容
-     *
-     * @return
      */
     private void getItemsName() {
 
-        typeItems = new ArrayList<String>();
-        String[] topicTitle = getResources().getStringArray(R.array.mall_header_topic_title);
-        for (int k = 0, lenK = topicTitle.length; k < lenK; k++) {
-
-            typeItems.add(topicTitle[k]);
+        if (typeItems == null) {
+            typeItems = new ArrayList<>();
         }
+        typeItems.clear();
+        typeItems.add("全部");
+        String[] topicTitle = getResources().getStringArray(R.array.mall_header_topic_title);
+        typeItems.addAll(Arrays.asList(topicTitle));
     }
 
     private void initPopMenu() {
         getItemsName();
-
         if (middlePopup == null) {
             middlePopup = new TopMiddlePopup(MallListActivity.this, typeItems);
         }
@@ -218,11 +253,12 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
 
     private void setNavChange(int clickIndex) {
 
+        Loger.debug("topIsRise:" + topIsRise);
         Loger.debug("setNavChange" + clickIndex);
         if (selTopIndex == clickIndex) {
             switch (clickIndex) {
                 case 0:
-                    if (!middlePopup.isShowing()) {
+                    if (!middlePopup.isShowing() && !topIsRise) {
                         middlePopup.showPop(mSortType);
 //                        showListPopupWindow(mSortType);
                         Loger.debug(clickIndex + "点开类别选择");
@@ -286,33 +322,31 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
                 mSortPrice.setSortIsRise(topIsRise);
                 break;
         }
-        Loger.debug("topIsRise:" + topIsRise);
         topIsRise = !topIsRise;
         selTopIndex = clickIndex;
     }
 
     //-------------------------------------筛选样式 end----------------------------------------
 
-    private void setListAdapter(boolean needScroll) {
-        needScrollPosition = gridLayoutManager.findFirstVisibleItemPosition();
-        Loger.debug("setListAdapter needScrollPosition:" + needScrollPosition);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.setAdapter(mListAdapter);
-        if (needScroll) {
-            moveToPosition(linearLayoutManager, mRecyclerView, needScrollPosition);
+
+    public void setRecyclerViewLayoutManager() {
+        int scrollPosition = 0;
+        if (mRecyclerView.getLayoutManager() != null) {
+            scrollPosition = ((LinearLayoutManager) mRecyclerView.getLayoutManager())
+                    .findFirstVisibleItemPosition();
         }
-        goodsType = 1;
 
+        mAdapter.setType(typeIsGrid ? 0 : 1);
+        if (typeIsGrid) {
+            mRecyclerView.setLayoutManager(gridLayoutManager);
+            moveToPosition(gridLayoutManager, mRecyclerView, scrollPosition);
+        } else {
+            mRecyclerView.setLayoutManager(linearLayoutManager);
+            moveToPosition(linearLayoutManager, mRecyclerView, scrollPosition);
+        }
+        typeIsGrid = !typeIsGrid;
     }
 
-    private void setGridAdapter() {
-        needScrollPosition = linearLayoutManager.findFirstVisibleItemPosition();
-        Loger.debug("setGridAdapter needScrollPosition:" + needScrollPosition);
-        mRecyclerView.setLayoutManager(gridLayoutManager);//这里用线性宫格显示 类似于grid view
-        mRecyclerView.setAdapter(mGridAdapter);
-        moveToPosition(gridLayoutManager, mRecyclerView, needScrollPosition);
-        goodsType = 0;
-    }
 
     /**
      * RecyclerView 移动到当前位置，
@@ -335,4 +369,5 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
         }
 
     }
+
 }

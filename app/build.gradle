@@ -63,8 +63,11 @@ dependencies {
     implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:${libs.rxbinding}"
     //'design' library bindings:
     implementation "com.jakewharton.rxbinding2:rxbinding-design:${libs.rxbinding}"
-    //'recyclerview-v7' library bindings:
+    //'recyclerView-v7' library bindings:
     implementation "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:${libs.rxbinding}"
+
+    //https://github.com/scwang90/SmartRefreshLayout
+    implementation "com.scwang.smartrefresh:SmartRefreshLayout:${libs.smartRefresh}"
 
 
     testImplementation 'junit:junit:4.12'

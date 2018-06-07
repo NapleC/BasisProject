@@ -5,9 +5,10 @@
     android:id="@+id/cv_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/dp_10"
-    android:layout_marginEnd="@dimen/dp_6"
-    android:layout_marginStart="@dimen/dp_6"
+    android:layout_marginBottom="@dimen/dp_4"
+    android:layout_marginTop="@dimen/dp_6"
+    android:layout_marginEnd="7dp"
+    android:layout_marginStart="7dp"
     android:background="@drawable/card_shape_radius"
     app:topLeftRadius="8dp"
     app:topRightRadius="8dp">
@@ -66,29 +67,15 @@
         android:textSize="@dimen/sp_10" />
 
     <TextView
-        android:id="@+id/tv_casts_left"
+        android:id="@+id/tv_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_count"
         android:layout_margin="@dimen/dp_10"
         android:gravity="bottom"
-        android:textColor="@color/color_66"
-        android:textSize="@dimen/sp_14"
-        tools:text="STC" />
-
-    <TextView
-        android:id="@+id/tv_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_count"
-        android:layout_marginBottom="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_toEndOf="@+id/tv_casts_left"
-        android:gravity="bottom"
         android:includeFontPadding="false"
-        android:textColor="@color/price_color"
-        android:textSize="@dimen/sp_16"
+        android:textColor="@color/color_63"
+        android:textSize="@dimen/sp_12"
         tools:text="2000" />
-
 
 </com.dxs.stc.widget.RoundCornerRelativeLayout>

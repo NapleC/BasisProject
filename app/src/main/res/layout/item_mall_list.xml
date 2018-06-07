@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="132dp"
     android:background="@drawable/ll_customer_selector"
-    android:paddingEnd="@dimen/dp_14"
-    android:paddingStart="@dimen/dp_14"
+    android:paddingEnd="7dp"
+    android:paddingStart="7dp"
     android:paddingTop="@dimen/dp_14">
 
     <ImageView
@@ -14,6 +14,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:clickable="true"
+        android:scaleType="centerCrop"
         android:contentDescription="@string/jewelry"
         android:focusable="true" />
 
@@ -45,18 +46,6 @@
         tools:text="0人购买" />
 
     <TextView
-        android:id="@+id/tv_casts_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/iv_cover"
-        android:layout_margin="@dimen/dp_10"
-        android:layout_toEndOf="@+id/iv_cover"
-        android:gravity="bottom"
-        android:textColor="@color/color_63"
-        android:textSize="@dimen/sp_14"
-        tools:text="STC" />
-
-    <TextView
         android:id="@+id/tv_free_shipping"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,22 +58,19 @@
         android:includeFontPadding="false"
         android:text="@string/free_shipping"
         android:textColor="@color/white"
-        android:textSize="@dimen/sp_10"
-        android:visibility="gone" />
+        android:textSize="@dimen/sp_10" />
 
     <TextView
         android:id="@+id/tv_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/iv_cover"
-        android:layout_marginBottom="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_2"
-        android:layout_toEndOf="@+id/tv_casts_left"
-        android:layout_toStartOf="@+id/tv_free_shipping"
+        android:layout_toEndOf="@+id/iv_cover"
         android:gravity="bottom"
+        android:layout_margin="@dimen/dp_10"
         android:includeFontPadding="false"
-        android:textColor="@color/price_color"
-        android:textSize="@dimen/sp_16"
+        android:textColor="@color/color_66"
+        android:textSize="@dimen/sp_12"
         tools:text="2000" />
 
     <View

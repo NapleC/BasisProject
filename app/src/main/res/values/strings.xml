@@ -48,6 +48,7 @@
     <string name="input_phone">输入电话号码</string>
     <string name="input_sms_code">输入验证码</string>
     <string name="all">全部</string>
+    <string name="the_price_name">STC</string>
 
 
     <string-array name="mall_header_topic_title">

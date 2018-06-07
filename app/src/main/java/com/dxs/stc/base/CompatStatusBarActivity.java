@@ -1,7 +1,9 @@
 package com.dxs.stc.base;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -9,10 +11,13 @@ import android.support.v7.app.AppCompatDelegate;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 
 import com.dxs.stc.R;
 import com.dxs.stc.activities.MainActivity;
+import com.dxs.stc.utils.AppManager;
 import com.dxs.stc.utils.OsUtil;
 
 /**
@@ -24,11 +29,13 @@ public class CompatStatusBarActivity extends StatusBarBaseActivity {
 
     private FrameLayout mFrameLayoutContent;
     private View mViewStatusBarPlace;
+    private AlertDialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_compat_status_bar);
+        AppManager.getInstance().addActivity(this); //添加到栈中
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         mViewStatusBarPlace = findViewById(R.id.view_status_bar_place);
@@ -84,7 +91,35 @@ public class CompatStatusBarActivity extends StatusBarBaseActivity {
             mViewStatusBarPlace.setBackgroundColor(statusColor);
         }
     }
+    //------------------------------------------------------------------------------
+    /**
+     * 网络请求的时候显示正在加载的对话框
+     */
+    public void showLoading() {
+        if (null == loadingDialog) {
+            loadingDialog = new AlertDialog.Builder(this).setView(new ProgressBar(this)).create();
+            loadingDialog.setCanceledOnTouchOutside(false);
+            Window window = loadingDialog.getWindow();
+            if (null != window) {
+                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            }
+        }
+        if (!loadingDialog.isShowing()) {
+            loadingDialog.show();
+        }
+    }
 
+    /**
+     * 网络请求完成时隐藏加载对话框
+     */
+    public void hideLoading() {
+        if (null != loadingDialog) {
+            if (loadingDialog.isShowing()) {
+                loadingDialog.dismiss();
+            }
+            loadingDialog = null;
+        }
+    }
 
     @Override
     public void startActivity(Intent intent) {
@@ -114,5 +149,11 @@ public class CompatStatusBarActivity extends StatusBarBaseActivity {
         if (!((Object) this).getClass().equals(MainActivity.class)) {
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.getInstance().finishActivity(this);//从栈中移除
     }
 }
