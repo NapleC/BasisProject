@@ -47,7 +47,7 @@ public class TopMiddlePopup extends PopupWindow {
     private LinearLayout popupLl;
     private PopupAdapter adapter;
     private OnCustomDismissListener onCustomDismissListener;
-
+    private boolean canDismiss =true;
 
     public TopMiddlePopup(Context mContext, List<String> myItem) {
         this(mContext, myItem, DisplayUtil.getScreenWidth(mContext),
@@ -80,6 +80,7 @@ public class TopMiddlePopup extends PopupWindow {
         otherView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Loger.debug("otherView click");
                 superDismiss();
             }
         });
@@ -90,6 +91,7 @@ public class TopMiddlePopup extends PopupWindow {
                 if (onCustomDismissListener != null) {
                     onCustomDismissListener.clickPosition(position);
                 }
+                Loger.debug("myLv click");
                 superDismiss();
             }
         });
@@ -109,10 +111,6 @@ public class TopMiddlePopup extends PopupWindow {
         this.setFocusable(true);// 聚焦点击事件不会透传给下面的View
         // 设置 AccessoryPopup 弹出窗体的动画效果
         this.setAnimationStyle(R.style.AnimTopMiddle);
-//        // 实例化一个 ColorDrawable 颜色
-//        ColorDrawable dw = new ColorDrawable(ContextCompat.getColor(mContext,R.color.transparent50_white));
-//        // 设置 SelectPicPopupWindow 弹出窗体的背景
-//        this.setBackgroundDrawable(dw);
 
         myMenuView.setOnTouchListener(new View.OnTouchListener() {
 
@@ -122,14 +120,14 @@ public class TopMiddlePopup extends PopupWindow {
                 int height = popupLl.getBottom();
                 int left = popupLl.getLeft();
                 int right = popupLl.getRight();
-                Loger.debug("--popupLl.getBottom()--:"
-                        + popupLl.getBottom());
+                int top = popupLl.getTop();
                 int y = (int) event.getY();
                 int x = (int) event.getX();
+                Loger.debug("--popupLl top:" + top + "--popupLl bottom:" + height + " --y:" + y);
                 if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (y > height || x < left || x > right) {
-                        Loger.debug("--- 点击位置在列表下方 --");
-
+                    if (y < top || y > height || x < left || x > right) {
+//                    if (y > height || x < left || x > right) {
+                        Loger.debug("--- 点击位置在列表以外 --");
                         superDismiss();
                     }
                 }
@@ -139,6 +137,7 @@ public class TopMiddlePopup extends PopupWindow {
         this.setOnDismissListener(new OnDismissListener() {
             @Override
             public void onDismiss() {
+                Loger.debug("popup setOnDismissListener");
                 superDismiss();
             }
         });
@@ -149,9 +148,14 @@ public class TopMiddlePopup extends PopupWindow {
      */
     public void superDismiss() {
         super.dismiss();
+
         if (onCustomDismissListener != null) {
-            onCustomDismissListener.onDismiss();
+            if (canDismiss) {
+                canDismiss = false;
+                onCustomDismissListener.onDismiss();
+            }
         }
+        canDismiss = true;
     }
 
 

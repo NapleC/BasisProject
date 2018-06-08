@@ -2,6 +2,7 @@ package com.dxs.stc.adpater;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,11 +11,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.loadmore.LoadMoreView;
 import com.dxs.stc.R;
 import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.utils.SpanUtil;
 import com.dxs.stc.utils.imageloder.ImageLodeUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -102,10 +105,20 @@ public class MallMoreAdapter extends RecyclerView.Adapter<MallMoreAdapter.MallMo
     }
 
     /**
+     * setting up a new instance to data;
+     *
+     * @param data
+     */
+    public void setNewData(@Nullable List<Movie.SubjectsBean> data) {
+        this.data = data == null ? new ArrayList<Movie.SubjectsBean>() : data;
+        notifyDataSetChanged();
+    }
+
+    /**
      * add one new data
      */
     public void addData(@NonNull List<Movie.SubjectsBean> newData) {
-        data.addAll(newData);
+        this.data.addAll(newData);
         notifyItemInserted(data.size());
         compatibilityDataSizeChanged(1);
     }

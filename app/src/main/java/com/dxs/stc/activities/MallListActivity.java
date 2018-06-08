@@ -126,6 +126,7 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
         setNavChange(0);
 
         refreshLayout.setOnRefreshListener(refreshlayout -> {
+            thePageIndex = 0;
             Loger.debug("onRefresh the start:" + thePageIndex);
             iGetBookPresenter.getBook(10 * thePageIndex, 10);
         });
@@ -145,26 +146,24 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
 
     @Override
     public void getBookSuccess(Movie movie) {
-//        Loger.debug("adapter.size" + mListAdapter.getData().size());
-        Loger.debug("adapter.size" + mAdapter.getData().size());
         if (movie != null && movie.getCount() > 0) {
-            Loger.debug("movie" + movie.toString());
+            Loger.debug("getBookSuccess movie" + movie.getTotal());
             List<Movie.SubjectsBean> list = movie.getSubjects();
-//            mGridAdapter.addData(list);
-//            mListAdapter.addData(list);
-            mAdapter.addData(list);
             if (thePageIndex == 0) {
-                refreshLayout.finishRefresh(true);
+                mAdapter.setNewData(list);
+                refreshLayout.finishRefresh(200, true);
             } else {
+                mAdapter.addData(list);
                 refreshLayout.finishLoadMore(true);
             }
         } else {
             if (thePageIndex == 0) {
-                refreshLayout.finishRefresh(false);
+                refreshLayout.finishRefresh(200, false);
             } else {
                 refreshLayout.finishLoadMore(false);
             }
         }
+        Loger.debug("mAdapter data" + mAdapter.getData().size());
         thePageIndex += 1;
     }
 
@@ -241,6 +240,8 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
             public void clickPosition(int position) {
                 Loger.debug("选中的是第" + position + "个");
                 ToastUtils.showShort("选择了" + typeItems.get(position));
+                middlePopup.dismiss();
+                setNavStyle(selTopIndex);
             }
 
             @Override
@@ -258,10 +259,13 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
         if (selTopIndex == clickIndex) {
             switch (clickIndex) {
                 case 0:
-                    if (!middlePopup.isShowing() && !topIsRise) {
+                    if (!middlePopup.isShowing()) {
                         middlePopup.showPop(mSortType);
-//                        showListPopupWindow(mSortType);
                         Loger.debug(clickIndex + "点开类别选择");
+                    } else {
+                        Loger.debug(clickIndex + "关闭类别选择");
+                        middlePopup.dismiss();
+                        setNavStyle(selTopIndex);
                     }
                     break;
                 case 1:
@@ -300,6 +304,7 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
 
     private void setNavStyle(int clickIndex) {
 
+        Loger.debug("topIsRise:" + topIsRise);
         Loger.debug("setNavStyle" + clickIndex);
         switch (clickIndex) {
             case 0:
