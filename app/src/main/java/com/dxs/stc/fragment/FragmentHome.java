@@ -29,6 +29,7 @@ import com.dxs.stc.widget.CustomTextOnPic;
 import com.dxs.stc.widget.GlideImageLoad;
 import com.dxs.stc.widget.ImageTextView;
 import com.dxs.stc.widget.SpacesItemDecoration;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
@@ -58,6 +59,9 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
     @BindView(R.id.fragment_title_text)
     ImageTextView mTopSearchText;
 
+    @BindView(R.id.refreshLayout)
+    RefreshLayout refreshLayout;
+
     private HomeRecyclerViewAdapter mAdapter;
     List<Movie.SubjectsBean> mData;
 
@@ -83,6 +87,7 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
             "https://image2.wbiao.co/upload/article/201702/17/1487322373441497976.jpg",
             "https://image2.wbiao.co/upload/default/201702/15/1487138933042431801.jpg"};
 
+    private int thePageIndex = 0;
 
     public static FragmentHome newInstance() {
         FragmentHome fragment = new FragmentHome();
@@ -121,7 +126,7 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
         mRecyclerView.setAdapter(mAdapter);
 
         iGetBookPresenter = new GetBookPresenterImpl(this);
-        iGetBookPresenter.getBook(10, 10);
+        refreshLayout.autoRefresh();
 
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -133,6 +138,28 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
 
         changeTopSearchStyle();
         initHeaderView();
+
+
+        refreshLayout.setOnRefreshListener(refreshlayout -> {
+            thePageIndex = 0;
+            Loger.debug("onRefresh the start:" + thePageIndex);
+            iGetBookPresenter.getBook(10 * thePageIndex, 10);
+        });
+
+        refreshLayout.setEnableAutoLoadMore(false);
+        refreshLayout.setEnableLoadMore(false);
+//        refreshLayout.setOnLoadMoreListener(refreshlayout -> {
+//            Loger.debug("onLoadMore the start:" + thePageIndex);
+//            iGetBookPresenter.getBook(10 * thePageIndex, 10);
+//        });
+
+        mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+            @Override
+            public void onLoadMoreRequested() {
+                Loger.debug("onLoadMore the start:" + thePageIndex);
+                iGetBookPresenter.getBook(10 * thePageIndex, 10);
+            }
+        },mRecyclerView);
 
     }
 
@@ -186,13 +213,43 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
 
     @Override
     public void getBookSuccess(Movie movie) {
-        List<Movie.SubjectsBean> list = movie.getSubjects();
-        mAdapter.addData(list);
+        if (movie != null && movie.getSubjects().size() > 0) {
+            List<Movie.SubjectsBean> list = movie.getSubjects();
+            if (thePageIndex == 0) {
+                mAdapter.setNewData(list);
+                refreshLayout.finishRefresh(200, true);
+            } else {
+                mAdapter.addData(list);
+                if (mAdapter.getData().size()<movie.getTotal()) {
+                    mAdapter.loadMoreComplete();
+                } else {
+                    mAdapter.loadMoreEnd();
+                }
+            }
+        } else {
+            if (thePageIndex == 0) {
+                refreshLayout.finishRefresh(200, false);
+            } else {
+                mAdapter.loadMoreFail();
+            }
+        }
+        Loger.debug("mAdapter data" + mAdapter.getData().size());
+        thePageIndex += 1;
+
+//        加载完成（注意不是加载结束，而是本次数据加载结束并且还有下页数据）
+//                mQuickAdapter.loadMoreComplete();
+//        加载失败 mQuickAdapter.loadMoreFail();
+//        加载结束 mQuickAdapter.loadMoreEnd();
     }
 
     @Override
     public void getBookFailed(ParseErrorMsgUtil.ErrorMessage errorMessage) {
         ToastUtils.showShort(errorMessage.toString());
+        if (thePageIndex == 0) {
+            refreshLayout.finishRefresh(false);
+        } else {
+            mAdapter.loadMoreFail();
+        }
     }
 
     @Override

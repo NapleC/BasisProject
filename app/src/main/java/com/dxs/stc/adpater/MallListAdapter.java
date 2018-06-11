@@ -1,14 +1,7 @@
 package com.dxs.stc.adpater;
 
-import android.graphics.Typeface;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.AbsoluteSizeSpan;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.TextAppearanceSpan;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,7 +9,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dxs.stc.R;
 import com.dxs.stc.mvp.bean.Movie;
-import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.SpanUtil;
 import com.dxs.stc.utils.imageloder.ImageLodeUtils;
 
@@ -38,19 +30,11 @@ public class MallListAdapter extends BaseQuickAdapter<Movie.SubjectsBean, BaseVi
                 item.getOriginal_title() + "(" + item.getYear() + ")");
         helper.setText(R.id.tv_count, item.getCollect_count() + "人购买");
 
-//        SpannableString sb = new SpannableString(item.getYear() + " " +
-//                mContext.getString(R.string.the_price_name));
-//        sb.setSpan(new AbsoluteSizeSpan(16, true), 0, item.getYear().length(),
-//                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-//        sb.setSpan(new ForegroundColorSpan(ContextCompat.getColor(mContext, R.color.price_color)),
-//                0, item.getYear().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-//        mPriceTv.setText(sb);
-
         SpanUtil.create()
                 .addForeColorSection(item.getYear(),
                         ContextCompat.getColor(mContext, R.color.price_color))
-                .setAbsSize(item.getYear(),16)
-                .addSection(" "+mContext.getString(R.string.the_price_name))
+                .setAbsSize(item.getYear(), 16)
+                .addSection(" " + mContext.getString(R.string.the_price_name))
                 .showIn(mPriceTv);
 
         ImageLodeUtils.loadingRoundImage(mContext, item.getImages().getSmall(),

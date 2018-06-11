@@ -11,11 +11,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.loadmore.LoadMoreView;
 import com.dxs.stc.R;
 import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.utils.SpanUtil;
 import com.dxs.stc.utils.imageloder.ImageLodeUtils;
+import com.dxs.stc.widget.RoundCornerRelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,6 +78,14 @@ public class MallMoreAdapter extends RecyclerView.Adapter<MallMoreAdapter.MallMo
                         data.get(position).getImages().getSmall(), holder.mCover);
 
             }
+            holder.mRoundLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (getOnItemClickListener()!=null) {
+                        onItemClickListener.onItemClick(position);
+                    }
+                }
+            });
         }
     }
 
@@ -138,6 +149,7 @@ public class MallMoreAdapter extends RecyclerView.Adapter<MallMoreAdapter.MallMo
 
     public class MallMoreHolder extends RecyclerView.ViewHolder {
 
+        private RoundCornerRelativeLayout mRoundLayout;
         public TextView mTitle;
         public TextView mCount;
         public TextView mPrice;
@@ -147,6 +159,7 @@ public class MallMoreAdapter extends RecyclerView.Adapter<MallMoreAdapter.MallMo
         public MallMoreHolder(View itemView) {
             super(itemView);
 
+            mRoundLayout = itemView.findViewById(R.id.rc_item);
             mTitle = itemView.findViewById(R.id.tv_title);
             mCount = itemView.findViewById(R.id.tv_count);
             mPrice = itemView.findViewById(R.id.tv_price);
@@ -157,7 +170,12 @@ public class MallMoreAdapter extends RecyclerView.Adapter<MallMoreAdapter.MallMo
     }
 
 
-    //--------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------
+
+    public final OnItemClickListener getOnItemClickListener() {
+        return onItemClickListener;
+    }
+
     // 自定义监听第二步
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;

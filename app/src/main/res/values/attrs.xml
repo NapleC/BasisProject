@@ -84,5 +84,4 @@
         <attr name="bottomLeftRadius" format="dimension" />
         <attr name="bottomRightRadius" format="dimension" />
     </declare-styleable>
-
 </resources>

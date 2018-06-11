@@ -97,7 +97,8 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
 
         setRecyclerViewLayoutManager();
         iGetBookPresenter = new GetBookPresenterImpl(this);
-        iGetBookPresenter.getBook(10 * thePageIndex, 10);
+//        iGetBookPresenter.getBook(10 * thePageIndex, 10);
+        refreshLayout.autoRefresh();
         mAdapter.setOnItemClickListener(position -> {
             Loger.debug("点击的是第：" + position);
             ToastUtils.showShortSafe("点击的是第：" + position);
@@ -146,21 +147,20 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
 
     @Override
     public void getBookSuccess(Movie movie) {
-        if (movie != null && movie.getCount() > 0) {
-            Loger.debug("getBookSuccess movie" + movie.getTotal());
+        if (movie != null && movie.getSubjects().size() > 0) {
             List<Movie.SubjectsBean> list = movie.getSubjects();
             if (thePageIndex == 0) {
                 mAdapter.setNewData(list);
                 refreshLayout.finishRefresh(200, true);
             } else {
                 mAdapter.addData(list);
-                refreshLayout.finishLoadMore(true);
+                refreshLayout.finishLoadMore(200,true,false);
             }
         } else {
             if (thePageIndex == 0) {
                 refreshLayout.finishRefresh(200, false);
             } else {
-                refreshLayout.finishLoadMore(false);
+                refreshLayout.finishLoadMore(200,false,false);
             }
         }
         Loger.debug("mAdapter data" + mAdapter.getData().size());

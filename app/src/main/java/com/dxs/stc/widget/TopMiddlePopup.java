@@ -21,6 +21,7 @@ import com.dxs.stc.adpater.PopupAdapter;
 import com.dxs.stc.glideimageview.util.DisplayUtil;
 import com.dxs.stc.utils.Loger;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,7 +48,6 @@ public class TopMiddlePopup extends PopupWindow {
     private LinearLayout popupLl;
     private PopupAdapter adapter;
     private OnCustomDismissListener onCustomDismissListener;
-    private boolean canDismiss =true;
 
     public TopMiddlePopup(Context mContext, List<String> myItem) {
         this(mContext, myItem, DisplayUtil.getScreenWidth(mContext),
@@ -144,18 +144,28 @@ public class TopMiddlePopup extends PopupWindow {
     }
 
     /**
-     * 直接关闭PopupWindow，没有动画效果
+     * 直接关闭PopupWindow
      */
+    private long prelongTim = 0;//定义上一次单击的时间
+    private long curTime = 0;//定义上第二次单击的时间
+
     public void superDismiss() {
         super.dismiss();
-
-        if (onCustomDismissListener != null) {
-            if (canDismiss) {
-                canDismiss = false;
-                onCustomDismissListener.onDismiss();
+        if (prelongTim == 0) {//第一次单击时间
+            prelongTim = (new Date()).getTime();
+        } else {
+            curTime = (new Date()).getTime();//本地单击的时间
+            Loger.debug("onclick" + "点击的时间" + (curTime - prelongTim));
+            prelongTim = curTime; //当前点击时间变为上次时间
+            if ((curTime - prelongTim) < 1200) {
+                prelongTim = 0;
+                Loger.debug("已经触发了取消事件");
+                return;
             }
         }
-        canDismiss = true;
+        if (onCustomDismissListener != null) {
+            onCustomDismissListener.onDismiss();
+        }
     }
 
 

@@ -4,7 +4,7 @@
     <string name="title_mall">商城</string>
     <string name="title_auction">拍卖</string>
     <string name="title_news">消息</string>
-    <string name="title_person">我的</string>
+    <string name="title_mine">我的</string>
     <string name="tips_badge_removed">红点已经移除</string>
     <string name="title_activity_login">Sign in</string>
 

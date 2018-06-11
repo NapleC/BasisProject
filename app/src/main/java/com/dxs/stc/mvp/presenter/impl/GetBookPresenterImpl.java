@@ -15,6 +15,10 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * created by hl at 2018/5/14
  * com.naple.hldemo.mvp.presenter.impl
+ *
+ * 实现Presenter方法，向数据源发起请求；
+ * 取消该请求；
+ * 通知Presenter处理结果。
  */
 public class GetBookPresenterImpl implements IGetBookPresenter {
 
