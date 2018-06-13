@@ -32,14 +32,8 @@ import q.rorbin.badgeview.QBadgeView;
 public class MainActivity extends CompatStatusBarActivity {
 
     private QBadgeView mBadgeView;
-    private FragmentHome mFragmentHome;
-    private FragmentMall mFragmentMall;
-    private FragmentAuction mFragmentAuction;
-    private FragmentNews mFragmentNews;
-    private FragmentMine mFragmentMine;
     private ArrayList<Fragment> mFragments;
     private FragmentManager mSupportFragmentManager;
-    private FragmentTransaction mFragmentTransaction;
     private Fragment mLastFragment;
 
     @BindView(R.id.itv_nav1)
@@ -67,17 +61,13 @@ public class MainActivity extends CompatStatusBarActivity {
     }
 
     private void initFragment() {
-        mFragmentHome = FragmentHome.newInstance();
-        mFragmentMall = FragmentMall.newInstance();
-        mFragmentAuction = FragmentAuction.newInstance();
-        mFragmentNews = FragmentNews.newInstance();
-        mFragmentMine = FragmentMine.newInstance();
+
         mFragments = new ArrayList<>();
-        mFragments.add(mFragmentHome);
-        mFragments.add(mFragmentMall);
-        mFragments.add(mFragmentAuction);
-        mFragments.add(mFragmentNews);
-        mFragments.add(mFragmentMine);
+        mFragments.add(FragmentHome.newInstance());
+        mFragments.add(FragmentMall.newInstance());
+        mFragments.add(FragmentAuction.newInstance());
+        mFragments.add(FragmentNews.newInstance());
+        mFragments.add(FragmentMine.newInstance());
         mSupportFragmentManager = getSupportFragmentManager();
         //默认显示第一个
         setViewColorStatusBar(true, getResources().getColor(R.color.colorPrimary));
@@ -108,7 +98,7 @@ public class MainActivity extends CompatStatusBarActivity {
         setNavStyle(false);
         selPosition = index;
         if (mFragments != null && mFragments.size() > 0) {
-            mFragmentTransaction = mSupportFragmentManager.beginTransaction();
+            FragmentTransaction mFragmentTransaction = mSupportFragmentManager.beginTransaction();
             Fragment baseFragment = mFragments.get(index);
             if (mLastFragment != null) {
                 mFragmentTransaction.hide(mLastFragment);
@@ -123,6 +113,7 @@ public class MainActivity extends CompatStatusBarActivity {
                     mFragmentTransaction.show(baseFragment);
                 }
             }
+            assert mFragmentTransaction != null;
             mFragmentTransaction.commitAllowingStateLoss();
             mLastFragment = baseFragment;
         }

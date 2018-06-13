@@ -67,11 +67,9 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
 
     private IGetBookPresenter iGetBookPresenter;
 
-    private View view;
     private Unbinder unbinder;
 
     private View mHeaderView;
-    private Banner mTopBanner;
     private RelativeLayout mTopNoticeArea;
     private CustomTextOnPic mCustomAuction1;
     private CustomTextOnPic mCustomAuction2;
@@ -90,13 +88,12 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
     private int thePageIndex = 0;
 
     public static FragmentHome newInstance() {
-        FragmentHome fragment = new FragmentHome();
-        return fragment;
+        return new FragmentHome();
     }
 
     @Override
     protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
         //返回一个Unbinder值（进行解绑），注意这里的this不能使用getActivity()
         unbinder = ButterKnife.bind(this, view);
         return view;
@@ -128,12 +125,9 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
         iGetBookPresenter = new GetBookPresenterImpl(this);
         refreshLayout.autoRefresh();
 
-        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Loger.debug("adapter onItemClick");
-                ToastUtils.showShortSafe("点击的是第：" + position);
-            }
+        mAdapter.setOnItemClickListener((adapter, view, position) -> {
+            Loger.debug("adapter onItemClick");
+            ToastUtils.showShortSafe("点击的是第：" + position);
         });
 
         changeTopSearchStyle();
@@ -148,17 +142,10 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
 
         refreshLayout.setEnableAutoLoadMore(false);
         refreshLayout.setEnableLoadMore(false);
-//        refreshLayout.setOnLoadMoreListener(refreshlayout -> {
-//            Loger.debug("onLoadMore the start:" + thePageIndex);
-//            iGetBookPresenter.getBook(10 * thePageIndex, 10);
-//        });
 
-        mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
-            @Override
-            public void onLoadMoreRequested() {
-                Loger.debug("onLoadMore the start:" + thePageIndex);
-                iGetBookPresenter.getBook(10 * thePageIndex, 10);
-            }
+        mAdapter.setOnLoadMoreListener(() -> {
+            Loger.debug("onLoadMore the start:" + thePageIndex);
+            iGetBookPresenter.getBook(10 * thePageIndex, 10);
         },mRecyclerView);
 
     }
@@ -178,7 +165,7 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
 
     private void initHeaderView() {
 
-        mTopBanner = mHeaderView.findViewById(R.id.home_banner);
+        Banner mTopBanner = mHeaderView.findViewById(R.id.home_banner);
         mTopNoticeArea = mHeaderView.findViewById(R.id.ll_notice_area);
         mCustomAuction1 = mHeaderView.findViewById(R.id.ctp_in_auction1);
         mCustomAuction2 = mHeaderView.findViewById(R.id.ctp_in_auction2);
@@ -186,26 +173,13 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
         mJewelryText = mHeaderView.findViewById(R.id.tv_topic3_jewelry);
         mOrnamentsText = mHeaderView.findViewById(R.id.tv_topic3_ornaments);
 
-        mTopNoticeArea.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtils.showShort("进入预告");
-                mCustomAuction1.setRoundImageUrl(getActivity(), "https://image2.wbiao.co/upload/article/201702/17/1487323723401153512.jpg");
-                mCustomAuction1.setTipText("拍卖已结束");
-            }
+        mTopNoticeArea.setOnClickListener(v -> {
+            ToastUtils.showShort("进入预告");
+            mCustomAuction1.setRoundImageUrl(getActivity(), "https://image2.wbiao.co/upload/article/201702/17/1487323723401153512.jpg");
+            mCustomAuction1.setTipText("拍卖已结束");
         });
-        mJewelryText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtils.showShort("进入珠宝页面");
-            }
-        });
-        mOrnamentsText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtils.showShort("进入摆件页面");
-            }
-        });
+        mJewelryText.setOnClickListener(v -> ToastUtils.showShort("进入珠宝页面"));
+        mOrnamentsText.setOnClickListener(v -> ToastUtils.showShort("进入摆件页面"));
 
         mTopBanner.setImages(Arrays.asList(images)).setImageLoader(new GlideImageLoad()).start();
 
@@ -295,7 +269,6 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
                     }
                     float scale = (float) mDistanceY / toolbarHeight;
                     float alpha = scale * 255;
-                    // mTitleLayout.setBackgroundColor(Color.argb((int) alpha, 255, 255, 255));
                     mTitleLayout.setBackgroundColor(Color.argb((int) alpha, 0, 0, 0));
                     hadSetTop = false;
                 } else {

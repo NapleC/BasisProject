@@ -81,9 +81,8 @@ public class MallMoreAdapter extends RecyclerView.Adapter<MallMoreAdapter.MallMo
             holder.mRoundLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (getOnItemClickListener()!=null) {
-                        onItemClickListener.onItemClick(position);
-                    }
+                    if (getOnItemClickListener()!=null)
+                    onItemClickListener.onItemClick(position);
                 }
             });
         }
