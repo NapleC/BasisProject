@@ -1,9 +1,6 @@
 package com.dxs.stc.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,6 +21,7 @@ import com.dxs.stc.utils.ToastUtils;
 import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.widget.GlideImageLoad;
 import com.dxs.stc.widget.SpacesItemDecoration;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
@@ -42,6 +40,8 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
 
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
+    @BindView(R.id.refreshLayout)
+    RefreshLayout refreshLayout;
 
     private AuctionRecyclerViewAdapter mAdapter;
     private AuctionHeaderSiteAdapter mSiteAdapter;
@@ -56,6 +56,7 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
     private Banner mTopBanner;
     private RecyclerView mHeaderSiteRv;
     List<Movie.SubjectsBean> mSiteData;
+    private int thePageIndex = 0;
 
     String[] images = new String[]{
             "https://image2.wbiao.co/upload/default/201702/07/1486396886665233850.jpg",
@@ -65,8 +66,7 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
 
 
     public static FragmentAuction newInstance() {
-        FragmentAuction fragment = new FragmentAuction();
-        return fragment;
+        return new FragmentAuction();
     }
 
     @Override
@@ -91,7 +91,28 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
     private void getServerData() {
 
         iGetBookPresenter = new GetBookPresenterImpl(this);
-        iGetBookPresenter.getBook(0, 6);
+        refreshLayout.autoRefresh();
+
+        mAdapter.setOnItemClickListener((adapter, view, position) -> {
+            Loger.debug("adapter onItemClick");
+            ToastUtils.showShortSafe("点击的是第：" + position);
+        });
+
+        refreshLayout.setOnRefreshListener(refreshlayout -> {
+            thePageIndex = 0;
+            Loger.debug("onRefresh the start:" + thePageIndex);
+            iGetBookPresenter.getBook(10 * thePageIndex, 10);
+        });
+
+        refreshLayout.setEnableAutoLoadMore(false);
+        refreshLayout.setEnableLoadMore(false);
+
+        // 当列表滑动到倒数第N个Item的时候(默认是1)回调onLoadMoreRequested方法
+        mAdapter.setPreLoadNumber(3);
+        mAdapter.setOnLoadMoreListener(() -> {
+            Loger.debug("onLoadMore the start:" + thePageIndex);
+            iGetBookPresenter.getBook(10 * thePageIndex, 10);
+        }, mRecyclerView);
     }
 
     private void initViews() {
@@ -130,19 +151,41 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
 
     @Override
     public void getBookSuccess(Movie movie) {
-        List<Movie.SubjectsBean> list = movie.getSubjects();
+        if (movie != null && movie.getSubjects().size() > 0) {
+            List<Movie.SubjectsBean> list = movie.getSubjects();
+            if (thePageIndex == 0) {
+                mAdapter.setNewData(list);
+                refreshLayout.finishRefresh(200, true);
 
-        mAdapter.addData(list);
-        mSiteAdapter.addData(list);
-        Loger.debug("mData" + mData.size());
-        Loger.debug("mSiteData" + mSiteData.size());
-        Loger.debug("mSiteAdapter.getData()" + mSiteAdapter.getData().size());
-
+                // 头部列表测试数据
+                mSiteAdapter.addData(list);
+            } else {
+                mAdapter.addData(list);
+                if (mAdapter.getData().size() < movie.getTotal()) {
+                    mAdapter.loadMoreComplete();
+                } else {
+                    mAdapter.loadMoreEnd();
+                }
+            }
+        } else {
+            if (thePageIndex == 0) {
+                refreshLayout.finishRefresh(200, false);
+            } else {
+                mAdapter.loadMoreFail();
+            }
+        }
+        Loger.debug("mAdapter data" + mAdapter.getData().size());
+        thePageIndex += 1;
     }
 
     @Override
     public void getBookFailed(ParseErrorMsgUtil.ErrorMessage errorMessage) {
         ToastUtils.showShort(errorMessage.toString());
+        if (thePageIndex == 0) {
+            refreshLayout.finishRefresh(false);
+        } else {
+            mAdapter.loadMoreFail();
+        }
     }
 
     @Override

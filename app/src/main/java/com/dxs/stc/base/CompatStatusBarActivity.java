@@ -44,6 +44,7 @@ public class CompatStatusBarActivity extends StatusBarBaseActivity {
         ViewGroup.LayoutParams params = mViewStatusBarPlace.getLayoutParams();
         params.height = getStatusBarHeight();
         mViewStatusBarPlace.setLayoutParams(params);
+        setStatus(true,true,getResources().getColor(R.color.navColor));
     }
 
     @Override
@@ -52,6 +53,13 @@ public class CompatStatusBarActivity extends StatusBarBaseActivity {
         //contentLayout会将继承自这个Activity的页面的layout添加进去以达到通用的目的
         View contentView = LayoutInflater.from(this).inflate(layoutResID, null);
         mFrameLayoutContent.addView(contentView);
+    }
+
+
+
+    public void setStatus(boolean isVisible,boolean isDark, int statusBarPlaceColor) {
+        setStatusBarPlaceVisible(isVisible);
+        setViewColorStatusBar(isDark, statusBarPlaceColor);
     }
 
     /**

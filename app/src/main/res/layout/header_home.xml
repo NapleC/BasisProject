@@ -186,12 +186,18 @@
 
     </LinearLayout>
 
+    <View
+        android:id="@+id/v_topic3_top"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/ll_auction"
+        android:background="#ffe6e6e6" />
+
     <LinearLayout
         android:id="@+id/rl_topic3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_auction"
-        android:background="@color/color_E6"
+        android:layout_below="@+id/v_topic3_top"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="@dimen/dp_14">
@@ -209,6 +215,11 @@
             android:textSize="@dimen/sp_18"
             android:textStyle="bold" />
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="65dp"
+            android:background="#ffe6e6e6" />
+
         <TextView
             android:id="@+id/tv_topic3_ornaments"
             android:layout_width="wrap_content"
@@ -224,11 +235,18 @@
 
     </LinearLayout>
 
+    <View
+        android:id="@+id/v_topic3_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/rl_topic3"
+        android:background="#ffe6e6e6" />
+
     <LinearLayout
         android:id="@+id/rl_topic_goods"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rl_topic3"
+        android:layout_below="@+id/v_topic3_bottom"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/dp_14"

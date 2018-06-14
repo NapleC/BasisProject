@@ -1,19 +1,16 @@
 package com.dxs.stc.fragment;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.bumptech.glide.Glide;
 import com.dxs.stc.R;
 import com.dxs.stc.activities.SearchActivity;
 import com.dxs.stc.adpater.HomeRecyclerViewAdapter;
@@ -27,7 +24,6 @@ import com.dxs.stc.utils.ToastUtils;
 import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.widget.CustomTextOnPic;
 import com.dxs.stc.widget.GlideImageLoad;
-import com.dxs.stc.widget.ImageTextView;
 import com.dxs.stc.widget.SpacesItemDecoration;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.youth.banner.Banner;
@@ -48,16 +44,11 @@ import butterknife.Unbinder;
 
 public class FragmentHome extends LazyBaseFragment implements IBookView {
 
-    // @BindView(R.id.srl_list)
-    // SwipeRefreshLayout mSwipeLayout;
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
-    @BindView(R.id.ll_title_bg_layout)
-    LinearLayout mTitleLayout;
-    @BindView(R.id.iv_top_news)
-    ImageView mTopNews;
-    @BindView(R.id.fragment_title_text)
-    ImageTextView mTopSearchText;
+
+    @BindView(R.id.tv_bar_text)
+    TextView mBarText;
 
     @BindView(R.id.refreshLayout)
     RefreshLayout refreshLayout;
@@ -76,8 +67,6 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
     private CustomTextOnPic mCustomAuction3;
     private TextView mJewelryText;
     private TextView mOrnamentsText;
-
-    private List<String> bannerImages;
 
     String[] images = new String[]{
             "https://image2.wbiao.co/upload/default/201702/07/1486396886665233850.jpg",
@@ -105,9 +94,8 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
     }
 
     private void initViews() {
-
+        mBarText.setText(getString(R.string.title_home));
         mData = new ArrayList<>();
-        bannerImages = new ArrayList<>();
         mAdapter = new HomeRecyclerViewAdapter(R.layout.item_home_book, mData);
 
         mHeaderView = LayoutInflater.from(getActivity()).inflate(R.layout.header_home, null);
@@ -143,21 +131,22 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
         refreshLayout.setEnableAutoLoadMore(false);
         refreshLayout.setEnableLoadMore(false);
 
+        // 当列表滑动到倒数第N个Item的时候(默认是1)回调onLoadMoreRequested方法
+        mAdapter.setPreLoadNumber(3);
         mAdapter.setOnLoadMoreListener(() -> {
             Loger.debug("onLoadMore the start:" + thePageIndex);
             iGetBookPresenter.getBook(10 * thePageIndex, 10);
-        },mRecyclerView);
+        }, mRecyclerView);
 
     }
 
-
-    @OnClick({R.id.iv_top_news, R.id.ll_title_bg_layout})
+    @OnClick({R.id.iv_bar_right, R.id.iv_bar_left})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.iv_top_news:
+            case R.id.iv_bar_right:
                 ToastUtils.showShort("进入消息");
                 break;
-            case R.id.ll_title_bg_layout:
+            case R.id.iv_bar_left:
                 startActivity(new Intent(getActivity(), SearchActivity.class));
                 break;
         }
@@ -194,7 +183,7 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
                 refreshLayout.finishRefresh(200, true);
             } else {
                 mAdapter.addData(list);
-                if (mAdapter.getData().size()<movie.getTotal()) {
+                if (mAdapter.getData().size() < movie.getTotal()) {
                     mAdapter.loadMoreComplete();
                 } else {
                     mAdapter.loadMoreEnd();
@@ -237,46 +226,29 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
     }
 
 
-    // banner 样式-----------------------------------------------------------------------------------
+    // banner 样式-----------------------------------------------------------------------------
 
 
-    // 顶部滑动样式-----------------------------------------------------------------------------------
-    int mDistanceY = 0;
-    private boolean hadSetTop = false;
+    // 顶部滑动样式-----------------------------------------------------------------------------
 
+    /**
+     * 优化滚动时glide
+     */
     private void changeTopSearchStyle() {
 
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                //防止item乱跳
-                //staggeredGridLayoutManager.invalidateSpanAssignments();
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                //滑动的距离
-                mDistanceY += dy;
-                //toolbar的高度
-                int toolbarHeight = mTitleLayout.getBottom();
-
-                //当滑动的距离 <= toolbar高度的时候，改变Toolbar背景色的透明度，达到渐变的效果
-                if (mDistanceY <= toolbarHeight) {
-                    if (mDistanceY == 0) {
-                        mTopSearchText.setSelected(false);
-                    }
-                    float scale = (float) mDistanceY / toolbarHeight;
-                    float alpha = scale * 255;
-                    mTitleLayout.setBackgroundColor(Color.argb((int) alpha, 0, 0, 0));
-                    hadSetTop = false;
-                } else {
-                    if (!hadSetTop) {
-                        hadSetTop = true;
-                        //将标题栏的颜色设置为完全不透明状态
-                        mTitleLayout.setBackgroundResource(R.color.navColor);
-                        mTopSearchText.setSelected(true);
+                if (getActivity() != null) {
+                    switch (newState) {
+                        case 0:
+                        case 1:
+                            Glide.with(getActivity()).resumeRequests();
+                            break;
+                        case 2:
+                            Glide.with(getActivity()).pauseRequests();
+                            break;
                     }
                 }
             }

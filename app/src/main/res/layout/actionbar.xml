@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:background="@color/navColor"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/iv_bar_left"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:paddingStart="@dimen/dp_14"
+        android:paddingEnd="@dimen/dp_14"
+        android:contentDescription="@string/search"
+        app:srcCompat="@drawable/svg_search_white" />
+
+    <TextView
+        android:id="@+id/tv_bar_text"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_18"
+        tools:text="@string/title_home" />
+
+    <ImageView
+        android:id="@+id/iv_bar_right"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:paddingEnd="14dp"
+        android:paddingStart="14dp"
+        android:contentDescription="@string/title_news"
+        app:srcCompat="@drawable/svg_top_message" />
+</LinearLayout>

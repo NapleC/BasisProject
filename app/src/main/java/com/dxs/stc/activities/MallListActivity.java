@@ -195,8 +195,8 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
-//                onBackPressed();
-                startActivity(new Intent(MallListActivity.this, LoginActivity.class));
+                onBackPressed();
+//                startActivity(new Intent(MallListActivity.this, LoginActivity.class));
                 break;
             case R.id.tv_switch:
                 setRecyclerViewLayoutManager();

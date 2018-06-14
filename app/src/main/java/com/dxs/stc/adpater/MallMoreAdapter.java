@@ -69,7 +69,6 @@ public class MallMoreAdapter extends RecyclerView.Adapter<MallMoreAdapter.MallMo
                     .addSection(" "+mContext.getString(R.string.the_price_name))
                     .showIn(holder.mPrice);
 
-            holder.mFreeShipping.setVisibility(position % 2 == 0 ? View.VISIBLE : View.GONE);
             if (type==0) {
                 ImageLodeUtils.loadingImage(mContext,
                         data.get(position).getImages().getSmall(), holder.mCover);

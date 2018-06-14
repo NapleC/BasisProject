@@ -16,7 +16,7 @@
         android:layout_weight="1" />
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_2"
+        android:layout_height="@dimen/dp_4"
         android:background="@drawable/shadow_line" />
 
     <LinearLayout

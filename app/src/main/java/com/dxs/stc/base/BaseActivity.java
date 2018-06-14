@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.dxs.stc.R;
 import com.dxs.stc.activities.MainActivity;
+import com.dxs.stc.utils.AppManager;
 import com.dxs.stc.utils.SystemBarTintManager;
 import com.dxs.stc.utils.ToastUtils;
 
@@ -44,7 +45,6 @@ public abstract class BaseActivity extends SupportActivity implements BaseView, 
      * 你就只用传当前list的最上层的activity对象就可以了
      * 当然还有其他需求
      */
-    public static List<BaseActivity> activities = new ArrayList<>();
     private Toolbar toolbar;
     private TextView tvToolbarTitle;
     private TextView tvToolbarRight;
@@ -55,7 +55,7 @@ public abstract class BaseActivity extends SupportActivity implements BaseView, 
         super.onCreate(savedInstanceState);
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-        activities.add(this);
+        AppManager.getInstance().addActivity(this); //添加到栈中
         //强制竖屏(不强制加)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         int layoutId = getLayoutId(savedInstanceState);
@@ -205,7 +205,7 @@ public abstract class BaseActivity extends SupportActivity implements BaseView, 
 
     @Override
     protected void onDestroy() {
-        activities.remove(this);
+        AppManager.getInstance().finishActivity(this);//从栈中移除
         super.onDestroy();
     }
 

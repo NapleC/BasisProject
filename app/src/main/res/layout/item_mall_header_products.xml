@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.dxs.stc.widget.RoundCornerRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cv_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -29,22 +30,8 @@
         android:ellipsize="end"
         android:includeFontPadding="false"
         android:maxLines="1"
-        android:text="标题"
-        android:textColor="@color/color_63"
-        android:textSize="@dimen/sp_14" />
-
-    <TextView
-        android:id="@+id/tv_casts_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_title"
-        android:layout_marginBottom="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_2"
-        android:gravity="bottom"
-        android:text="STC"
-        android:textColor="@color/color_63"
+        tools:text="标题"
+        android:textColor="@color/color_66"
         android:textSize="@dimen/sp_14" />
 
     <TextView
@@ -52,14 +39,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_title"
-        android:layout_marginBottom="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_2"
-        android:layout_toEndOf="@+id/tv_casts_left"
+        android:layout_margin="@dimen/dp_10"
         android:gravity="bottom"
-        android:includeFontPadding="false"
-        android:text="2000"
-        android:textColor="@color/price_color"
-        android:textSize="@dimen/sp_16" />
+        tools:text="STC"
+        android:textColor="@color/color_63"
+        android:textSize="@dimen/sp_12" />
 
 
 </com.dxs.stc.widget.RoundCornerRelativeLayout>

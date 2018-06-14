@@ -3,6 +3,7 @@ package com.dxs.stc.activities;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,21 +12,20 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.dxs.stc.R;
-import com.dxs.stc.base.BaseActivity;
+import com.dxs.stc.base.CompatStatusBarActivity;
 import com.dxs.stc.mvp.api.BookApi;
 import com.dxs.stc.mvp.bean.Movie;
-import com.dxs.stc.utils.http.ApiMethods;
 import com.dxs.stc.utils.Loger;
+import com.dxs.stc.utils.ToastUtils;
+import com.dxs.stc.utils.http.ApiMethods;
 import com.dxs.stc.utils.http.MyObserver;
 import com.dxs.stc.utils.http.ObserverOnNextListener;
 import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.utils.http.RetrofitUtil;
-import com.dxs.stc.utils.ToastUtils;
 
 import java.util.List;
 
@@ -35,27 +35,29 @@ import butterknife.OnClick;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends CompatStatusBarActivity {
 
     private static final int REQUEST_READ_CONTACTS = 0;
 
     // UI references.
-    @BindView(R.id.email)
-    AutoCompleteTextView mEmailView;
-    @BindView(R.id.password)
+    @BindView(R.id.et_account)
+    EditText mAccountView;
+    @BindView(R.id.et_password)
     EditText mPasswordView;
 
-    @Override
-    protected int getLayoutId(Bundle savedInstanceState) {
-        return R.layout.activity_login;
-    }
 
     @Override
-    protected void initBaseData() {
-        super.initBaseData();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        initToolbar(true, false, true).setMoreTitle(R.string.cancel);
-        // Set up the login form.
+
+        setStatus(false, true, Color.parseColor("#FF161616"));
+        initViewData();
+    }
+
+    private void initViewData() {
+
         populateAutoComplete();
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -69,16 +71,21 @@ public class LoginActivity extends BaseActivity {
         });
     }
 
-    @OnClick({R.id.fl_toolbar_more, R.id.tv_title_base_activity, R.id.email_sign_in_button})
+    @OnClick({R.id.iv_close, R.id.btn_login, R.id.tv_to_register, R.id.tv_to_forget})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.fl_toolbar_more:
-                toMainActivity();
+            case R.id.iv_close:
+//                attemptLogin();
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 break;
-            case R.id.tv_title_base_activity:
-                break;
-            case R.id.email_sign_in_button:
+            case R.id.btn_login:
                 attemptLogin();
+                break;
+            case R.id.tv_to_register:
+                startActivity(new Intent(LoginActivity.this, PhoneRegisterActivity.class));
+                break;
+            case R.id.tv_to_forget:
+                startActivity(new Intent(LoginActivity.this, ForgetPasswordActivity.class));
                 break;
         }
     }
@@ -97,7 +104,7 @@ public class LoginActivity extends BaseActivity {
             return true;
         }
         if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
+            Snackbar.make(mAccountView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
                     .setAction(android.R.string.ok, new View.OnClickListener() {
                         @Override
                         @TargetApi(Build.VERSION_CODES.M)
@@ -125,28 +132,28 @@ public class LoginActivity extends BaseActivity {
     private void attemptLogin() {
 
         // Reset errors.
-        mEmailView.setError(null);
+        mAccountView.setError(null);
         mPasswordView.setError(null);
 
-        String email = mEmailView.getText().toString();
+        String email = mAccountView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+        if (TextUtils.isEmpty(password) || !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
         }
 
         if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
+            mAccountView.setError(getString(R.string.error_field_required));
+            focusView = mAccountView;
             cancel = true;
         } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
+            mAccountView.setError(getString(R.string.error_invalid_email));
+            focusView = mAccountView;
             cancel = true;
         }
 
@@ -178,8 +185,8 @@ public class LoginActivity extends BaseActivity {
             public void onFailed(ParseErrorMsgUtil.ErrorMessage errorMessage) {
                 hideLoading();
                 ToastUtils.showShort(errorMessage.toString());
-                mEmailView.setError(getString(R.string.error_incorrect_password));
-                mEmailView.requestFocus();
+                mAccountView.setError(getString(R.string.error_incorrect_password));
+                mAccountView.requestFocus();
             }
         };
 
@@ -189,7 +196,6 @@ public class LoginActivity extends BaseActivity {
 
     private void toMainActivity() {
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
-        finish();
     }
 
     private boolean isEmailValid(String email) {

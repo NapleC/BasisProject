@@ -144,13 +144,13 @@ public class MainActivity extends CompatStatusBarActivity {
     private void setNavStyle(boolean isSel) {
         switch (selPosition) {
             case 0:
-                setStatusBarPlaceVisible(false);
-                setViewColorStatusBar(true, Color.WHITE);
+                setStatusBarPlaceVisible(true);
+                setViewColorStatusBar(true, getResources().getColor(R.color.navColor));
                 mHomeItv.setSelected(isSel);
                 break;
             case 1:
-                setStatusBarPlaceVisible(false);
-                setViewColorStatusBar(true, Color.WHITE);
+                setStatusBarPlaceVisible(true);
+                setViewColorStatusBar(true, getResources().getColor(R.color.navColor));
                 mMallItv.setSelected(isSel);
                 break;
             case 2:
