@@ -37,9 +37,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.FileProvider"
@@ -52,36 +52,32 @@
 
         <activity
             android:name=".activities.MainActivity"
-            android:label="@string/app_name">
-
-        </activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".activities.LoginActivity"
-            android:label="@string/title_activity_login">
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".activities.SearchActivity"
+            android:label="@string/search" />
+        <activity
+            android:name=".activities.MallListActivity"
+            android:label="@string/title_mall" />
+        <activity
+            android:name=".activities.ForgetPasswordActivity"
+            android:label="@string/forget_password" />
+        <activity
+            android:name=".activities.PhoneRegisterActivity"
+            android:label="@string/phone_register" />
+        <activity
+            android:name=".activities.BannerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.SearchActivity"
-            android:label="@string/search">
-
-        </activity>
-        <activity
-            android:name=".activities.MallListActivity"
-            android:label="@string/title_mall">
-
-        </activity>
-        <activity
-            android:name=".activities.ForgetPasswordActivity"
-            android:label="@string/forget_password">
-
-        </activity>
-
-        <activity android:name=".activities.PhoneRegisterActivity"
-            android:label="@string/phone_register">
+        <activity android:name=".activities.TestActivity">
         </activity>
     </application>
 

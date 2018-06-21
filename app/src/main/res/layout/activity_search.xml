@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/search_input_bg"
-            android:hint="@string/app_name"
+            android:hint="@string/home_search_tip"
             android:singleLine="true"
             android:imeOptions="actionSearch"
             android:imeActionLabel="@string/search"

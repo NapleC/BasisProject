@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide;
 import com.dxs.stc.R;
 import com.dxs.stc.adpater.MallMoreAdapter;
 import com.dxs.stc.base.CompatStatusBarActivity;
+import com.dxs.stc.base.Constant;
 import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.mvp.presenter.IGetBookPresenter;
 import com.dxs.stc.mvp.presenter.impl.GetBookPresenterImpl;
@@ -61,6 +62,7 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
     List<String> typeItems;
     private TopMiddlePopup middlePopup;
     private int thePageIndex = 0;
+    private int mallType = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,18 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
         setContentView(R.layout.activity_mall_list);
         ButterKnife.bind(this);
         setStatus();
+        getIntentData();
+    }
+
+    private void setStatus() {
+        setStatusBarPlaceVisible(true);
+        setViewColorStatusBar(true, getResources().getColor(R.color.navColor));
+    }
+
+    private void getIntentData() {
+        Intent intent = getIntent();
+        mallType = intent.getIntExtra(Constant.MALL_TYPE, 0);
+        Loger.debug("传递得到的mallType： " + mallType);
     }
 
     @Override
@@ -75,11 +89,6 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
         super.onStart();
         selTopIndex = -1;
         initView();
-    }
-
-    private void setStatus() {
-        setStatusBarPlaceVisible(true);
-        setViewColorStatusBar(true, getResources().getColor(R.color.navColor));
     }
 
     private void initView() {
@@ -97,8 +106,6 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
 
         setRecyclerViewLayoutManager();
         iGetBookPresenter = new GetBookPresenterImpl(this);
-//        iGetBookPresenter.getBook(10 * thePageIndex, 10);
-        refreshLayout.autoRefresh();
         mAdapter.setOnItemClickListener(position -> {
             Loger.debug("点击的是第：" + position);
             ToastUtils.showShortSafe("点击的是第：" + position);
@@ -128,6 +135,7 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
 
         refreshLayout.setOnRefreshListener(refreshlayout -> {
             thePageIndex = 0;
+            // 需要根据不同的 mallType做请求。
             Loger.debug("onRefresh the start:" + thePageIndex);
             iGetBookPresenter.getBook(10 * thePageIndex, 10);
         });
@@ -136,6 +144,8 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
             Loger.debug("onLoadMore the start:" + thePageIndex);
             iGetBookPresenter.getBook(10 * thePageIndex, 10);
         });
+        getNewTypeData();
+
     }
 
     @Override
@@ -154,13 +164,13 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
                 refreshLayout.finishRefresh(200, true);
             } else {
                 mAdapter.addData(list);
-                refreshLayout.finishLoadMore(200,true,false);
+                refreshLayout.finishLoadMore(200, true, false);
             }
         } else {
             if (thePageIndex == 0) {
                 refreshLayout.finishRefresh(200, false);
             } else {
-                refreshLayout.finishLoadMore(200,false,false);
+                refreshLayout.finishLoadMore(200, false, false);
             }
         }
         Loger.debug("mAdapter data" + mAdapter.getData().size());
@@ -214,6 +224,12 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
     }
 
 
+    private void getNewTypeData(){
+
+//        iGetBookPresenter.getBook(10 * thePageIndex, 10);
+        mSortType.setTitleText(typeItems.get(mallType));
+        refreshLayout.autoRefresh();
+    }
     //-------------------------------------筛选样式 begin----------------------------------------
 
     /**
@@ -242,6 +258,8 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
                 ToastUtils.showShort("选择了" + typeItems.get(position));
                 middlePopup.dismiss();
                 setNavStyle(selTopIndex);
+                mallType = position;
+                getNewTypeData();
             }
 
             @Override

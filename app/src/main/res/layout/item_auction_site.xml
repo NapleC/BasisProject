@@ -23,7 +23,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_margin="@dimen/dp_8"
-        android:background="@drawable/auction_notice_shape"
+        android:background="@drawable/shape_auction_notice"
         android:drawablePadding="@dimen/dp_4"
         android:ellipsize="end"
         android:gravity="center"

@@ -28,7 +28,7 @@ import java.util.List;
  * created by hl at 2018/6/5
  * com.dxs.stc.widget.TopMiddlePopup
  *
- * @version V1.0 <描述当前版本功能>
+ * @version V1.0 商品列表下拉的dialog
  */
 public class TopMiddlePopup extends PopupWindow {
 

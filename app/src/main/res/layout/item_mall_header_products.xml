@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginEnd="@dimen/dp_10"
-    android:background="@drawable/card_shape_radius"
+    android:background="@drawable/selector_card_radius"
     app:topLeftRadius="8dp"
     app:topRightRadius="8dp">
 

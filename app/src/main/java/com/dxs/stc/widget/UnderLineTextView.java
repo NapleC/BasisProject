@@ -49,8 +49,6 @@ public class UnderLineTextView extends AppCompatTextView {
         mColor = array.getColor(R.styleable.UnderlinedTextView_underlineColor, 0xFFFF0000);
 
         mStrokeWidth = array.getDimensionPixelSize(R.styleable.UnderlinedTextView_underlineWidth, (int) (density * 2));
-        Loger.debug("density * 2: " + density * 2);
-        Loger.debug("Stroke width: " + mStrokeWidth);
         array.recycle();
 
         mRect = new Rect();

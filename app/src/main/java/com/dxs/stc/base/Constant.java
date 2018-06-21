@@ -14,4 +14,5 @@ public class Constant {
 
     public static final String CATCH_DIR = "STC";
     public static final String SEARCH_HISTORY = "search_history";
+    public static final String MALL_TYPE = "mallType";
 }

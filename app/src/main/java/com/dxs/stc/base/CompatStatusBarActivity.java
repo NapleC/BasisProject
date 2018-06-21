@@ -44,7 +44,7 @@ public class CompatStatusBarActivity extends StatusBarBaseActivity {
         ViewGroup.LayoutParams params = mViewStatusBarPlace.getLayoutParams();
         params.height = getStatusBarHeight();
         mViewStatusBarPlace.setLayoutParams(params);
-        setStatus(true,true,getResources().getColor(R.color.navColor));
+//        setStatus(true,true,getResources().getColor(R.color.navColor));
     }
 
     @Override

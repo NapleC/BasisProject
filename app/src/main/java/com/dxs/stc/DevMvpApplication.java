@@ -3,10 +3,13 @@ package com.dxs.stc;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
+import android.support.multidex.MultiDexApplication;
 
 import com.dxs.stc.base.Constant;
 import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.SPUtil;
+import com.kk.taurus.playerbase.config.PlayerConfig;
+import com.kk.taurus.playerbase.config.PlayerLibrary;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
@@ -20,7 +23,7 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
  * Created by HL on 2017/9/7.
  */
 
-public class DevMvpApplication extends Application {
+public class DevMvpApplication extends MultiDexApplication {
 
     private static DevMvpApplication app;
     private boolean canShowLog = true;
@@ -45,6 +48,11 @@ public class DevMvpApplication extends Application {
         app = this;
         initView();
         SPUtil.getInstance(app, Constant.CATCH_DIR);
+        //如果您想使用默认的网络状态事件生产者，请添加此行配置。
+        //并需要添加权限 android.permission.ACCESS_NETWORK_STATE
+        PlayerConfig.setUseDefaultNetworkEventProducer(true);
+        //初始化库
+        PlayerLibrary.init(this);
 
     }
 

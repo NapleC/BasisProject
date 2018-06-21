@@ -92,7 +92,7 @@ public class DensityUtils {
     }
 
     /**
-     * 获取屏幕高度
+     * @return 获取屏幕高度
      */
     public static int getScreenH(Context aty) {
         DisplayMetrics dm = new DisplayMetrics();
@@ -100,5 +100,20 @@ public class DensityUtils {
         int h = dm.heightPixels;
         // int h = aty.getWindowManager().getDefaultDisplay().getHeight();
         return h;
+    }
+
+    /**
+     * @param context context
+     * @return 状态栏高度
+     */
+    public static int getStatusBarHeight(Context context) {
+        int statusBarHeight = dip2px(context,24);
+        Loger.debug("statusBarHeight dip2px: "+statusBarHeight);
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            statusBarHeight = context.getResources().getDimensionPixelSize(resourceId);
+        }
+        Loger.debug("statusBarHeight result: "+statusBarHeight);
+        return statusBarHeight;
     }
 }

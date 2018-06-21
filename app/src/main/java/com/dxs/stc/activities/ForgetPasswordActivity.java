@@ -1,9 +1,9 @@
 package com.dxs.stc.activities;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -11,13 +11,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.dxs.stc.R;
-import com.dxs.stc.base.BaseActivity;
+import com.dxs.stc.base.CompatStatusBarActivity;
+import com.dxs.stc.utils.ConstraintUtil;
+import com.dxs.stc.utils.DensityUtils;
 import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.ToastUtils;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 
-import java.util.Observer;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -31,17 +32,15 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
-public class ForgetPasswordActivity extends BaseActivity {
+public class ForgetPasswordActivity extends CompatStatusBarActivity {
 
-    private static final String TAG = "SmsRxbindingActivity";
-
-    private Context mContext;
-
+    @BindView(R.id.cl_root_register)
+    ConstraintLayout mRootView;
 
     @BindView(R.id.btn_send_sms)
     TextView mBtnSendMsm;
-    @BindView(R.id.btn_sms_submit)
-    Button mBtnClean;
+    @BindView(R.id.btn_next)
+    Button mBtnNext;
     @BindView(R.id.et_phone)
     EditText mEtPhone;
     @BindView(R.id.et_code)
@@ -49,28 +48,41 @@ public class ForgetPasswordActivity extends BaseActivity {
 
     // 最大倒计时长
     private static final long MAX_COUNT_TIME = 60;
-
     private Observable<Long> mObservableCountTime;
     private Consumer<Long> mConsumerCountTime;
-
     // 用于主动取消订阅倒计时，或者退出当前页面。
     private Disposable mDisposable;
 
     @Override
-    protected int getLayoutId(Bundle savedInstanceState) {
-        return R.layout.activity_forget_password;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_forget_password);
+        ButterKnife.bind(this);
+        setStatus(false, true, Color.parseColor("#FF161616"));
+        initViewData();
     }
 
+    private void initViewData() {
+        setStatusHeightMargin();
+        initCountdown();
+    }
+
+    private void setStatusHeightMargin() {
+        ConstraintUtil constraintUtil = new ConstraintUtil(mRootView);
+        ConstraintUtil.ConstraintBegin begin = constraintUtil.beginWithAnim();
+        begin.setMarginTop(R.id.iv_back,
+                DensityUtils.getStatusBarHeight(ForgetPasswordActivity.this));
+        begin.setMarginTop(R.id.tv_title,
+                DensityUtils.getStatusBarHeight(ForgetPasswordActivity.this));
+        begin.commit();
+    }
+
+
     @SuppressLint("CheckResult")
-    @Override
-    protected void initBaseData() {
-        super.initBaseData();
-        ButterKnife.bind(this);
-        initToolbar(true, false, false)
-                .setMyTitle(R.string.forget_password);
+    private void initCountdown() {
 
         // 重置验证码按钮
-        RxView.clicks(mBtnClean).subscribe(new Consumer<Object>() {
+        RxView.clicks(mBtnNext).subscribe(new Consumer<Object>() {
             @Override
             public void accept(Object o) throws Exception {
                 if (mDisposable != null && !mDisposable.isDisposed()) {
@@ -123,12 +135,12 @@ public class ForgetPasswordActivity extends BaseActivity {
         mDisposable = mObservableCountTime.subscribe(mConsumerCountTime);
     }
 
-    @OnClick({R.id.fl_toolbar_more, R.id.tv_title_base_activity})
+
+    @OnClick({R.id.iv_back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.fl_toolbar_more:
-                break;
-            case R.id.tv_title_base_activity:
+            case R.id.iv_back:
+                onBackPressed();
                 break;
         }
     }

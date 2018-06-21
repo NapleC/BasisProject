@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/custom_pic_iv"
-        android:background="@drawable/custom_pic_bottom"
+        android:background="@drawable/shape_notice_bottom"
         android:drawablePadding="@dimen/dp_4"
         android:drawableStart="@mipmap/ic_in_auction"
         android:gravity="center_vertical"

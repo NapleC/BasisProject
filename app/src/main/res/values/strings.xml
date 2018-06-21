@@ -44,6 +44,9 @@
     <string name="search_history">历史纪录</string>
     <string name="search_wanna">猜你想搜</string>
     <string name="search">搜索</string>
+    <string name="customer">客服</string>
+    <string name="collection">收藏</string>
+    <string name="buy_now">立即购买</string>
     <string name="mall_switch">切换视图</string>
     <string name="sms_send_code">发送验证码</string>
     <string name="input_phone">输入电话号码</string>
@@ -55,7 +58,9 @@
     <string name="register">注册</string>
     <string name="forget_pwd">忘记密码</string>
     <string name="phone_register">手机快速注册</string>
-
+    <string name="banner_video">视频</string>
+    <string name="banner_image">图片</string>
+    <string name="prod_banner_indicators">%1$d / %2$d</string>
 
     <string-array name="mall_header_topic_title">
         <item>手镯</item>
@@ -67,4 +72,8 @@
         <item>耳坠</item>
         <item>更多</item>
     </string-array>
+
+    <string name="price_rmb">约 %1$d RMB</string>
+    <string name="sales_volume">销量</string>
+    <string name="genuine_security">正品保障</string>
 </resources>

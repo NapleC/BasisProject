@@ -5,7 +5,7 @@
     android:id="@+id/cv_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/card_shape_radius"
+    android:background="@drawable/selector_card_radius"
     app:topLeftRadius="8dp"
     app:topRightRadius="8dp">
 
@@ -54,7 +54,7 @@
         android:layout_below="@+id/tv_title"
         android:layout_marginEnd="@dimen/dp_10"
         android:layout_marginTop="@dimen/dp_4"
-        android:background="@drawable/main_color_shape"
+        android:background="@drawable/shape_main_color"
         android:gravity="center"
         android:includeFontPadding="false"
         android:textColor="@color/white"

@@ -17,6 +17,7 @@ import com.dxs.stc.activities.SearchActivity;
 import com.dxs.stc.adpater.MallHeaderProductsAdapter;
 import com.dxs.stc.adpater.MallHeaderTopicAdapter;
 import com.dxs.stc.adpater.MallRecyclerViewAdapter;
+import com.dxs.stc.base.Constant;
 import com.dxs.stc.base.LazyBaseFragment;
 import com.dxs.stc.mvp.bean.MallTopicBean;
 import com.dxs.stc.mvp.bean.Movie;
@@ -174,8 +175,6 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
     private void initHeaderView() {
 
         mTopBanner = mHeaderView.findViewById(R.id.mall_banner);
-        mTopBanner.setImages(Arrays.asList(images)).setImageLoader(new GlideImageLoad()).start();
-
         mHeaderProductsRv = mHeaderView.findViewById(R.id.rv_header_products_mall);
         mHeaderTopicRv = mHeaderView.findViewById(R.id.rv_header_mall_topic);
         mTopBanner.setImages(Arrays.asList(images)).setImageLoader(new GlideImageLoad()).start();
@@ -192,29 +191,17 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
         mHeaderTopicRv.setLayoutManager(new GridLayoutManager(getActivity(), 4));//这里用线性宫格显示 类似于grid view
         mHeaderTopicRv.setAdapter(mTopicAdapter);
 
-        mTopicAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                switch (position) {
-                    case 0:
-                        break;
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    case 6:
-                        break;
-                    case 7:
-                        startActivity(new Intent(getActivity(), MallListActivity.class));
-                        break;
-                }
+        mTopicAdapter.setOnItemClickListener((adapter, view, position) -> {
+
+            int mallType = 0;
+            if (position < 7) {
+                mallType = position + 1;
             }
+
+            Loger.debug("传递过去的类型是：" + mallType);
+            Intent intent = new Intent(getActivity(), MallListActivity.class);
+            intent.putExtra(Constant.MALL_TYPE, mallType);
+            startActivity(intent);
         });
 
     }
