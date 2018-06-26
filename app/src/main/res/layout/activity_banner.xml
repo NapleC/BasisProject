@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/transparent"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -216,7 +215,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_10"
                 android:layout_below="@+id/tv_prod_rmb"
-                android:background="@color/color_E6" />
+                android:background="@drawable/divider_line" />
 
             <WebView
                 android:id="@+id/blog_content"

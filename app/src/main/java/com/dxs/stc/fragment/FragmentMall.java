@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dxs.stc.R;
 import com.dxs.stc.activities.MallListActivity;
 import com.dxs.stc.activities.SearchActivity;
@@ -28,7 +27,7 @@ import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.ToastUtils;
 import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.widget.GlideImageLoad;
-import com.dxs.stc.widget.SpacesItemDecoration;
+import com.dxs.stc.utils.decoration.SpacesItemDecoration;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.youth.banner.Banner;
 

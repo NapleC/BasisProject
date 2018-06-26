@@ -59,7 +59,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/color_E6" />
+            android:background="@drawable/divider_line" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -108,7 +108,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/color_E6" />
+                android:background="@drawable/divider_line" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -155,7 +155,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_14"
-        android:background="@color/color_E6" />
+        android:background="@drawable/divider_line" />
 
     <LinearLayout
         android:id="@+id/ll_site_title"
@@ -204,7 +204,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_14"
-        android:background="@color/color_E6" />
+        android:background="@drawable/divider_line" />
 
     <LinearLayout
         android:layout_width="match_parent"

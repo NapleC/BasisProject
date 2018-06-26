@@ -20,7 +20,6 @@ import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.ToastUtils;
 import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.widget.CustomSortArrow;
-import com.dxs.stc.widget.SpacesItemDecoration;
 import com.dxs.stc.widget.TopMiddlePopup;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
@@ -54,7 +53,6 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
     private boolean typeIsGrid = false;
     private LinearLayoutManager linearLayoutManager;
     private GridLayoutManager gridLayoutManager;
-    SpacesItemDecoration decoration;
 
     private int selTopIndex = -1;
     private boolean topIsRise = false;
@@ -100,9 +98,6 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
 
         linearLayoutManager = new LinearLayoutManager(this);
         gridLayoutManager = new GridLayoutManager(this, 2);
-        decoration = new SpacesItemDecoration(
-                getResources().getDimensionPixelSize(R.dimen.dp_14),
-                getResources().getDimensionPixelSize(R.dimen.dp_10), 0);
 
         setRecyclerViewLayoutManager();
         iGetBookPresenter = new GetBookPresenterImpl(this);
@@ -224,7 +219,7 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
     }
 
 
-    private void getNewTypeData(){
+    private void getNewTypeData() {
 
 //        iGetBookPresenter.getBook(10 * thePageIndex, 10);
         mSortType.setTitleText(typeItems.get(mallType));

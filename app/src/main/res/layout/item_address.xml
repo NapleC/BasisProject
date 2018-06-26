@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_address"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="@dimen/dp_14">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_6"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:textColor="@color/color_63"
+        android:textSize="@dimen/sp_16"
+        tools:text="名字" />
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dp_6"
+        android:layout_toEndOf="@+id/tv_name"
+        android:gravity="end"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:textColor="@color/color_63"
+        android:textSize="@dimen/sp_16"
+        tools:text="130xxxx1111" />
+
+    <TextView
+        android:id="@+id/tv_address_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_name"
+        android:layout_marginTop="@dimen/dp_10"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/color_66"
+        android:textSize="@dimen/sp_12"
+        tools:text="地址" />
+
+    <View
+        android:id="@+id/v_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/tv_address_details"
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="@drawable/divider_line" />
+
+    <CheckBox
+        android:id="@+id/cb_is_default"
+        android:layout_width="@dimen/dp_18"
+        android:layout_height="@dimen/dp_18"
+        android:layout_below="@+id/v_line"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/checkbox_style"
+        android:button="@null" />
+
+    <TextView
+        android:id="@+id/tv_is_default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v_line"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_14"
+        android:layout_toEndOf="@+id/cb_is_default"
+        android:text="@string/default_address"
+        android:textColor="@color/color_63"
+        android:textSize="@dimen/sp_12" />
+
+    <com.dxs.stc.widget.ImageTextView
+        android:id="@+id/tv_del"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/v_line"
+        android:layout_marginTop="@dimen/dp_14"
+        android:drawablePadding="@dimen/dp_10"
+        android:text="@string/del"
+        android:textColor="@color/color_63"
+        android:textSize="@dimen/sp_12"
+        app:drawable="@drawable/ic_del"
+        app:drawableHeight="18dp"
+        app:drawableWidth="18dp"
+        app:position="1" />
+
+
+    <com.dxs.stc.widget.ImageTextView
+        android:id="@+id/tv_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v_line"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_14"
+        android:layout_toStartOf="@+id/tv_del"
+        android:drawablePadding="@dimen/dp_10"
+        android:text="@string/edit"
+        android:textColor="@color/color_63"
+        android:textSize="@dimen/sp_12"
+        app:drawable="@drawable/ic_del"
+        app:drawableHeight="18dp"
+        app:drawableWidth="18dp"
+        app:position="1" />
+
+</RelativeLayout>
