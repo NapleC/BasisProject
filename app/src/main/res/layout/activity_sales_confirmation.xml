@@ -9,7 +9,6 @@
 
     <include layout="@layout/activity_title" />
 
-
     <RelativeLayout
         android:id="@+id/rl_address"
         android:layout_width="match_parent"
@@ -211,7 +210,7 @@
             android:textColor="@color/color_66"
             android:textSize="@dimen/sp_14" />
 
-        <EditText
+        <com.dxs.stc.widget.EditTextWithAnimator
             android:id="@+id/et_remark"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

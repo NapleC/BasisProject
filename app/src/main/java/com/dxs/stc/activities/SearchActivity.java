@@ -18,7 +18,7 @@ import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.SPUtil;
 import com.dxs.stc.utils.ToastUtils;
 import com.dxs.stc.widget.EditTextWithAnimator;
-import com.dxs.stc.widget.NiftyDialog;
+import com.dxs.stc.dialog.NiftyDialog;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
 

@@ -1,5 +1,6 @@
 package com.dxs.stc.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dxs.stc.R;
+import com.dxs.stc.activities.BannerActivity;
 import com.dxs.stc.adpater.AuctionHeaderSiteAdapter;
 import com.dxs.stc.adpater.AuctionRecyclerViewAdapter;
 import com.dxs.stc.base.LazyBaseFragment;
@@ -113,6 +116,14 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
             Loger.debug("onLoadMore the start:" + thePageIndex);
             iGetBookPresenter.getBook(10 * thePageIndex, 10);
         }, mRecyclerView);
+
+
+        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                startActivity(new Intent(getActivity(), BannerActivity.class));
+            }
+        });
     }
 
     private void initViews() {
@@ -147,6 +158,13 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
         ms.setOrientation(LinearLayoutManager.HORIZONTAL);// 设置 RecyclerView 布局方式为横向布局
         mHeaderSiteRv.setLayoutManager(ms); // 给 RecyclerView 添加设置好的布局样式
         mHeaderSiteRv.setAdapter(mSiteAdapter);
+
+        mSiteAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                startActivity(new Intent(getActivity(), BannerActivity.class));
+            }
+        });
     }
 
     @Override

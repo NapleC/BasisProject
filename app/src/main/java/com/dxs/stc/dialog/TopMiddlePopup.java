@@ -1,4 +1,4 @@
-package com.dxs.stc.widget;
+package com.dxs.stc.dialog;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -26,7 +26,7 @@ import java.util.List;
 
 /**
  * created by hl at 2018/6/5
- * com.dxs.stc.widget.TopMiddlePopup
+ * com.dxs.stc.dialog.TopMiddlePopup
  *
  * @version V1.0 商品列表下拉的dialog
  */

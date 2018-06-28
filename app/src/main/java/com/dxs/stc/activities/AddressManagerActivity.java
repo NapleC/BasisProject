@@ -1,5 +1,6 @@
 package com.dxs.stc.activities;
 
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dxs.stc.R;
 import com.dxs.stc.adpater.AddressManagerAdapter;
 import com.dxs.stc.base.CompatStatusBarActivity;
@@ -32,12 +34,8 @@ public class AddressManagerActivity extends CompatStatusBarActivity {
     @BindView(R.id.refreshLayout)
     RefreshLayout refreshLayout;
 
-    @BindView(R.id.iv_bar_left)
-    ImageView mTitleLeft;
     @BindView(R.id.tv_bar_text)
     TextView mTitleCenter;
-    @BindView(R.id.iv_bar_right)
-    ImageView mTitleRight;
 
     private AddressManagerAdapter mAdapter;
     private List<AddressBean> mData;
@@ -48,8 +46,8 @@ public class AddressManagerActivity extends CompatStatusBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setBackgroundDrawableResource(R.color.color_E6);
         setContentView(R.layout.activity_address_manager);
+        getWindow().setBackgroundDrawableResource(R.color.color_E6);
         ButterKnife.bind(this);
         setStatus(true, true, ContextCompat.getColor(this, R.color.navColor));
     }
@@ -95,6 +93,10 @@ public class AddressManagerActivity extends CompatStatusBarActivity {
                 break;
             }
         }
+        mAdapter.setOnItemClickListener((adapter, view, position) -> {
+            Loger.debug("setOnItemClickListener");
+            startActivity(new Intent(AddressManagerActivity.this, EditAddressActivity.class));
+        });
         mAdapter.setCheckItemListener(position -> {
             mData.get(isCheckPosition).setDefault(false);
             mData.get(position).setDefault(true);

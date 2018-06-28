@@ -81,15 +81,12 @@ public class SalesConfirmationActivity extends CompatStatusBarActivity {
         setChangeText();
     }
 
-    @OnClick({R.id.iv_bar_right, R.id.iv_bar_left, R.id.rl_address, R.id.btn_decrease,
+    @OnClick({R.id.iv_bar_left, R.id.rl_address, R.id.btn_decrease,
             R.id.btn_increase, R.id.btn_confirm_pay})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.iv_bar_right:
-                ToastUtils.showShort("点击右边按钮");
-                break;
             case R.id.iv_bar_left:
-                ToastUtils.showShort("点击左边按钮");
+                onBackPressed();
                 break;
             case R.id.rl_address:
                 startActivity(new Intent(SalesConfirmationActivity.this, AddressManagerActivity.class));

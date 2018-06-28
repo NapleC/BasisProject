@@ -5,7 +5,7 @@
     android:id="@+id/cv_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/selector_card_radius"
+    android:background="?attr/selectableItemBackground"
     app:topLeftRadius="8dp"
     app:topRightRadius="8dp">
 

@@ -19,6 +19,11 @@
     <color name="home_search_bg">#33FFFFFF</color>
     <color name="home_search_text">#999999</color>
 
+    <color name="tab_text_color">#1A1B1B</color>
+    <color name="defaultSelectedColor">#E9A331</color>
+    <color name="defaultUnSelectedColor">#1A1B1B</color>
+    <color name="defaultSureUnClickColor">#7F7F7F</color>
+    <color name="defaultSureCanClickColor">#E9A331</color>
 
     <color name="transparent">#00000000</color>
     <color name="transparent05">#0B000000</color>

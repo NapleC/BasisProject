@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.EditAddressActivity">
+
+    <include layout="@layout/activity_title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingEnd="@dimen/dp_14"
+        android:paddingStart="@dimen/dp_14">
+
+        <TextView
+            android:id="@+id/tv_recipient_left"
+            android:layout_width="66dp"
+            android:layout_height="44dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
+            android:text="@string/recipient"
+            android:textColor="@color/color_63"
+            android:textSize="@dimen/sp_14" />
+
+        <com.dxs.stc.widget.EditTextWithAnimator
+            android:id="@+id/et_recipient"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/tv_recipient_left"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/recipient_hint"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/color_63"
+            android:textColorHint="@color/color_69"
+            android:textSize="@dimen/sp_14" />
+
+        <View
+            android:id="@+id/v_recipient"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/et_recipient"
+            android:background="@drawable/divider_line" />
+
+        <TextView
+            android:id="@+id/tv_contact_number_left"
+            android:layout_width="66dp"
+            android:layout_height="44dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/v_recipient"
+            android:gravity="center_vertical"
+            android:text="@string/contact_number"
+            android:textColor="@color/color_63"
+            android:textSize="@dimen/sp_14" />
+
+        <com.dxs.stc.widget.EditTextWithAnimator
+            android:id="@+id/et_contact_number"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_below="@+id/v_recipient"
+            android:layout_toEndOf="@+id/tv_contact_number_left"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/contact_number_hint"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:textColor="@color/color_63"
+            android:textColorHint="@color/color_69"
+            android:textSize="@dimen/sp_14" />
+
+        <View
+            android:id="@+id/v_contact_number"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/et_contact_number"
+            android:background="@drawable/divider_line" />
+
+        <TextView
+            android:id="@+id/tv_region_left"
+            android:layout_width="66dp"
+            android:layout_height="44dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/v_contact_number"
+            android:gravity="center_vertical"
+            android:text="@string/region"
+            android:textColor="@color/color_63"
+            android:textSize="@dimen/sp_14" />
+
+        <com.dxs.stc.widget.ImageTextView
+            android:id="@+id/itv_region"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_below="@+id/v_contact_number"
+            android:layout_toEndOf="@+id/tv_region_left"
+            android:background="@null"
+            android:drawablePadding="@dimen/dp_10"
+            android:gravity="center_vertical"
+            android:hint="@string/region_hint"
+            android:maxLines="1"
+            android:textColor="@color/color_63"
+            android:textColorHint="@color/color_69"
+            android:textSize="@dimen/sp_14"
+            app:drawable="@drawable/svg_home_more"
+            app:drawableHeight="@dimen/dp_14"
+            app:drawableWidth="@dimen/dp_14"
+            app:position="3" />
+
+        <View
+            android:id="@+id/v_region"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/itv_region"
+            android:background="@drawable/divider_line" />
+
+        <TextView
+            android:id="@+id/tv_details_address_left"
+            android:layout_width="66dp"
+            android:layout_height="74dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/v_region"
+            android:gravity="center_vertical"
+            android:text="@string/details_address"
+            android:textColor="@color/color_63"
+            android:textSize="@dimen/sp_14" />
+
+        <com.dxs.stc.widget.EditTextWithAnimator
+            android:id="@+id/et_details_address"
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:layout_below="@+id/v_region"
+            android:layout_toEndOf="@+id/tv_details_address_left"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/details_address_hint"
+            android:inputType="text"
+            android:maxLines="2"
+            android:textColor="@color/color_63"
+            android:textColorHint="@color/color_69"
+            android:textSize="@dimen/sp_14" />
+
+        <View
+            android:id="@+id/v_details_address"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/et_details_address"
+            android:background="@drawable/divider_line" />
+
+        <TextView
+            android:id="@+id/tv_default_left"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/v_details_address"
+            android:gravity="center_vertical"
+            android:text="@string/set_default_left"
+            android:textColor="@color/color_63"
+            android:textSize="@dimen/sp_14" />
+
+        <CheckBox
+            android:id="@+id/cb_is_default"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/v_details_address"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/checkbox_style"
+            android:button="@null" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_add_address"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:layout_marginEnd="48dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/shape_main_color"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16" />
+
+</LinearLayout>

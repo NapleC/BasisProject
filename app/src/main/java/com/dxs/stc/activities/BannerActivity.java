@@ -269,11 +269,12 @@ public class BannerActivity extends CompatStatusBarActivity {
         }
     }
 
-    @OnClick({R.id.iv_prod_title_left, R.id.iv_prod_title_right, R.id.tv_prod_video, R.id.tv_prod_image})
+    @OnClick({R.id.iv_prod_title_left, R.id.iv_prod_title_right, R.id.tv_prod_video,
+            R.id.tv_prod_image,R.id.tv_buy})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_prod_title_left:
-                startActivity(new Intent(BannerActivity.this, MainActivity.class));
+                onBackPressed();
                 break;
             case R.id.iv_prod_title_right:
                 ToastUtils.showShort("点击分享");
@@ -285,6 +286,9 @@ public class BannerActivity extends CompatStatusBarActivity {
                 if (bannerList.size() >= 1) {
                     mViewPager.setCurrentItem(1, true);
                 }
+                break;
+            case R.id.tv_buy:
+                startActivity(new Intent(BannerActivity.this, SalesConfirmationActivity.class));
                 break;
         }
     }

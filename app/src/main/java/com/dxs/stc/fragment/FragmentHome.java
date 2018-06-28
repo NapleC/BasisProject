@@ -11,7 +11,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dxs.stc.R;
+import com.dxs.stc.activities.BannerActivity;
 import com.dxs.stc.activities.SearchActivity;
 import com.dxs.stc.adpater.HomeRecyclerViewAdapter;
 import com.dxs.stc.base.LazyBaseFragment;
@@ -138,6 +140,13 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
             iGetBookPresenter.getBook(10 * thePageIndex, 10);
         }, mRecyclerView);
 
+        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                startActivity(new Intent(getActivity(), BannerActivity.class));
+            }
+        });
+
     }
 
     @OnClick({R.id.iv_bar_right, R.id.iv_bar_left})
@@ -167,6 +176,25 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
             mCustomAuction1.setRoundImageUrl(getActivity(), "https://image2.wbiao.co/upload/article/201702/17/1487323723401153512.jpg");
             mCustomAuction1.setTipText("拍卖已结束");
         });
+        mCustomAuction1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), BannerActivity.class));
+            }
+        });
+        mCustomAuction2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), BannerActivity.class));
+            }
+        });
+        mCustomAuction3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), BannerActivity.class));
+            }
+        });
+
         mJewelryText.setOnClickListener(v -> ToastUtils.showShort("进入珠宝页面"));
         mOrnamentsText.setOnClickListener(v -> ToastUtils.showShort("进入摆件页面"));
 

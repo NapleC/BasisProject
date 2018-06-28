@@ -1,4 +1,4 @@
-package com.dxs.stc.widget;
+package com.dxs.stc.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -15,7 +15,7 @@ import com.dxs.stc.R;
  * created by hl at 2018/5/26
  * com.naple.flaxtabtest.widget.NiftyDialog
  *
- * @version V1.0 <描述当前版本功能>
+ * @version V1.0 弹出对话框
  * @author https://github.com/xiaoxiaoqingyi/mine-android-repository
  * <p>
  * new NiftyDialog(this, R.style.dialog,"content text", new NiftyDialog.OnCloseListener() {

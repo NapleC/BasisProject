@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dxs.stc.R;
+import com.dxs.stc.activities.BannerActivity;
 import com.dxs.stc.activities.MallListActivity;
 import com.dxs.stc.activities.SearchActivity;
 import com.dxs.stc.adpater.MallHeaderProductsAdapter;
@@ -118,9 +120,7 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
         mHeaderView = LayoutInflater.from(getActivity()).inflate(R.layout.header_mall, null);
         mAdapter.setHeaderView(mHeaderView);
 
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));//这里用线性显示 类似于listview
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));//这里用线性宫格显示 类似于grid view
-//        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));//这里用线性宫格显示 类似于瀑布流
 
         SpacesItemDecoration decoration = new SpacesItemDecoration(
                 getResources().getDimensionPixelSize(R.dimen.dp_14),
@@ -157,6 +157,14 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
         changeTopSearchStyle();
         initHeaderView();
 
+
+        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                startActivity(new Intent(getActivity(), BannerActivity.class));
+            }
+        });
+
     }
 
     @OnClick({R.id.iv_bar_right, R.id.iv_bar_left})
@@ -186,6 +194,11 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
 
         mHeaderProductsRv.setLayoutManager(new GridLayoutManager(getActivity(), 3));//这里用线性宫格显示 类似于grid view
         mHeaderProductsRv.setAdapter(mProductsAdapter);
+
+        mProductsAdapter.setOnItemChildClickListener((adapter, view, position) -> {
+            Loger.debug("mProductsAdapter 新品");
+            startActivity(new Intent(getActivity(), BannerActivity.class));
+        });
 
         mHeaderTopicRv.setLayoutManager(new GridLayoutManager(getActivity(), 4));//这里用线性宫格显示 类似于grid view
         mHeaderTopicRv.setAdapter(mTopicAdapter);

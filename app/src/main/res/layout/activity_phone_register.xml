@@ -78,7 +78,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <EditText
+    <com.dxs.stc.widget.EditTextWithAnimator
         android:id="@+id/et_phone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -133,7 +133,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <EditText
+    <com.dxs.stc.widget.EditTextWithAnimator
         android:id="@+id/et_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

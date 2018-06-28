@@ -20,7 +20,7 @@ import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.ToastUtils;
 import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.widget.CustomSortArrow;
-import com.dxs.stc.widget.TopMiddlePopup;
+import com.dxs.stc.dialog.TopMiddlePopup;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 import java.util.ArrayList;
@@ -103,7 +103,8 @@ public class MallListActivity extends CompatStatusBarActivity implements IBookVi
         iGetBookPresenter = new GetBookPresenterImpl(this);
         mAdapter.setOnItemClickListener(position -> {
             Loger.debug("点击的是第：" + position);
-            ToastUtils.showShortSafe("点击的是第：" + position);
+
+            startActivity(new Intent(MallListActivity.this, BannerActivity.class));
 
         });
 

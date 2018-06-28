@@ -7,6 +7,8 @@
     <string name="title_mine">我的</string>
     <string name="sales_confirmation">确认订单</string>
     <string name="address_manager">地址管理</string>
+    <string name="address_add">新增地址</string>
+    <string name="address_edit">编辑地址</string>
     <string name="commodity_details">商品详情</string>
     <string name="tips_badge_removed">红点已经移除</string>
     <string name="title_activity_login">登录</string>
@@ -91,6 +93,16 @@
     <string name="total_amount">合计：</string>
     <string name="del">删除</string>
     <string name="edit">编辑</string>
+    <string name="save">保存</string>
     <string name="default_address">默认地址</string>
     <string name="add_address">新增地址</string>
+    <string name="recipient">收件人</string>
+    <string name="recipient_hint">请填写收件人姓名</string>
+    <string name="contact_number">联系电话</string>
+    <string name="contact_number_hint">请填写联系电话</string>
+    <string name="region">所在地区</string>
+    <string name="region_hint">请选择</string>
+    <string name="details_address">详细地址</string>
+    <string name="details_address_hint">请输入详细地址信息，如街道、门牌号等</string>
+    <string name="set_default_left">设置为默认地址</string>
 </resources>
