@@ -38,9 +38,9 @@ public class ForgetPasswordActivity extends CompatStatusBarActivity {
     ConstraintLayout mRootView;
 
     @BindView(R.id.btn_send_sms)
-    TextView mBtnSendMsm;
-    @BindView(R.id.btn_next)
-    Button mBtnNext;
+    Button mBtnSendMsm;
+    @BindView(R.id.btn_complete)
+    Button mBtnComplete;
     @BindView(R.id.et_phone)
     EditText mEtPhone;
     @BindView(R.id.et_code)
@@ -82,7 +82,7 @@ public class ForgetPasswordActivity extends CompatStatusBarActivity {
     private void initCountdown() {
 
         // 重置验证码按钮
-        RxView.clicks(mBtnNext).subscribe(new Consumer<Object>() {
+        RxView.clicks(mBtnComplete).subscribe(new Consumer<Object>() {
             @Override
             public void accept(Object o) throws Exception {
                 if (mDisposable != null && !mDisposable.isDisposed()) {

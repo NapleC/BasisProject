@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.dxs.stc.widget.BounceZoomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -10,10 +12,83 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/beauty_large" />
+            android:layout_height="225dp"
+            android:background="@mipmap/home_banner1">
+
+
+            <com.dxs.stc.glideimageview.GlideImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="66dp"
+                android:contentDescription="@string/avatar"
+                app:riv_border_color="@color/mainColor"
+                app:riv_border_width="2dp"
+                app:riv_is_circle="true"
+                app:srcCompat="@mipmap/beauty_large" />
+
+
+            <com.dxs.stc.widget.ImageTextView
+                android:id="@+id/itv_collection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_avatar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp_10"
+                android:gravity="center_vertical"
+                android:text="@string/action_sign_in"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_16"
+                app:drawableHeight="16dp"
+                app:drawableWidth="16dp"
+                app:position="3" />
+
+            <TextView
+                android:id="@+id/tv_number_attention"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_14"
+                tools:text="@string/number_of_attention" />
+
+            <TextView
+                android:id="@+id/tv_number_collection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_number_attention"
+                android:layout_marginEnd="60dp"
+                android:layout_toStartOf="@+id/tv_number_attention"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_14"
+                tools:ignore="RelativeOverlap"
+                tools:text="@string/number_of_collection" />
+
+            <TextView
+                android:id="@+id/tv_number_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_number_attention"
+                android:layout_marginStart="60dp"
+                android:layout_toEndOf="@+id/tv_number_attention"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_14"
+                tools:text="@string/managed_quantity" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_test_login"
+            style="@style/button"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="@string/title_activity_login" />
     </LinearLayout>
 </com.dxs.stc.widget.BounceZoomScrollView>

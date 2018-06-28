@@ -160,7 +160,7 @@ public class MainActivity extends CompatStatusBarActivity {
                 break;
             case 3:
                 setStatusBarPlaceVisible(true);
-                setViewColorStatusBar(false, Color.WHITE);
+                setViewColorStatusBar(true, getResources().getColor(R.color.navColor));
                 mNewsItv.setSelected(isSel);
                 break;
             case 4:

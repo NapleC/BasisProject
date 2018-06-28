@@ -4,7 +4,7 @@
     android:id="@+id/rc_item"
     android:layout_width="match_parent"
     android:layout_height="132dp"
-    android:background="@drawable/selector_mall_list_bg"
+    android:background="?attr/selectableItemBackground"
     android:paddingEnd="7dp"
     android:paddingStart="7dp"
     android:paddingTop="@dimen/dp_14">

@@ -18,6 +18,7 @@ import com.dxs.stc.utils.Loger;
  * com.dxs.stc.widget.ImageTextView
  *
  * @version V1.0 TextView 上下左右的图片显示，可设置大小。
+ * // https://blog.csdn.net/vqqYuAn/article/details/44173737
  */
 public class ImageTextView extends AppCompatTextView {
 
@@ -77,7 +78,6 @@ public class ImageTextView extends AppCompatTextView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        // https://blog.csdn.net/vqqYuAn/article/details/44173737
         switch (mPosition) {
             case 1:
                 this.setCompoundDrawables(mDrawable, null, null, null);
@@ -97,11 +97,10 @@ public class ImageTextView extends AppCompatTextView {
     }
 
     /**
-     * 设置左侧图片并重绘
-     *
-     * @param drawable
+     * 设置图片并重绘
+     * @param drawable 新的图片
      */
-    public void setDrawableLeft(Drawable drawable) {
+    public void updateDrawable(Drawable drawable) {
         this.mDrawable = drawable;
         invalidate();
     }

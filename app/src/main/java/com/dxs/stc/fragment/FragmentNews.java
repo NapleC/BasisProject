@@ -1,5 +1,6 @@
 package com.dxs.stc.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,11 +8,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.dxs.stc.R;
+import com.dxs.stc.activities.TradingMessageActivity;
 import com.dxs.stc.base.LazyBaseFragment;
 import com.dxs.stc.utils.Loger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -47,22 +50,18 @@ public class FragmentNews extends LazyBaseFragment {
     protected void initData() {
         Loger.debug("Fragment initData");
         mTitleText.setText(getString(R.string.title_news));
-        mContentText.setText("FragmentNews initData");
     }
 
-    @Override
-    protected void onVisible() {
-        super.onVisible();
-        Loger.debug("Fragment onVisible");
-        mContentText.setText("FragmentNews onVisible");
-
-    }
-
-    @Override
-    protected void onInvisible() {
-        super.onInvisible();
-        Loger.debug("Fragment onInvisible");
-        mContentText.setText("FragmentNews onInvisible");
+    @OnClick({R.id.tv_trading_message, R.id.tv_notice_message})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_trading_message:
+                startActivity(new Intent(getActivity(), TradingMessageActivity.class));
+                break;
+            case R.id.tv_notice_message:
+                startActivity(new Intent(getActivity(), TradingMessageActivity.class));
+                break;
+        }
     }
 
     /**

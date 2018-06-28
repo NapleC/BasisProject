@@ -62,7 +62,9 @@
         </activity>
         <activity
             android:name=".activities.LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login">
+
+        </activity>
         <activity
             android:name=".activities.SearchActivity"
             android:label="@string/search" />
@@ -71,24 +73,40 @@
             android:label="@string/title_mall" />
         <activity
             android:name=".activities.ForgetPasswordActivity"
-            android:label="@string/forget_password" />
+            android:label="@string/forget_password">
+
+        </activity>
         <activity
             android:name=".activities.PhoneRegisterActivity"
-            android:label="@string/phone_register" />
+            android:label="@string/register">
+
+        </activity>
         <activity
             android:name=".activities.BannerActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:label="@string/commodity_details"></activity>
-        <activity android:name=".activities.TestActivity"></activity>
+            android:label="@string/commodity_details">
+
+        </activity>
+        <activity android:name=".activities.TestActivity">
+
+        </activity>
         <activity
             android:name=".activities.SalesConfirmationActivity"
-            android:label="@string/sales_confirmation"></activity>
+            android:label="@string/sales_confirmation">
+
+        </activity>
         <activity
             android:name=".activities.AddressManagerActivity"
             android:label="@string/address_manager">
+
         </activity>
-        <activity android:name=".activities.EditAddressActivity"
+        <activity
+            android:name=".activities.EditAddressActivity"
             android:label="@string/address_add">
+
+        </activity>
+        <activity android:name=".activities.TradingMessageActivity"
+            android:label="@string/trading_message">
         </activity>
     </application>
 

@@ -22,4 +22,10 @@
     <dimen name="sp_16">16sp</dimen>
     <dimen name="sp_18">18sp</dimen>
     <dimen name="sp_24">24sp</dimen>
+
+    <dimen name="header_divider_height">10dp</dimen>
+    <dimen name="header_height">24dp</dimen>
+    <dimen name="header_textsize">22sp</dimen>
+    <dimen name="title_height">44dp</dimen>
+
 </resources>

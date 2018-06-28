@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.dxs.stc.widget.RoundCornerRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rc_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp_10"
+    android:background="@drawable/selector_mall_list_bg"
+    app:frameRadius="8dp">
+
+    <TextView
+        android:id="@+id/tv_trading_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_63"
+        android:textSize="@dimen/sp_14"
+        tools:text="@string/trading_number" />
+
+    <View
+        android:id="@+id/v_trading"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_4"
+        android:layout_below="@+id/tv_trading_number"
+        android:background="@drawable/divider_line" />
+
+    <TextView
+        android:id="@+id/tv_name_left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v_trading"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_marginBottom="@dimen/dp_4"
+        android:textSize="@dimen/sp_12"
+        android:textColor="@color/color_66"
+        android:text="商品名称："/>
+
+    <TextView
+        android:id="@+id/tv_time_left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_name_left"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_marginBottom="@dimen/dp_4"
+        android:textSize="@dimen/sp_12"
+        android:textColor="@color/color_66"
+        android:text="交易时间："/>
+
+    <TextView
+        android:id="@+id/tv_stc_left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_time_left"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:textSize="@dimen/sp_12"
+        android:textColor="@color/color_66"
+        android:text="支付STC："/>
+
+    <TextView
+        android:id="@+id/tv_status_left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_stc_left"
+        android:textSize="@dimen/sp_12"
+        android:textColor="@color/color_66"
+        android:text="支付状态："/>
+
+</com.dxs.stc.widget.RoundCornerRelativeLayout>

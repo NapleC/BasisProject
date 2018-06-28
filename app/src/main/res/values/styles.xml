@@ -72,4 +72,14 @@
     <style name="MyCustomTabTextAppearance">
         <item name="android:textSize">14sp</item>
     </style>
+
+    <style name="button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/shape_main_color</item>
+        <item name="android:layout_marginEnd">48dp</item>
+        <item name="android:layout_marginStart">48dp</item>
+    </style>
 </resources>
