@@ -79,8 +79,10 @@ public class BannerAdapter extends PagerAdapter {
             return imageView;
         } else {
             JZVideoPlayerStandard jzVideoPlayerStandard = new JZVideoPlayerStandard(mContext);
-            jzVideoPlayerStandard.setUp(bannerModel.getBannerUrl(), JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL);
-            ImageLodeUtils.loadingImage(mContext,listBean.get(1).getBannerUrl(),jzVideoPlayerStandard.thumbImageView);
+            jzVideoPlayerStandard.setUp(bannerModel.getBannerUrl(),
+                    JZVideoPlayerStandard.SCREEN_WINDOW_LIST);
+            ImageLodeUtils.loadingImage(mContext,
+                    listBean.get(1).getBannerUrl(),jzVideoPlayerStandard.thumbImageView);
             JZVideoPlayer.setJzUserAction(null);
             container.addView(jzVideoPlayerStandard);
             return jzVideoPlayerStandard;

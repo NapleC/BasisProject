@@ -1,0 +1,120 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.NoticeDetailsActivity">
+
+    <Button
+        android:id="@+id/btn_follow_notice"
+        style="@style/button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:text="@string/follow_notice" />
+
+    <com.dxs.stc.widget.OneScrollView
+        android:id="@+id/sv_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <cn.jzvd.JZVideoPlayerStandard
+                android:id="@+id/notice_video"
+                android:layout_width="match_parent"
+                android:layout_height="210dp" />
+
+            <TextView
+                android:id="@+id/tv_prod_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/notice_video"
+                android:layout_marginBottom="@dimen/dp_6"
+                android:layout_marginEnd="@dimen/dp_14"
+                android:layout_marginStart="@dimen/dp_14"
+                android:layout_marginTop="@dimen/dp_10"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/color_66"
+                android:textSize="@dimen/sp_14"
+                tools:text="天然翡翠手镯" />
+
+            <TextView
+                android:id="@+id/tv_prod_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tv_prod_title"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_14"
+                android:layout_marginStart="@dimen/dp_14"
+                android:layout_marginTop="@dimen/dp_4"
+                android:textColor="@color/color_63"
+                android:textSize="@dimen/sp_12"
+                tools:text="开拍时间" />
+
+            <View
+                android:id="@+id/v_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_10"
+                android:layout_below="@+id/tv_prod_time"
+                android:background="@drawable/divider_line" />
+
+            <WebView
+                android:id="@+id/blog_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/v_bottom" />
+
+        </RelativeLayout>
+    </com.dxs.stc.widget.OneScrollView>
+
+    <LinearLayout
+        android:id="@+id/top_title_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="25dp">
+
+        <ImageView
+            android:id="@+id/iv_prod_title_left"
+            android:layout_width="44dp"
+            android:layout_height="@dimen/title_height"
+            android:contentDescription="@string/search"
+            android:paddingEnd="@dimen/dp_10"
+            android:paddingStart="@dimen/dp_10"
+            app:srcCompat="@drawable/ic_back" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/iv_prod_title_center"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:contentDescription="@string/banner_image"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            app:srcCompat="@mipmap/beauty_large" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/iv_prod_title_right"
+            android:layout_width="44dp"
+            android:layout_height="@dimen/title_height"
+            android:contentDescription="@string/title_news"
+            android:padding="@dimen/dp_8"
+            app:srcCompat="@drawable/ic_share" />
+    </LinearLayout>
+</RelativeLayout>

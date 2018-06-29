@@ -182,7 +182,7 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
     private void initHeaderView() {
 
         mTopBanner = mHeaderView.findViewById(R.id.mall_banner);
-        mHeaderProductsRv = mHeaderView.findViewById(R.id.rv_header_products_mall);
+        mHeaderProductsRv = mHeaderView.findViewById(R.id.rv_header_mall_products);
         mHeaderTopicRv = mHeaderView.findViewById(R.id.rv_header_mall_topic);
         mTopBanner.setImages(Arrays.asList(images)).setImageLoader(new GlideImageLoad()).start();
         mProductsAdapter = new MallHeaderProductsAdapter(R.layout.item_mall_header_products, mProductsData);
@@ -195,7 +195,7 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
         mHeaderProductsRv.setLayoutManager(new GridLayoutManager(getActivity(), 3));//这里用线性宫格显示 类似于grid view
         mHeaderProductsRv.setAdapter(mProductsAdapter);
 
-        mProductsAdapter.setOnItemChildClickListener((adapter, view, position) -> {
+        mProductsAdapter.setOnItemClickListener((adapter, view, position) -> {
             Loger.debug("mProductsAdapter 新品");
             startActivity(new Intent(getActivity(), BannerActivity.class));
         });

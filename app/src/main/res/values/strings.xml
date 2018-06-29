@@ -16,6 +16,7 @@
     <string name="user_profile">个人信息</string>
     <string name="set_username">设置用户名</string>
     <string name="activate_phone_number">激活手机号</string>
+    <string name="notice_details">预告详情</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">请输入登录账号</string>
@@ -131,4 +132,6 @@
     <string name="your_all_order">我的订单</string>
     <string name="activate_now">立即激活</string>
     <string name="activate_tips">为了您的账号安全，请先激活您的手机号</string>
+    <string name="follow_notice">关注预告</string>
+
 </resources>

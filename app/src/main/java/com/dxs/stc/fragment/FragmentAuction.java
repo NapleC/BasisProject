@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dxs.stc.R;
-import com.dxs.stc.activities.BannerActivity;
+import com.dxs.stc.activities.NoticeDetailsActivity;
 import com.dxs.stc.adpater.AuctionHeaderSiteAdapter;
 import com.dxs.stc.adpater.AuctionRecyclerViewAdapter;
 import com.dxs.stc.base.LazyBaseFragment;
@@ -21,9 +21,9 @@ import com.dxs.stc.mvp.presenter.impl.GetBookPresenterImpl;
 import com.dxs.stc.mvp.view.IBookView;
 import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.ToastUtils;
+import com.dxs.stc.utils.decoration.SpacesItemDecoration;
 import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.widget.GlideImageLoad;
-import com.dxs.stc.utils.decoration.SpacesItemDecoration;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.youth.banner.Banner;
 
@@ -110,18 +110,18 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
         refreshLayout.setEnableAutoLoadMore(false);
         refreshLayout.setEnableLoadMore(false);
 
-        // 当列表滑动到倒数第N个Item的时候(默认是1)回调onLoadMoreRequested方法
-        mAdapter.setPreLoadNumber(3);
-        mAdapter.setOnLoadMoreListener(() -> {
-            Loger.debug("onLoadMore the start:" + thePageIndex);
-            iGetBookPresenter.getBook(10 * thePageIndex, 10);
-        }, mRecyclerView);
+//        // 当列表滑动到倒数第N个Item的时候(默认是1)回调onLoadMoreRequested方法
+//        mAdapter.setPreLoadNumber(3);
+//        mAdapter.setOnLoadMoreListener(() -> {
+//            Loger.debug("onLoadMore the start:" + thePageIndex);
+//            iGetBookPresenter.getBook(10 * thePageIndex, 10);
+//        }, mRecyclerView);
 
 
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                startActivity(new Intent(getActivity(), BannerActivity.class));
+                startActivity(new Intent(getActivity(), NoticeDetailsActivity.class));
             }
         });
     }
@@ -162,7 +162,7 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
         mSiteAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                startActivity(new Intent(getActivity(), BannerActivity.class));
+                startActivity(new Intent(getActivity(), NoticeDetailsActivity.class));
             }
         });
     }

@@ -62,7 +62,7 @@
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_header_products_mall"
+        android:id="@+id/rv_header_mall_products"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/dp_14"
