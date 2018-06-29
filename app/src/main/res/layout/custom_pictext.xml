@@ -16,20 +16,23 @@
         app:heightWeight="1"
         app:widthWeight="1" />
 
-    <TextView
+    <com.dxs.stc.widget.ImageTextView
         android:id="@+id/custom_text_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/custom_pic_iv"
         android:background="@drawable/shape_notice_bottom"
         android:drawablePadding="@dimen/dp_4"
-        android:drawableStart="@mipmap/ic_in_auction"
         android:gravity="center_vertical"
         android:includeFontPadding="false"
         android:minHeight="@dimen/dp_20"
         android:paddingStart="@dimen/dp_10"
         android:textColor="@color/price_color"
         android:textSize="@dimen/sp_10"
+        app:drawable="@mipmap/ic_in_auction"
+        app:drawableHeight="10dp"
+        app:drawableWidth="8dp"
+        app:position="1"
         tools:ignore="RtlSymmetry" />
 
     <TextView
@@ -41,6 +44,6 @@
         android:ellipsize="end"
         android:gravity="center_vertical"
         android:maxLines="1"
-        android:textSize="@dimen/sp_12"
-        android:textColor="@color/color_63"/>
+        android:textColor="@color/color_63"
+        android:textSize="@dimen/sp_12" />
 </RelativeLayout>

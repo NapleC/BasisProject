@@ -24,8 +24,9 @@ public class TradingMessageActivity extends CompatStatusBarActivity {
 
     @BindView(R.id.tv_bar_text)
     TextView mTitleCenter;
-
+    @BindView(R.id.stickyheader_recyclerview)
     RecyclerView mRecyclerView;
+
     List<String> data;
     TestAdapter mAdapter;
 
@@ -55,11 +56,10 @@ public class TradingMessageActivity extends CompatStatusBarActivity {
 
     private void initView() {
         mTitleCenter.setText(getString(R.string.trading_message));
-        mRecyclerView = (RecyclerView) findViewById(R.id.stickyheader_recyclerview);
 
         initDatas();
 
-        mAdapter = new TestAdapter(R.layout.item_trading_message,data);
+        mAdapter = new TestAdapter(R.layout.item_trading_message, data);
         mRecyclerView.setAdapter(mAdapter);
         LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
         layoutmanager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -74,20 +74,22 @@ public class TradingMessageActivity extends CompatStatusBarActivity {
                  */
                 int groupId = position / 5;
                 int index = position % 5;
-                GroupInfo groupInfo = new GroupInfo(groupId,"2018-6-28"+groupId);
+                GroupInfo groupInfo = new GroupInfo(groupId, "2018-6-28" + groupId);
                 groupInfo.setGroupLength(5);
                 groupInfo.setPosition(index);
                 return groupInfo;
             }
         };
-        mRecyclerView.addItemDecoration(new StickySectionDecoration(this,callback));
+        mRecyclerView.addItemDecoration(new StickySectionDecoration(this, callback));
     }
 
-    /** 初始化测试数据 */
+    /**
+     * 初始化测试数据
+     */
     private void initDatas() {
         data = new ArrayList<>();
-        for (int i = 0; i < 56;i++) {
-            data.add(i+" test ");
+        for (int i = 0; i < 56; i++) {
+            data.add(i + " test ");
         }
     }
 }

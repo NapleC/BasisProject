@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.SetUsernameActivity">
+
+    <include layout="@layout/activity_title" />
+
+
+    <com.dxs.stc.widget.EditTextWithAnimator
+        android:id="@+id/et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="44dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:padding="@dimen/dp_14"
+        android:hint="@string/register_name_hint"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textColor="@color/color_63"
+        android:textColorHint="@color/color_69"
+        android:textSize="@dimen/sp_14" />
+
+</LinearLayout>

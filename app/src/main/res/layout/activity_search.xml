@@ -29,10 +29,10 @@
             android:layout_weight="1"
             android:background="@drawable/search_input_bg"
             android:hint="@string/home_search_tip"
-            android:singleLine="true"
-            android:imeOptions="actionSearch"
             android:imeActionLabel="@string/search"
+            android:imeOptions="actionSearch"
             android:minHeight="28dp"
+            android:singleLine="true"
             android:textSize="16sp" />
 
         <TextView
@@ -44,29 +44,6 @@
             android:textColor="@color/white"
             android:textSize="16sp" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_history_del"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dp_4"
-        android:layout_marginEnd="@dimen/dp_14"
-        android:layout_marginStart="@dimen/dp_14"
-        android:layout_marginTop="@dimen/dp_20"
-        android:drawableEnd="@drawable/ic_del"
-        android:text="@string/search_history"
-        android:textColor="@color/color_69"
-        android:textSize="16sp"
-        android:visibility="gone" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_search_history"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_8"
-        android:layout_marginStart="@dimen/dp_8"
-        android:layout_marginTop="@dimen/dp_10" />
 
     <TextView
         android:id="@+id/tv_history_wanna"
@@ -84,6 +61,33 @@
         android:id="@+id/rv_search_wanna"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:layout_marginStart="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_10" />
+
+    <com.dxs.stc.widget.ImageTextView
+        android:id="@+id/tv_history_del"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_4"
+        android:layout_marginEnd="@dimen/dp_14"
+        android:layout_marginStart="@dimen/dp_14"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="@string/search_history"
+        android:textColor="@color/color_69"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        app:drawable="@drawable/ic_del"
+        app:drawableHeight="18dp"
+        app:drawableWidth="18dp"
+        app:position="3" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_search_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
         android:layout_marginBottom="@dimen/dp_10"
         android:layout_marginEnd="@dimen/dp_8"
         android:layout_marginStart="@dimen/dp_8"

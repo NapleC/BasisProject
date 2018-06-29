@@ -23,12 +23,8 @@ import butterknife.OnClick;
 
 public class SalesConfirmationActivity extends CompatStatusBarActivity {
 
-    @BindView(R.id.iv_bar_left)
-    ImageView mTitleLeft;
     @BindView(R.id.tv_bar_text)
     TextView mTitleCenter;
-    @BindView(R.id.iv_bar_right)
-    ImageView mTitleRight;
 
     @BindView(R.id.rl_address)
     RelativeLayout mAddressArea;

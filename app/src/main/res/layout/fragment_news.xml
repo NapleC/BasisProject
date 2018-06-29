@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.dxs.stc.widget.CustomerDividerPaddingLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:divider="@drawable/divider_line"
+    android:showDividers="middle"
+    tools:context=".activities.SearchActivity">
 
     <TextView
         android:id="@+id/fragment_title_text"
@@ -16,42 +20,34 @@
         android:textColor="@color/white"
         android:textSize="@dimen/sp_18" />
 
-
-    <TextView
+    <com.dxs.stc.widget.VectorCompatTextView
         android:id="@+id/tv_trading_message"
         android:layout_width="match_parent"
         android:layout_height="76dp"
-        android:drawableEnd="@drawable/svg_home_more"
         android:drawablePadding="@dimen/dp_10"
-        android:drawableStart="@mipmap/ic_mall_bracelet"
         android:gravity="center_vertical"
         android:paddingEnd="@dimen/dp_14"
         android:paddingStart="@dimen/dp_14"
         android:text="@string/trading_message"
         android:textColor="@color/color_63"
-        android:textSize="@dimen/sp_16" />
+        android:textSize="@dimen/sp_16"
+        app:vectorLeftCompat="@mipmap/ic_mall_bracelet"
+        app:vectorRightCompat="@drawable/svg_home_more"/>
 
-    <View
-        android:id="@+id/v_message_divide"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginEnd="@dimen/dp_14"
-        android:layout_marginStart="@dimen/dp_14"
-        android:background="@drawable/divider_line" />
 
-    <TextView
+    <com.dxs.stc.widget.VectorCompatTextView
         android:id="@+id/tv_notice_message"
         android:layout_width="match_parent"
         android:layout_height="76dp"
-        android:drawableEnd="@drawable/svg_home_more"
         android:drawablePadding="@dimen/dp_10"
-        android:drawableStart="@mipmap/ic_mall_bracelet"
         android:gravity="center_vertical"
         android:paddingEnd="@dimen/dp_14"
         android:paddingStart="@dimen/dp_14"
         android:text="@string/notice_message"
         android:textColor="@color/color_63"
-        android:textSize="@dimen/sp_16" />
+        android:textSize="@dimen/sp_16"
+        app:vectorLeftCompat="@mipmap/ic_mall_bracelet"
+        app:vectorRightCompat="@drawable/svg_home_more" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -69,4 +65,4 @@
             android:textSize="36sp" />
     </FrameLayout>
 
-</LinearLayout>
+</com.dxs.stc.widget.CustomerDividerPaddingLinearLayout>

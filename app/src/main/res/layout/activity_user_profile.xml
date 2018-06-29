@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.dxs.stc.widget.CustomerDividerPaddingLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:divider="@drawable/divider_line"
+    android:showDividers="middle"
+    tools:context=".activities.UserProfileActivity">
+
+    <include layout="@layout/activity_title" />
+
+    <com.dxs.stc.widget.CustomerMenuItem
+        android:id="@+id/mi_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_mall_list_bg"
+        app:leftText="头像"
+        app:showMoreIcon="true"/>
+
+    <com.dxs.stc.widget.CustomerMenuItem
+        android:id="@+id/mi_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_mall_list_bg"
+        app:leftText="昵称"
+        app:rightText="张三和李四"
+        app:showMoreIcon="true"/>
+
+    <com.dxs.stc.widget.CustomerMenuItem
+        android:id="@+id/mi_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_mall_list_bg"
+        app:leftText="手机号"
+        app:rightText="去绑定"
+        app:showMoreIcon="true"/>
+
+    <com.dxs.stc.widget.CustomerMenuItem
+        android:id="@+id/mi_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_mall_list_bg"
+        app:leftText="地址"
+        app:showMoreIcon="true"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_10" />
+
+    <com.dxs.stc.widget.CustomerMenuItem
+        android:id="@+id/mi_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_mall_list_bg"
+        app:leftText="微信"
+        app:leftIcon="@mipmap/ic_mall_bracelet"
+        app:rightText="已绑定"
+        app:showMoreIcon="false"/>
+
+    <com.dxs.stc.widget.CustomerMenuItem
+        android:id="@+id/mi_6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_mall_list_bg"
+        app:leftText="QQ"
+        app:leftIcon="@mipmap/ic_mall_bracelet"
+        app:rightText="去绑定"
+        app:rightTextColor="@color/mainColor"
+        app:showMoreIcon="false"/>
+
+    <com.dxs.stc.widget.CustomerMenuItem
+        android:id="@+id/mi_7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_mall_list_bg"
+        app:leftText="微博"
+        app:leftIcon="@mipmap/ic_mall_bracelet"
+        app:rightText="去绑定"
+        app:rightTextColor="@color/mainColor"
+        app:showMoreIcon="false"/>
+
+</com.dxs.stc.widget.CustomerDividerPaddingLinearLayout>

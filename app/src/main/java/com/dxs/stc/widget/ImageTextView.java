@@ -13,6 +13,8 @@ import com.dxs.stc.R;
 import com.dxs.stc.utils.DensityUtils;
 import com.dxs.stc.utils.Loger;
 
+import javax.annotation.Nullable;
+
 /**
  * created by hl at 2018/5/17
  * com.dxs.stc.widget.ImageTextView
@@ -100,7 +102,7 @@ public class ImageTextView extends AppCompatTextView {
      * 设置图片并重绘
      * @param drawable 新的图片
      */
-    public void updateDrawable(Drawable drawable) {
+    public void updateDrawable(@Nullable Drawable drawable) {
         this.mDrawable = drawable;
         invalidate();
     }

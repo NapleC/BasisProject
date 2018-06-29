@@ -29,14 +29,13 @@
         android:textSize="@dimen/sp_18"
         tools:text="@string/title_home" />
 
-    <ImageView
-        android:id="@+id/iv_bar_right"
+    <TextView
+        android:id="@+id/tv_bar_right"
         android:layout_width="44dp"
         android:layout_height="@dimen/title_height"
-        android:paddingEnd="14dp"
-        android:paddingStart="14dp"
+        android:gravity="center_vertical|start"
         android:visibility="invisible"
-        android:paddingTop="@dimen/dp_10"
-        android:paddingBottom="@dimen/dp_10"
-        android:contentDescription="@string/title_news" />
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16"
+        tools:text="@string/title_news" />
 </LinearLayout>

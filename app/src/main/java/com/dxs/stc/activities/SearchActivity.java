@@ -105,8 +105,8 @@ public class SearchActivity extends CompatStatusBarActivity implements TextView.
             mHistoryDelTv.setVisibility(View.VISIBLE);
             mHistoryListRv.setVisibility(View.VISIBLE);
         } else {
-            mHistoryDelTv.setVisibility(View.GONE);
-            mHistoryListRv.setVisibility(View.GONE);
+            mHistoryDelTv.setVisibility(View.INVISIBLE);
+            mHistoryListRv.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -150,8 +150,8 @@ public class SearchActivity extends CompatStatusBarActivity implements TextView.
                     Loger.debug("mHistoryTags:" + mHistoryTags.size());
                     mHistoryTags.clear();
                     mHistoryAdapter.setNewData(mHistoryTags);
-                    mHistoryDelTv.setVisibility(View.GONE);
-                    mHistoryListRv.setVisibility(View.GONE);
+                    mHistoryDelTv.setVisibility(View.INVISIBLE);
+                    mHistoryListRv.setVisibility(View.INVISIBLE);
                     SPUtil.remove(Constant.SEARCH_HISTORY);
                 }
             }

@@ -2,6 +2,7 @@ package com.dxs.stc.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,10 @@ import android.widget.TextView;
 
 import com.dxs.stc.R;
 import com.dxs.stc.activities.LoginActivity;
+import com.dxs.stc.activities.UserProfileActivity;
 import com.dxs.stc.base.LazyBaseFragment;
 import com.dxs.stc.utils.SpanUtil;
+import com.dxs.stc.widget.ImageTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,6 +28,9 @@ public class FragmentMine extends LazyBaseFragment {
 
     private View view;
     private Unbinder unbinder;
+
+    @BindView(R.id.itv_name)
+    ImageTextView mNameItv;
     @BindView(R.id.tv_number_attention)
     TextView mNumberOfAttentionTv;
     @BindView(R.id.tv_number_collection)
@@ -35,6 +41,8 @@ public class FragmentMine extends LazyBaseFragment {
     private int numberOfAttention = 0;
     private int numberOfCollection = 0;
     private int managedQuantity = 0;
+
+    private boolean isLogin = false;
 
 
     public static FragmentMine newInstance() {
@@ -72,11 +80,19 @@ public class FragmentMine extends LazyBaseFragment {
                 .showIn(mManagedQuantityTv);
     }
 
-    @OnClick({R.id.btn_test_login})
+    @OnClick({R.id.itv_name, R.id.ll_your_all_order})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.btn_test_login:
-                startActivity(new Intent(getActivity(), LoginActivity.class));
+            case R.id.itv_name:
+                startActivity(new Intent(getActivity(), UserProfileActivity.class));
+                break;
+            case R.id.ll_your_all_order:
+                if (isLogin) {
+                    mNameItv.updateDrawable(null);
+                } else {
+                    mNameItv.updateDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_edit_black_24dp));
+                }
+                isLogin = !isLogin;
                 break;
         }
     }

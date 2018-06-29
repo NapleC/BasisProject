@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="52dp"
+    android:orientation="horizontal"
+    android:padding="14dp">
+
+    <com.dxs.stc.widget.ImageTextView
+        android:id="@+id/menu_text_left"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="@dimen/dp_10"
+        android:gravity="start"
+        android:lines="1"
+        android:textColor="@color/color_63"
+        android:textSize="@dimen/sp_14"
+        app:drawableHeight="@dimen/dp_22"
+        app:drawableWidth="@dimen/dp_22"
+        app:position="1" />
+
+    <com.dxs.stc.glideimageview.GlideImageView
+        android:id="@+id/menu_image_right"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:contentDescription="@string/avatar"
+        android:visibility="invisible"
+        app:riv_is_circle="true" />
+
+    <com.dxs.stc.widget.ImageTextView
+        android:id="@+id/menu_text_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/dp_20"
+        android:lines="1"
+        android:textColor="@color/color_63"
+        android:textSize="@dimen/sp_14"
+        app:drawableHeight="@dimen/dp_22"
+        app:drawableWidth="@dimen/dp_22"
+        app:position="3" />
+</LinearLayout>

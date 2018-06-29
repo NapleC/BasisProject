@@ -1,80 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="AutoHeightImageView">
-        <attr name="widthWeight" format="integer"/>
-        <attr name="heightWeight" format="integer"/>
-        <attr name="cornerRadius" format="dimension"/>
+        <attr name="widthWeight" format="integer" />
+        <attr name="heightWeight" format="integer" />
+        <attr name="cornerRadius" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="ImageTextView">
-        <attr name="drawable" format="reference"/>
-        <attr name="drawableWidth" format="dimension"/>
-        <attr name="drawableHeight" format="dimension"/>
-        <attr name="position" format="integer"/>
+        <attr name="drawable" format="reference" />
+        <attr name="drawableWidth" format="dimension" />
+        <attr name="drawableHeight" format="dimension" />
+        <attr name="position" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="VectorCompatTextView">
+        <attr name="vectorLeftCompat" format="reference" />
+        <attr name="vectorRightCompat" format="reference" />
+        <attr name="vectorTopCompat" format="reference" />
+        <attr name="vectorBottomCompat" format="reference" />
+        <attr name="tintVectorInTextColor" format="boolean" />
+        <attr name="vectorCompatColor" format="color|reference" />
+        <attr name="vectorAdjustTextWidth" format="boolean" />
+        <attr name="vectorAdjustTextHeight" format="boolean" />
+        <attr name="vectorAdjustViewWidth" format="boolean" />
+        <attr name="vectorAdjustViewHeight" format="boolean" />
+        <attr name="vectorWidth" format="dimension|reference" />
+        <attr name="vectorHeight" format="dimension|reference" />
     </declare-styleable>
 
     <!-- CustomTextOnPic -->
     <declare-styleable name="CustomTextOnImg">
-        <attr name="pic_background" format="reference"/>
-        <attr name="pic_background_width" format="dimension"/>
-        <attr name="pic_background_height" format="dimension"/>
-        <attr name="pic_is_round" format="boolean"/>
-        <attr name="pic_text" format="string"/>
-        <attr name="pic_text_color" format="color"/>
-        <attr name="pic_text_size" format="dimension"/>
-        <attr name="pic_title" format="string"/>
-        <attr name="pic_title_color" format="color"/>
-        <attr name="pic_title_size" format="dimension"/>
+        <attr name="pic_background" format="reference" />
+        <attr name="pic_background_width" format="dimension" />
+        <attr name="pic_background_height" format="dimension" />
+        <attr name="pic_is_round" format="boolean" />
+        <attr name="pic_text" format="string" />
+        <attr name="pic_text_color" format="color" />
+        <attr name="pic_text_size" format="dimension" />
+        <attr name="pic_title" format="string" />
+        <attr name="pic_title_color" format="color" />
+        <attr name="pic_title_size" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="ShapeImageViewStyle">
-        <attr name="riv_border_color" format="color"/>
-        <attr name="riv_border_width" format="dimension"/>
-        <attr name="riv_corner_radius" format="dimension"/>
-        <attr name="riv_is_circle" format="boolean"/>
-        <attr name="riv_pressed_border_color" format="color"/>
-        <attr name="riv_pressed_border_width" format="dimension"/>
-        <attr name="riv_pressed_mask_color" format="color"/>
-        <attr name="riv_pressed_mode_enabled" format="boolean"/>
+        <attr name="riv_border_color" format="color" />
+        <attr name="riv_border_width" format="dimension" />
+        <attr name="riv_corner_radius" format="dimension" />
+        <attr name="riv_is_circle" format="boolean" />
+        <attr name="riv_pressed_border_color" format="color" />
+        <attr name="riv_pressed_border_width" format="dimension" />
+        <attr name="riv_pressed_mask_color" format="color" />
+        <attr name="riv_pressed_mode_enabled" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="CircleProgressView">
-        <attr name="cpv_progressNormalColor" format="color"/>
-        <attr name="cpv_progressReachColor" format="color"/>
-        <attr name="cpv_progressTextColor" format="color"/>
-        <attr name="cpv_progressTextSize" format="dimension"/>
-        <attr name="cpv_progressTextOffset" format="dimension"/>
-        <attr name="cpv_progressNormalSize" format="dimension"/>
-        <attr name="cpv_progressReachSize" format="dimension"/>
-        <attr name="cpv_radius" format="dimension"/>
-        <attr name="cpv_progressTextVisible" format="boolean"/>
-        <attr name="cpv_progressStartArc" format="integer"/>
-        <attr name="cpv_progressTextSkewX" format="dimension"/>
-        <attr name="cpv_progressTextPrefix" format="string"/>
-        <attr name="cpv_progressTextSuffix" format="string"/>
-        <attr name="cpv_innerBackgroundColor" format="color"/>
+        <attr name="cpv_progressNormalColor" format="color" />
+        <attr name="cpv_progressReachColor" format="color" />
+        <attr name="cpv_progressTextColor" format="color" />
+        <attr name="cpv_progressTextSize" format="dimension" />
+        <attr name="cpv_progressTextOffset" format="dimension" />
+        <attr name="cpv_progressNormalSize" format="dimension" />
+        <attr name="cpv_progressReachSize" format="dimension" />
+        <attr name="cpv_radius" format="dimension" />
+        <attr name="cpv_progressTextVisible" format="boolean" />
+        <attr name="cpv_progressStartArc" format="integer" />
+        <attr name="cpv_progressTextSkewX" format="dimension" />
+        <attr name="cpv_progressTextPrefix" format="string" />
+        <attr name="cpv_progressTextSuffix" format="string" />
+        <attr name="cpv_innerBackgroundColor" format="color" />
         <attr name="cpv_progressStyle" format="enum">
-            <enum name="Normal" value="0"/>
-            <enum name="FillInner" value="1"/>
-            <enum name="FillInnerArc" value="2"/>
+            <enum name="Normal" value="0" />
+            <enum name="FillInner" value="1" />
+            <enum name="FillInnerArc" value="2" />
         </attr>
-        <attr name="cpv_innerProgressColor" format="color"/>
-        <attr name="cpv_innerPadding" format="dimension"/>
-        <attr name="cpv_outerColor" format="color"/>
-        <attr name="cpv_outerSize" format="dimension"/>
-        <attr name="cpv_reachCapRound" format="boolean"/>
+        <attr name="cpv_innerProgressColor" format="color" />
+        <attr name="cpv_innerPadding" format="dimension" />
+        <attr name="cpv_outerColor" format="color" />
+        <attr name="cpv_outerSize" format="dimension" />
+        <attr name="cpv_reachCapRound" format="boolean" />
     </declare-styleable>
 
     <!-- CustomArrowSort 商品筛选按钮 -->
     <declare-styleable name="CustomArrowSort">
-        <attr name="sort_is_selected" format="boolean"/>
-        <attr name="sort_rise_visible" format="boolean"/>
-        <attr name="sort_drop_visible" format="boolean"/>
-        <attr name="sort_is_rise" format="boolean"/>
-        <attr name="sort_is_drop" format="boolean"/>
-        <attr name="sort_title" format="string"/>
-        <attr name="sort_title_color" format="color"/>
-        <attr name="sort_title_size" format="dimension"/>
+        <attr name="sort_is_selected" format="boolean" />
+        <attr name="sort_rise_visible" format="boolean" />
+        <attr name="sort_drop_visible" format="boolean" />
+        <attr name="sort_is_rise" format="boolean" />
+        <attr name="sort_is_drop" format="boolean" />
+        <attr name="sort_title" format="string" />
+        <attr name="sort_title_color" format="color" />
+        <attr name="sort_title_size" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="RoundCornerFrameLayout">
@@ -85,7 +100,7 @@
         <attr name="bottomRightRadius" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="UnderlinedTextView" >
+    <declare-styleable name="UnderlinedTextView">
         <attr name="underlineWidth" format="dimension" />
         <attr name="underlineColor" format="color" />
     </declare-styleable>
@@ -93,14 +108,23 @@
 
     <declare-styleable name="SlideDetailsLayout">
         <!-- float value for indicate the moment of switch panel-->
-        <attr name="percent" format="float"/>
+        <attr name="percent" format="float" />
         <!-- how long the animation keep-->
-        <attr name="duration" format="integer"/>
+        <attr name="duration" format="integer" />
         <!-- default panel to show after init-->
         <attr name="default_panel" format="enum">
-            <enum name="front" value="0"/>
-            <enum name="behind" value="1"/>
+            <enum name="front" value="0" />
+            <enum name="behind" value="1" />
         </attr>
+    </declare-styleable>
+
+    <declare-styleable name="MenuItemView">
+        <attr name="leftIcon" format="reference" />
+        <attr name="showRightImage" format="boolean" />
+        <attr name="showMoreIcon" format="boolean" />
+        <attr name="leftText" format="string" />
+        <attr name="rightText" format="string" />
+        <attr name="rightTextColor" format="color" />
     </declare-styleable>
 
 </resources>
