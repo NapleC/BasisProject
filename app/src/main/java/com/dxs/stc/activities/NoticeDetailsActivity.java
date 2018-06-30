@@ -1,25 +1,18 @@
 package com.dxs.stc.activities;
 
-import android.content.Intent;
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dxs.stc.R;
-import com.dxs.stc.adpater.BannerAdapter;
 import com.dxs.stc.base.CompatStatusBarActivity;
-import com.dxs.stc.bean.BannerModel;
 import com.dxs.stc.utils.AnimationUtil;
 import com.dxs.stc.utils.DensityUtils;
 import com.dxs.stc.utils.Loger;
@@ -27,9 +20,6 @@ import com.dxs.stc.utils.SpanUtil;
 import com.dxs.stc.utils.ToastUtils;
 import com.dxs.stc.utils.imageloder.ImageLodeUtils;
 import com.dxs.stc.widget.OneScrollView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/jewelry"
         android:scaleType="centerCrop"
-        app:cornerRadius="@dimen/dp_8"
         app:heightWeight="1"
         app:widthWeight="1" />
 

@@ -17,6 +17,9 @@
     <string name="set_username">设置用户名</string>
     <string name="activate_phone_number">激活手机号</string>
     <string name="notice_details">预告详情</string>
+    <string name="title_notice">预告</string>
+    <string name="auction_record">拍卖记录</string>
+    <string name="order_record">订单记录</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">请输入登录账号</string>
@@ -133,5 +136,16 @@
     <string name="activate_now">立即激活</string>
     <string name="activate_tips">为了您的账号安全，请先激活您的手机号</string>
     <string name="follow_notice">关注预告</string>
+    <string name="auction_start_time">开拍时间：</string>
+    <string name="auction_rules_title">竞拍玩法规则</string>
+    <string name="auction_rules_content">点击进入直播间，参与竞拍，根据给定的最低价出价，出价后，请根据提示操作。</string>
+    <string name="auction_notice_today">今日开拍预告</string>
+    <string name="auction_notice_last">最新发布预告</string>
+    <string name="participate">参与</string>
+    <string name="deal">成交</string>
+    <string name="product_order_record">商品订单</string>
+    <string name="auction_order_record">拍卖订单</string>
+    <string name="knot_price">结拍价：</string>
+    <string name="knot_beat_time">结拍时间：</string>
 
 </resources>

@@ -8,9 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dxs.stc.R;
+import com.dxs.stc.activities.NoticeActivity;
 import com.dxs.stc.activities.NoticeDetailsActivity;
 import com.dxs.stc.adpater.AuctionHeaderSiteAdapter;
 import com.dxs.stc.adpater.AuctionRecyclerViewAdapter;
@@ -57,6 +59,9 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
 
     private View mHeaderView;
     private Banner mTopBanner;
+    private RelativeLayout mHeaderNotice1;
+    private RelativeLayout mHeaderNotice2;
+    private RelativeLayout mHeaderNotice3;
     private RecyclerView mHeaderSiteRv;
     List<Movie.SubjectsBean> mSiteData;
     private int thePageIndex = 0;
@@ -96,11 +101,6 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
         iGetBookPresenter = new GetBookPresenterImpl(this);
         refreshLayout.autoRefresh();
 
-        mAdapter.setOnItemClickListener((adapter, view, position) -> {
-            Loger.debug("adapter onItemClick");
-            ToastUtils.showShortSafe("点击的是第：" + position);
-        });
-
         refreshLayout.setOnRefreshListener(refreshlayout -> {
             thePageIndex = 0;
             Loger.debug("onRefresh the start:" + thePageIndex);
@@ -121,6 +121,7 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Loger.debug("adapter onItemClick");
                 startActivity(new Intent(getActivity(), NoticeDetailsActivity.class));
             }
         });
@@ -151,6 +152,11 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
         mSiteData = new ArrayList<>();
         mTopBanner = mHeaderView.findViewById(R.id.auction_banner);
         mHeaderSiteRv = mHeaderView.findViewById(R.id.rv_header_auction_site);
+        mHeaderNotice1 = mHeaderView.findViewById(R.id.rl_notice1);
+        mHeaderNotice2 = mHeaderView.findViewById(R.id.rl_notice2);
+        mHeaderNotice3 = mHeaderView.findViewById(R.id.rl_notice3);
+
+
         mTopBanner.setImages(Arrays.asList(images)).setImageLoader(new GlideImageLoad()).start();
         mSiteAdapter = new AuctionHeaderSiteAdapter(R.layout.item_auction_site, mSiteData);
 
@@ -159,11 +165,13 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
         mHeaderSiteRv.setLayoutManager(ms); // 给 RecyclerView 添加设置好的布局样式
         mHeaderSiteRv.setAdapter(mSiteAdapter);
 
-        mSiteAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                startActivity(new Intent(getActivity(), NoticeDetailsActivity.class));
-            }
+        mSiteAdapter.setOnItemClickListener((adapter, view, position) -> {
+            Loger.debug("头部的预告列表");
+            startActivity(new Intent(getActivity(), NoticeDetailsActivity.class));
+        });
+        mHeaderNotice1.setOnClickListener(v -> {
+            Loger.debug("最新预告");
+            startActivity(new Intent(getActivity(), NoticeActivity.class));
         });
     }
 

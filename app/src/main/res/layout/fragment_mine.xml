@@ -220,6 +220,7 @@
                 app:vectorWidth="@dimen/dp_16" />
 
             <com.dxs.stc.widget.VectorCompatTextView
+                android:id="@+id/tv_auction_record"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:drawablePadding="@dimen/dp_10"

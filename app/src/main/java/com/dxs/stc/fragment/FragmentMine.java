@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.dxs.stc.R;
-import com.dxs.stc.activities.LoginActivity;
+import com.dxs.stc.activities.AuctionRecordActivity;
+import com.dxs.stc.activities.OrderRecordActivity;
 import com.dxs.stc.activities.UserProfileActivity;
 import com.dxs.stc.base.LazyBaseFragment;
 import com.dxs.stc.utils.SpanUtil;
@@ -80,19 +81,25 @@ public class FragmentMine extends LazyBaseFragment {
                 .showIn(mManagedQuantityTv);
     }
 
-    @OnClick({R.id.itv_name, R.id.ll_your_all_order})
+    @OnClick({R.id.iv_avatar, R.id.itv_name, R.id.ll_your_all_order, R.id.tv_auction_record})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.itv_name:
-                startActivity(new Intent(getActivity(), UserProfileActivity.class));
-                break;
-            case R.id.ll_your_all_order:
+            case R.id.iv_avatar:
                 if (isLogin) {
                     mNameItv.updateDrawable(null);
                 } else {
                     mNameItv.updateDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_edit_black_24dp));
                 }
                 isLogin = !isLogin;
+                break;
+            case R.id.itv_name:
+                startActivity(new Intent(getActivity(), UserProfileActivity.class));
+                break;
+            case R.id.ll_your_all_order:
+                startActivity(new Intent(getActivity(), OrderRecordActivity.class));
+                break;
+            case R.id.tv_auction_record:
+                startActivity(new Intent(getActivity(), AuctionRecordActivity.class));
                 break;
         }
     }

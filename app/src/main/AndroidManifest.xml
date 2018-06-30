@@ -103,6 +103,17 @@
         <activity
             android:name=".activities.NoticeDetailsActivity"
             android:label="@string/notice_details" />
+        <activity
+            android:name=".activities.NoticeActivity"
+            android:label="@string/title_notice" />
+        <activity
+            android:name=".activities.AuctionRecordActivity"
+            android:label="@string/auction_record">
+        </activity>
+        <activity android:name=".activities.OrderRecordActivity"
+            android:label="@string/order_record">
+
+        </activity>
     </application>
 
 </manifest>

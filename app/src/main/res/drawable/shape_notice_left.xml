@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/transparent50" />
+
+    <padding
+        android:bottom="2dp"
+        android:left="10dp"
+        android:right="10dp"
+        android:top="2dp" />
+
+    <!-- android:radius 圆角的半径 -->
+    <corners
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="6dp"
+        android:radius="2dp"
+        android:topLeftRadius="6dp"
+        android:topRightRadius="0dp" />
+</shape>

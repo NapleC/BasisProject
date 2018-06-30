@@ -115,14 +115,8 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
         iGetBookPresenter = new GetBookPresenterImpl(this);
         refreshLayout.autoRefresh();
 
-        mAdapter.setOnItemClickListener((adapter, view, position) -> {
-            Loger.debug("adapter onItemClick");
-            ToastUtils.showShortSafe("点击的是第：" + position);
-        });
-
         changeTopSearchStyle();
         initHeaderView();
-
 
         refreshLayout.setOnRefreshListener(refreshlayout -> {
             thePageIndex = 0;

@@ -1,22 +1,19 @@
 package com.dxs.stc.activities;
 
 import android.content.Intent;
-import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dxs.stc.R;
 import com.dxs.stc.adpater.AddressManagerAdapter;
 import com.dxs.stc.base.CompatStatusBarActivity;
 import com.dxs.stc.bean.AddressBean;
-import com.dxs.stc.utils.DensityUtils;
 import com.dxs.stc.utils.Loger;
-import com.dxs.stc.utils.decoration.LinearDivider;
+import com.dxs.stc.utils.decoration.HorizontalDividerItemDecoration;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 import java.util.ArrayList;
@@ -40,7 +37,6 @@ public class AddressManagerActivity extends CompatStatusBarActivity {
     private AddressManagerAdapter mAdapter;
     private List<AddressBean> mData;
     private LinearLayoutManager linearLayoutManager;
-    private int dividerHeight;
     private int isCheckPosition = -1;
 
     @Override
@@ -70,10 +66,11 @@ public class AddressManagerActivity extends CompatStatusBarActivity {
 
         linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(linearLayoutManager);
-
-        dividerHeight = DensityUtils.dip2px(this, 10);
-        mRecyclerView.addItemDecoration(new LinearDivider(this,
-                LinearLayoutManager.VERTICAL, dividerHeight));
+        mRecyclerView.addItemDecoration(
+                new HorizontalDividerItemDecoration.Builder(this)
+                        .color(ContextCompat.getColor(this, R.color.transparent))
+                        .sizeResId(R.dimen.dp_10)
+                        .build());
 
 //        refreshLayout.autoRefresh();
 //

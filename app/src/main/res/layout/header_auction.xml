@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -20,8 +21,10 @@
         android:padding="@dimen/dp_10">
 
         <RelativeLayout
+            android:id="@+id/rl_notice1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
             android:layout_weight="2"
             android:paddingStart="@dimen/dp_6">
 
@@ -68,11 +71,14 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/rl_notice2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
                 android:paddingEnd="@dimen/dp_4"
-                android:paddingStart="@dimen/dp_16">
+                android:paddingStart="@dimen/dp_16"
+                tools:ignore="NestedWeights">
 
                 <TextView
                     android:id="@+id/tv_topic1_top_title"
@@ -111,9 +117,11 @@
                 android:background="@drawable/divider_line" />
 
             <RelativeLayout
+                android:id="@+id/rl_notice3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
                 android:paddingEnd="@dimen/dp_4"
                 android:paddingStart="@dimen/dp_16">
 

@@ -46,11 +46,14 @@ public class UserProfileActivity extends CompatStatusBarActivity {
         setStatus(true, true, ContextCompat.getColor(this, R.color.navColor));
     }
 
-    @OnClick({R.id.iv_bar_left, R.id.mi_2, R.id.mi_3})
+    @OnClick({R.id.iv_bar_left, R.id.mi_1, R.id.mi_2, R.id.mi_3, R.id.mi_4, R.id.mi_5,
+            R.id.mi_6, R.id.mi_7})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_bar_left:
                 onBackPressed();
+                break;
+            case R.id.mi_1:
                 break;
             case R.id.mi_2:
                 startActivity(new Intent(UserProfileActivity.this, SetUsernameActivity.class));
@@ -59,6 +62,15 @@ public class UserProfileActivity extends CompatStatusBarActivity {
                 startActivity(new Intent(UserProfileActivity.this, ActivatePhoneActivity.class));
                 menuItem3.setMenuRightText("130****8888");
                 menuItem3.showRightIcon(false);
+                break;
+            case R.id.mi_4:
+                startActivity(new Intent(UserProfileActivity.this, AddressManagerActivity.class));
+                break;
+            case R.id.mi_5:
+                break;
+            case R.id.mi_6:
+                break;
+            case R.id.mi_7:
                 break;
         }
     }

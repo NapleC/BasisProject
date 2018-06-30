@@ -133,11 +133,6 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
 
         refreshLayout.autoRefresh();
 
-        mAdapter.setOnItemClickListener((adapter, view, position) -> {
-            Loger.debug("adapter onItemClick");
-            ToastUtils.showShortSafe("点击的是第：" + position);
-        });
-
         refreshLayout.setOnRefreshListener(refreshlayout -> {
             thePageIndex = 0;
             Loger.debug("onRefresh the start:" + thePageIndex);
@@ -161,6 +156,7 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Loger.debug("adapter onItemClick");
                 startActivity(new Intent(getActivity(), BannerActivity.class));
             }
         });
