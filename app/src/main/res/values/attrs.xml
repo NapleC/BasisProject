@@ -148,15 +148,12 @@
             <enum name="fixed" value="0x00000001" />
         </attr>
         <attr name="xTabGravity" format="integer"/>
-
         <attr name="xTabTextSize" format="dimension"/>
         <attr name="xTabTextBold" format="boolean"/>
         <attr name="xTabSelectedTextSize" format="dimension"/>
         <attr name="xTabTextSelectedBold" format="boolean"/>
         <attr name="xTabDisplayNum" format="integer"/>
         <attr name="xTabTextAllCaps" format="boolean"/>
-
-
         <attr name="xTabDividerHeight" format="dimension"/>
         <attr name="xTabDividerWidth" format="dimension"/>
         <attr name="xTabDividerWidthWidthText" format="boolean"/>

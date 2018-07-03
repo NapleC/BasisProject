@@ -20,6 +20,7 @@
     <string name="title_notice">预告</string>
     <string name="auction_record">拍卖记录</string>
     <string name="order_record">订单记录</string>
+    <string name="order_details">订单详情</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">请输入登录账号</string>
@@ -147,5 +148,17 @@
     <string name="auction_order_record">拍卖订单</string>
     <string name="knot_price">结拍价：</string>
     <string name="knot_beat_time">结拍时间：</string>
+    <string name="order_all">全部</string>
+    <string name="pending_payment">待付款</string>
+    <string name="waiting_to_be_shipped">待发货</string>
+    <string name="waiting_for_receipt">待收货</string>
+    <string name="had_been_delivered">已完成</string>
+    <string name="look_at_more_orders">查看更多</string>
+    <string name="waiting_for_comments">待评价</string>
+    <string name="customer_service">售后</string>
+    <string name="wallet">钱包</string>
+    <string name="loan">借款</string>
+    <string name="customer_service_and_help">客服与帮助</string>
+    <string name="setup_center">设置中心</string>
 
 </resources>

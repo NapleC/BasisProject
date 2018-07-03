@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -53,12 +52,11 @@ public class SalesConfirmationActivity extends CompatStatusBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setBackgroundDrawableResource(android.R.color.white);
         setContentView(R.layout.activity_sales_confirmation);
+        getWindow().setBackgroundDrawableResource(android.R.color.white);
         ButterKnife.bind(this);
         setStatus(true, true,
                 ContextCompat.getColor(SalesConfirmationActivity.this, R.color.navColor));
-
 
 
     }
@@ -66,6 +64,10 @@ public class SalesConfirmationActivity extends CompatStatusBarActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        initView();
+    }
+
+    private void initView() {
         mTitleCenter.setText(getString(R.string.sales_confirmation));
         mDistributionWay.setText("顺丰");
         mProdTitle.setText("天然翡翠手镯女玉镯子缅甸玉手镯女款冰糯种飘花玉石");
@@ -118,8 +120,9 @@ public class SalesConfirmationActivity extends CompatStatusBarActivity {
     private void setChangeText() {
 
         mTotalAmount = prodNum * mUnitPrice;
-        mProdNumTv.setText(String.format("x%d", 1));
-        mNumberTv.setText(String.format("%d", 1));
+        mProdNumTv.setText(String.format("x%d", prodNum));
+        mNumberTv.setText(String.format("%d", prodNum));
+
 
         SpanUtil.create()
                 .addSection(SalesConfirmationActivity.this.getString(R.string.total_amount))

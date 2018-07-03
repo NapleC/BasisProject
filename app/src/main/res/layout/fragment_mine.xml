@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="none"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="@dimen/dp_18"
                 android:gravity="center"
-                android:text="查看更多"
+                android:text="@string/look_at_more_orders"
                 android:textColor="@color/color_69"
                 android:textSize="@dimen/sp_12"
                 app:vectorHeight="@dimen/dp_20"
@@ -131,11 +131,12 @@
             android:padding="@dimen/dp_14">
 
             <com.dxs.stc.widget.VectorCompatTextView
+                android:id="@+id/order_pending_payment"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="待付款"
+                android:text="@string/pending_payment"
                 android:textColor="@color/color_63"
                 android:textSize="@dimen/sp_12"
                 app:vectorHeight="@dimen/dp_22"
@@ -143,11 +144,12 @@
                 app:vectorWidth="@dimen/dp_22" />
 
             <com.dxs.stc.widget.VectorCompatTextView
+                android:id="@+id/order_waiting_shipped"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="待发货"
+                android:text="@string/waiting_to_be_shipped"
                 android:textColor="@color/color_63"
                 android:textSize="@dimen/sp_12"
                 app:vectorHeight="@dimen/dp_22"
@@ -155,11 +157,12 @@
                 app:vectorWidth="@dimen/dp_22" />
 
             <com.dxs.stc.widget.VectorCompatTextView
+                android:id="@+id/order_waiting_receipt"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="待收货"
+                android:text="@string/waiting_for_receipt"
                 android:textColor="@color/color_63"
                 android:textSize="@dimen/sp_12"
                 app:vectorHeight="@dimen/dp_22"
@@ -167,11 +170,12 @@
                 app:vectorWidth="@dimen/dp_22" />
 
             <com.dxs.stc.widget.VectorCompatTextView
+                android:id="@+id/order_waiting_comments"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="待评价"
+                android:text="@string/waiting_for_comments"
                 android:textColor="@color/color_63"
                 android:textSize="@dimen/sp_12"
                 app:vectorHeight="@dimen/dp_22"
@@ -179,11 +183,12 @@
                 app:vectorWidth="@dimen/dp_22" />
 
             <com.dxs.stc.widget.VectorCompatTextView
+                android:id="@+id/order_customer_service"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="售后"
+                android:text="@string/customer_service"
                 android:textColor="@color/color_63"
                 android:textSize="@dimen/sp_12"
                 app:vectorHeight="@dimen/dp_22"
@@ -205,13 +210,14 @@
             android:showDividers="middle">
 
             <com.dxs.stc.widget.VectorCompatTextView
+                android:id="@+id/vector_wallet"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:drawablePadding="@dimen/dp_10"
                 android:gravity="center_vertical"
                 android:paddingEnd="@dimen/dp_14"
                 android:paddingStart="@dimen/dp_14"
-                android:text="钱包"
+                android:text="@string/wallet"
                 android:textColor="@color/color_63"
                 android:textSize="@dimen/sp_14"
                 app:vectorHeight="@dimen/dp_20"
@@ -227,7 +233,7 @@
                 android:gravity="center_vertical"
                 android:paddingEnd="@dimen/dp_14"
                 android:paddingStart="@dimen/dp_14"
-                android:text="拍卖"
+                android:text="@string/title_auction"
                 android:textColor="@color/color_63"
                 android:textSize="@dimen/sp_14"
                 app:vectorHeight="@dimen/dp_20"
@@ -236,13 +242,14 @@
                 app:vectorWidth="@dimen/dp_16" />
 
             <com.dxs.stc.widget.VectorCompatTextView
+                android:id="@+id/vector_loan"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:drawablePadding="@dimen/dp_10"
                 android:gravity="center_vertical"
                 android:paddingEnd="@dimen/dp_14"
                 android:paddingStart="@dimen/dp_14"
-                android:text="借款"
+                android:text="@string/loan"
                 android:textColor="@color/color_63"
                 android:textSize="@dimen/sp_14"
                 app:vectorHeight="@dimen/dp_20"
@@ -251,13 +258,14 @@
                 app:vectorWidth="@dimen/dp_16" />
 
             <com.dxs.stc.widget.VectorCompatTextView
+                android:id="@+id/vector_customer"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:drawablePadding="@dimen/dp_10"
                 android:gravity="center_vertical"
                 android:paddingEnd="@dimen/dp_14"
                 android:paddingStart="@dimen/dp_14"
-                android:text="客服与帮助"
+                android:text="@string/customer_service_and_help"
                 android:textColor="@color/color_63"
                 android:textSize="@dimen/sp_14"
                 app:vectorHeight="@dimen/dp_20"
@@ -266,13 +274,14 @@
                 app:vectorWidth="@dimen/dp_16" />
 
             <com.dxs.stc.widget.VectorCompatTextView
+                android:id="@+id/vector_setup_center"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:drawablePadding="@dimen/dp_10"
                 android:gravity="center_vertical"
                 android:paddingEnd="@dimen/dp_14"
                 android:paddingStart="@dimen/dp_14"
-                android:text="设置中心"
+                android:text="@string/setup_center"
                 android:textColor="@color/color_63"
                 android:textSize="@dimen/sp_14"
                 app:vectorHeight="@dimen/dp_20"

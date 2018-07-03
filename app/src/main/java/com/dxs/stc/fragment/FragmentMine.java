@@ -85,12 +85,12 @@ public class FragmentMine extends LazyBaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_avatar:
-                if (isLogin) {
-                    mNameItv.updateDrawable(null);
-                } else {
-                    mNameItv.updateDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_edit_black_24dp));
-                }
                 isLogin = !isLogin;
+                if (isLogin) {
+                    mNameItv.updateDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_edit_black_24dp));
+                } else {
+                    mNameItv.updateDrawable(null);
+                }
                 break;
             case R.id.itv_name:
                 startActivity(new Intent(getActivity(), UserProfileActivity.class));

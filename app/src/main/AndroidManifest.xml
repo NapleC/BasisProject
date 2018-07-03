@@ -53,6 +53,7 @@
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -108,11 +109,13 @@
             android:label="@string/title_notice" />
         <activity
             android:name=".activities.AuctionRecordActivity"
-            android:label="@string/auction_record">
-        </activity>
-        <activity android:name=".activities.OrderRecordActivity"
-            android:label="@string/order_record">
-
+            android:label="@string/auction_record"/>
+        <activity
+            android:name=".activities.OrderRecordActivity"
+            android:label="@string/order_record"/>
+        <activity
+            android:name=".activities.OrderDetailsActivity"
+            android:label="@string/order_details">
         </activity>
     </application>
 

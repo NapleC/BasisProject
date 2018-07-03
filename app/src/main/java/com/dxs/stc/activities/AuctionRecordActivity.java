@@ -1,5 +1,6 @@
 package com.dxs.stc.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -104,6 +105,11 @@ public class AuctionRecordActivity extends CompatStatusBarActivity implements IB
             Loger.debug("onLoadMore the start:" + thePageIndex);
             iGetBookPresenter.getBook(10 * thePageIndex, 10);
         }, mRecyclerView);
+
+        mAdapter.setOnItemClickListener((adapter, view, position) -> {
+            Loger.debug("点击了拍卖订单项");
+            startActivity(new Intent(AuctionRecordActivity.this, OrderDetailsActivity.class));
+        });
     }
 
 
