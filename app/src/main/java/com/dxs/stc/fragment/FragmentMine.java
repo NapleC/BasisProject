@@ -11,7 +11,9 @@ import android.widget.TextView;
 import com.dxs.stc.R;
 import com.dxs.stc.activities.AuctionRecordActivity;
 import com.dxs.stc.activities.OrderRecordActivity;
+import com.dxs.stc.activities.SettingCenterActivity;
 import com.dxs.stc.activities.UserProfileActivity;
+import com.dxs.stc.base.Constant;
 import com.dxs.stc.base.LazyBaseFragment;
 import com.dxs.stc.utils.SpanUtil;
 import com.dxs.stc.widget.ImageTextView;
@@ -81,7 +83,9 @@ public class FragmentMine extends LazyBaseFragment {
                 .showIn(mManagedQuantityTv);
     }
 
-    @OnClick({R.id.iv_avatar, R.id.itv_name, R.id.ll_your_all_order, R.id.tv_auction_record})
+    @OnClick({R.id.iv_avatar, R.id.itv_name, R.id.tv_auction_record, R.id.vector_setup_center,
+            R.id.ll_your_all_order, R.id.order_pending_payment, R.id.order_waiting_shipped,
+            R.id.order_waiting_receipt, R.id.order_been_delivered})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_avatar:
@@ -95,13 +99,35 @@ public class FragmentMine extends LazyBaseFragment {
             case R.id.itv_name:
                 startActivity(new Intent(getActivity(), UserProfileActivity.class));
                 break;
-            case R.id.ll_your_all_order:
-                startActivity(new Intent(getActivity(), OrderRecordActivity.class));
-                break;
             case R.id.tv_auction_record:
                 startActivity(new Intent(getActivity(), AuctionRecordActivity.class));
                 break;
+            case R.id.vector_setup_center:
+                startActivity(new Intent(getActivity(), SettingCenterActivity.class));
+                break;
+            case R.id.ll_your_all_order:
+                jumpOrder(0);
+                break;
+            case R.id.order_pending_payment:
+                jumpOrder(1);
+                break;
+            case R.id.order_waiting_shipped:
+                jumpOrder(2);
+                break;
+            case R.id.order_waiting_receipt:
+                jumpOrder(3);
+                break;
+            case R.id.order_been_delivered:
+                jumpOrder(4);
+                break;
         }
+    }
+
+    private void jumpOrder(int orderStatus) {
+        Intent orderIntent = new Intent(getActivity(), OrderRecordActivity.class);
+        orderIntent.putExtra(Constant.ORDER_TYPE, Constant.ORDER_MALL);
+        orderIntent.putExtra(Constant.ORDER_STATUS, orderStatus);
+        startActivity(orderIntent);
     }
 
     /**

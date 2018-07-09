@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.dxs.stc.R;
 import com.dxs.stc.adpater.CommodityOrderRecordAdapter;
 import com.dxs.stc.base.CompatStatusBarActivity;
+import com.dxs.stc.base.Constant;
 import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.mvp.presenter.IGetBookPresenter;
 import com.dxs.stc.mvp.presenter.impl.GetBookPresenterImpl;
@@ -51,7 +52,8 @@ public class OrderRecordActivity extends CompatStatusBarActivity implements IBoo
     private LinearLayoutManager linearLayoutManager;
 
     private boolean isProductOrder = true;
-
+    private String orderType;
+    private int orderStatus = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +62,16 @@ public class OrderRecordActivity extends CompatStatusBarActivity implements IBoo
         getWindow().setBackgroundDrawableResource(R.color.white);
         ButterKnife.bind(this);
         setStatus(true, true, ContextCompat.getColor(this, R.color.navColor));
-
+        getIntentData();
         initView();
+    }
+
+    private void getIntentData() {
+
+        Intent intent = getIntent();
+        orderType = intent.getStringExtra(Constant.ORDER_TYPE);
+        orderStatus = intent.getIntExtra(Constant.ORDER_STATUS, 0);
+        Loger.debug("orderType:" + orderType + " == orderStatus:" + orderStatus);
     }
 
     @OnClick({R.id.iv_bar_left, R.id.tv_bar_left, R.id.tv_bar_right})
@@ -144,6 +154,49 @@ public class OrderRecordActivity extends CompatStatusBarActivity implements IBoo
             Loger.debug("点击了订单项");
             startActivity(new Intent(OrderRecordActivity.this, OrderDetailsActivity.class));
         });
+
+        mTabLayout.getTabAt(orderStatus).select();
+        mTabLayout.addOnTabSelectedListener(new XTabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(XTabLayout.Tab tab) {
+                //tab被选的时候回调
+                // 新数据请求
+                Loger.debug("tab onTabSelected:" + tab.getPosition());
+                orderStatus = tab.getPosition();
+                setWhichStatus();
+            }
+
+            @Override
+            public void onTabUnselected(XTabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(XTabLayout.Tab tab) {
+
+            }
+        });
+    }
+
+    private void setWhichStatus() {
+        Loger.debug("setWhichStatus orderStatus: " + orderStatus);
+        switch (orderStatus) {
+            case 0:
+                // 全部订单
+                break;
+            case 1:
+                // 待付款订单
+                break;
+            case 2:
+                // 待发货订单
+                break;
+            case 3:
+                // 待收货订单
+                break;
+            case 4:
+                // 已完成订单
+                break;
+        }
     }
 
 

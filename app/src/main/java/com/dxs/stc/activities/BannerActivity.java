@@ -126,9 +126,9 @@ public class BannerActivity extends CompatStatusBarActivity {
         mProdTitle.setText("翡翠玉石珠宝~");
         mProdRMB.setText(String.format(getResources().getString(R.string.price_rmb), 1000));
         SpanUtil.create()
-                .addSection(BannerActivity.this.getString(R.string.the_price_name))
                 .addSection(" 1300")
                 .setAbsSize("1300", 18)
+                .addSection(BannerActivity.this.getString(R.string.the_price_name))
                 .showIn(mProdSTC);
 
         SpanUtil.create()
@@ -270,7 +270,7 @@ public class BannerActivity extends CompatStatusBarActivity {
     }
 
     @OnClick({R.id.iv_prod_title_left, R.id.iv_prod_title_right, R.id.tv_prod_video,
-            R.id.tv_prod_image,R.id.tv_buy})
+            R.id.tv_prod_image, R.id.tv_buy})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_prod_title_left:
@@ -289,6 +289,7 @@ public class BannerActivity extends CompatStatusBarActivity {
                 break;
             case R.id.tv_buy:
                 startActivity(new Intent(BannerActivity.this, SalesConfirmationActivity.class));
+                Loger.debug("BannerActivity: "+BannerActivity.this);
                 break;
         }
     }

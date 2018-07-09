@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dxs.stc.R;
+import com.dxs.stc.base.Constant;
 import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.utils.SpanUtil;
 import com.dxs.stc.utils.imageloder.ImageLodeUtils;
@@ -37,7 +38,7 @@ public class MallListAdapter extends BaseQuickAdapter<Movie.SubjectsBean, BaseVi
                 .addSection(" " + mContext.getString(R.string.the_price_name))
                 .showIn(mPriceTv);
 
-        ImageLodeUtils.loadingRoundImage(mContext, item.getImages().getSmall(),
+        ImageLodeUtils.loadingRoundImage(mContext, Constant.tempImg,
                 helper.getView(R.id.iv_cover));
         helper.getView(R.id.tv_free_shipping).setVisibility(
                 helper.getLayoutPosition() % 2 == 0 ? View.VISIBLE : View.GONE);

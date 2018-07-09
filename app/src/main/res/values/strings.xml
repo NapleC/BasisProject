@@ -14,6 +14,10 @@
     <string name="forget_pwd">忘记密码</string>
     <string name="register">注册</string>
     <string name="user_profile">个人信息</string>
+    <string name="setting_center">设置中心</string>
+    <string name="account_security">账号安全</string>
+    <string name="transaction_password">交易密码</string>
+    <string name="payment_result">交易结果页</string>
     <string name="set_username">设置用户名</string>
     <string name="activate_phone_number">激活手机号</string>
     <string name="notice_details">预告详情</string>
@@ -21,6 +25,9 @@
     <string name="auction_record">拍卖记录</string>
     <string name="order_record">订单记录</string>
     <string name="order_details">订单详情</string>
+    <string name="live_room">直播间</string>
+    <string name="lot_introduction">拍卖物详情</string>
+    <string name="live_auction">现场拍卖</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">请输入登录账号</string>
@@ -160,5 +167,15 @@
     <string name="loan">借款</string>
     <string name="customer_service_and_help">客服与帮助</string>
     <string name="setup_center">设置中心</string>
+    <string name="bid">出价</string>
+    <string name="raise">+</string>
+    <string name="bid_range">最低加价50STC</string>
+    <string name="comment_hint">一起参与互动吧~</string>
+    <string name="last_bid">最高价</string>
+    <string name="current_bid">出价</string>
+    <string name="send">发送</string>
+    <string name="sign_out">退出登录</string>
+    <string name="payment_successful">支付成功</string>
+    <string name="payment_failed">支付失败</string>
 
 </resources>

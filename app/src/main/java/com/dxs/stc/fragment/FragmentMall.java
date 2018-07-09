@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dxs.stc.R;
 import com.dxs.stc.activities.BannerActivity;
+import com.dxs.stc.activities.MainActivity;
 import com.dxs.stc.activities.MallListActivity;
 import com.dxs.stc.activities.SearchActivity;
 import com.dxs.stc.adpater.MallHeaderProductsAdapter;
@@ -167,7 +168,9 @@ public class FragmentMall extends LazyBaseFragment implements IBookView {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_bar_right:
-                ToastUtils.showShort("进入消息");
+                MainActivity parentActivity = (MainActivity) getActivity();
+                assert parentActivity != null;
+                parentActivity.toNewsTab(3);
                 break;
             case R.id.iv_bar_left:
                 startActivity(new Intent(getActivity(), SearchActivity.class));

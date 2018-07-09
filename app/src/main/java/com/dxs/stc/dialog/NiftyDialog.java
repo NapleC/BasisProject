@@ -42,6 +42,7 @@ public class NiftyDialog extends Dialog implements View.OnClickListener {
     private String negativeName;
     private String title;
 
+    int themeResId = R.style.dialog;
 
     public NiftyDialog(@NonNull Context context) {
         super(context);

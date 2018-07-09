@@ -23,6 +23,7 @@ import com.dxs.stc.R;
 /**
  *  created by hl at 2018/6/14
  *  PasswordToggleEditText
+ *  显示和隐藏的密码输入框
  */
 public class PasswordToggleEditText extends AppCompatEditText implements
         OnFocusChangeListener, TextWatcher {

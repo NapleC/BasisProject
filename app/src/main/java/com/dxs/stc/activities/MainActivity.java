@@ -1,6 +1,5 @@
 package com.dxs.stc.activities;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -144,31 +143,29 @@ public class MainActivity extends CompatStatusBarActivity {
     private void setNavStyle(boolean isSel) {
         switch (selPosition) {
             case 0:
-                setStatusBarPlaceVisible(true);
-                setViewColorStatusBar(true, getResources().getColor(R.color.navColor));
+                setStatus(true, true, getResources().getColor(R.color.navColor));
                 mHomeItv.setSelected(isSel);
                 break;
             case 1:
-                setStatusBarPlaceVisible(true);
-                setViewColorStatusBar(true, getResources().getColor(R.color.navColor));
+                setStatus(true, true, getResources().getColor(R.color.navColor));
                 mMallItv.setSelected(isSel);
                 break;
             case 2:
-                setStatusBarPlaceVisible(false);
-                setViewColorStatusBar(true, getResources().getColor(R.color.white));
+                setStatus(true, true, getResources().getColor(R.color.navColor));
                 mAuctionItv.setSelected(isSel);
                 break;
             case 3:
-                setStatusBarPlaceVisible(true);
-                setViewColorStatusBar(true, getResources().getColor(R.color.navColor));
+                setStatus(true, true, getResources().getColor(R.color.navColor));
                 mNewsItv.setSelected(isSel);
                 break;
             case 4:
-                setStatusBarPlaceVisible(false);
-                setViewColorStatusBar(true, Color.WHITE);
+                setStatus(false, true, getResources().getColor(R.color.white));
                 mMineItv.setSelected(isSel);
                 break;
         }
     }
 
+    public void toNewsTab(int index) {
+        selectFragment(index);
+    }
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.dxs.stc.widget.CustomerDividerPaddingLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:divider="@drawable/divider_line"
+    android:orientation="vertical"
+    android:showDividers="middle"
+    tools:context=".activities.AccountSecurityActivity">
+
+    <include layout="@layout/activity_title" />
+
+    <com.dxs.stc.widget.CustomerMenuItem
+        android:id="@+id/mi_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_mall_list_bg"
+        app:leftText="密码修改"
+        app:showMoreIcon="true" />
+
+    <com.dxs.stc.widget.CustomerMenuItem
+        android:id="@+id/mi_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_mall_list_bg"
+        app:leftText="手机号修改"
+        app:showMoreIcon="true" />
+
+    <com.dxs.stc.widget.CustomerMenuItem
+        android:id="@+id/mi_transaction_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_mall_list_bg"
+        app:leftText="交易密码"
+        app:showMoreIcon="true" />
+
+</com.dxs.stc.widget.CustomerDividerPaddingLinearLayout>

@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dxs.stc.R;
+import com.dxs.stc.base.Constant;
 import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.utils.SpanUtil;
 import com.dxs.stc.utils.imageloder.ImageLodeUtils;
@@ -43,7 +44,7 @@ public class CommodityOrderRecordAdapter extends BaseQuickAdapter<Movie.Subjects
                         ContextCompat.getColor(mContext, R.color.price_color))
                 .showIn(mPriceTv);
 
-        ImageLodeUtils.loadingRoundImage(mContext, item.getImages().getSmall(),
+        ImageLodeUtils.loadingRoundImage(mContext, Constant.tempImg,
                 helper.getView(R.id.giv_order_pic));
 
     }

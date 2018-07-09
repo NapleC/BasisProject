@@ -83,9 +83,9 @@ public class NoticeDetailsActivity extends CompatStatusBarActivity {
 
         mProdTitle.setText("翡翠玉石珠宝~");
         SpanUtil.create()
-                .addSection(NoticeDetailsActivity.this.getString(R.string.the_price_name))
                 .addSection(" 1300")
                 .setAbsSize("1300", 18)
+                .addSection(NoticeDetailsActivity.this.getString(R.string.the_price_name))
                 .showIn(mProdTime);
 
         mScrollView.setScrollViewListener((scrollView, x, y, oldx, oldy) -> {

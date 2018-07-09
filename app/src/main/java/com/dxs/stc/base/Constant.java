@@ -15,4 +15,10 @@ public class Constant {
     public static final String CATCH_DIR = "STC";
     public static final String SEARCH_HISTORY = "search_history";
     public static final String MALL_TYPE = "mallType";
+
+    public static final  String tempImg = "https://image2.wbiao.co/upload/article/201702/17/1487322373441497976.jpg";
+    public static final String ORDER_TYPE = "orderType";
+    public static final String ORDER_STATUS = "orderStatus";
+    public static final String ORDER_MALL = "orderMall";
+    public static final String ORDER_AUCTION = "orderAuction";
 }

@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dxs.stc.R;
+import com.dxs.stc.base.Constant;
 import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.utils.SpanUtil;
 import com.dxs.stc.utils.imageloder.ImageLodeUtils;
@@ -30,11 +31,11 @@ public class HomeRecyclerViewAdapter extends BaseQuickAdapter<Movie.SubjectsBean
         helper.setText(R.id.tv_count, item.getCollect_count() + "人购买");
 
         SpanUtil.create()
-                .addSection(mContext.getString(R.string.the_price_name))
                 .addSection(" "+item.getYear())
                 .setAbsSize(item.getYear(),16)
+                .addSection(mContext.getString(R.string.the_price_name))
                 .showIn(helper.getView(R.id.tv_price));
 
-        ImageLodeUtils.loadingImage(mContext, item.getImages().getSmall(), helper.getView(R.id.iv_cover));
+        ImageLodeUtils.loadingImage(mContext, Constant.tempImg, helper.getView(R.id.iv_cover));
     }
 }

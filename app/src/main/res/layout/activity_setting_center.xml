@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.dxs.stc.widget.CustomerDividerPaddingLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:divider="@drawable/divider_line"
+    android:orientation="vertical"
+    android:showDividers="middle"
+    tools:context=".activities.SettingCenterActivity">
+
+    <include layout="@layout/activity_title" />
+
+    <com.dxs.stc.widget.CustomerMenuItem
+        android:id="@+id/mi_account_security"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_mall_list_bg"
+        app:leftText="@string/account_security"
+        app:showMoreIcon="true" />
+
+    <com.dxs.stc.widget.CustomerMenuItem
+        android:id="@+id/mi_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_mall_list_bg"
+        app:leftText="通知管理"
+        app:showMoreIcon="true" />
+
+    <com.dxs.stc.widget.CustomerMenuItem
+        android:id="@+id/mi_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_mall_list_bg"
+        app:leftText="意见反馈"
+        app:showMoreIcon="true" />
+
+    <com.dxs.stc.widget.CustomerMenuItem
+        android:id="@+id/mi_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_mall_list_bg"
+        app:leftText="清除缓存"
+        app:rightText="86.9 M"
+        app:showMoreIcon="true" />
+
+    <com.dxs.stc.widget.CustomerMenuItem
+        android:id="@+id/mi_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_mall_list_bg"
+        app:leftText="关于翡翠交易所"
+        app:showMoreIcon="true" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+
+    <Button
+        android:id="@+id/btn_sign_out"
+        style="@style/button"
+        android:text="@string/sign_out" />
+
+</com.dxs.stc.widget.CustomerDividerPaddingLinearLayout>

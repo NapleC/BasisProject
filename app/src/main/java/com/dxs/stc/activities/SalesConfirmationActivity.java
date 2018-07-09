@@ -1,6 +1,8 @@
 package com.dxs.stc.activities;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -11,7 +13,9 @@ import android.widget.TextView;
 
 import com.dxs.stc.R;
 import com.dxs.stc.base.CompatStatusBarActivity;
+import com.dxs.stc.dialog.EnterTransactionPwdDialog;
 import com.dxs.stc.glideimageview.GlideImageView;
+import com.dxs.stc.utils.AppManager;
 import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.SpanUtil;
 import com.dxs.stc.utils.ToastUtils;
@@ -48,6 +52,7 @@ public class SalesConfirmationActivity extends CompatStatusBarActivity {
     private int prodNum = 1;
     private int mUnitPrice = 2000;
     private float mTotalAmount = 0;
+    EnterTransactionPwdDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +77,38 @@ public class SalesConfirmationActivity extends CompatStatusBarActivity {
         mDistributionWay.setText("顺丰");
         mProdTitle.setText("天然翡翠手镯女玉镯子缅甸玉手镯女款冰糯种飘花玉石");
         SpanUtil.create()
-                .addSection(SalesConfirmationActivity.this.getString(R.string.the_price_name))
                 .addSection(" " + mUnitPrice)
                 .setAbsSize(" " + mUnitPrice, 16)
+                .addSection(SalesConfirmationActivity.this.getString(R.string.the_price_name))
                 .showIn(mUnitPriceTv);
         setChangeText();
+
+
+        mDialog = new EnterTransactionPwdDialog(SalesConfirmationActivity.this, R.style.dialog);
+        mDialog.setOnCompleteListener(new EnterTransactionPwdDialog.OnCloseListener() {
+            @Override
+            public void onClick(Dialog dialog, boolean isForget, boolean isComplete) {
+                dialog.dismiss();
+                if (isForget) {
+                    startActivity(new Intent(SalesConfirmationActivity.this, SetTransactionPasswordActivity.class));
+                } else if (isComplete) {
+                    startActivity(new Intent(SalesConfirmationActivity.this, PaymentResultActivity.class));
+
+                    Activity activity = AppManager.getInstance().getActivity(BannerActivity.class);
+                    activity.finish();
+                    Loger.debug("获取指定的activity:" + AppManager.getInstance().getActivity(BannerActivity.class));
+                    SalesConfirmationActivity.this.finish();
+                }
+            }
+        });
+    }
+
+    private void showDialog() {
+
+        if (mDialog == null) {
+            mDialog = new EnterTransactionPwdDialog(SalesConfirmationActivity.this, R.style.dialog);
+        }
+        mDialog.show();
     }
 
     @OnClick({R.id.iv_bar_left, R.id.rl_address, R.id.btn_decrease,
@@ -111,6 +143,8 @@ public class SalesConfirmationActivity extends CompatStatusBarActivity {
                 Loger.debug("prodNum:" + prodNum);
                 Loger.debug("mRemarkEt.Text:" + mRemarkEt.getText());
                 Loger.debug("tv_total_amount:" + prodNum * mUnitPrice);
+
+                showDialog();
                 break;
         }
     }
@@ -126,11 +160,11 @@ public class SalesConfirmationActivity extends CompatStatusBarActivity {
 
         SpanUtil.create()
                 .addSection(SalesConfirmationActivity.this.getString(R.string.total_amount))
-                .addForeColorSection(SalesConfirmationActivity.this.getString(R.string.the_price_name),
-                        ContextCompat.getColor(SalesConfirmationActivity.this, R.color.price_color))
                 .addForeColorSection(" " + mTotalAmount,
                         ContextCompat.getColor(SalesConfirmationActivity.this, R.color.price_color))
                 .setAbsSize(" " + mTotalAmount, 18)
+                .addForeColorSection(SalesConfirmationActivity.this.getString(R.string.the_price_name),
+                        ContextCompat.getColor(SalesConfirmationActivity.this, R.color.price_color))
                 .showIn(mTotalAmountTv);
     }
 }

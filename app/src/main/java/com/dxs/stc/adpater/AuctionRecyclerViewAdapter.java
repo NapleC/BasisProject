@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dxs.stc.R;
+import com.dxs.stc.base.Constant;
 import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.utils.imageloder.ImageLodeUtils;
 
@@ -36,7 +37,7 @@ public class AuctionRecyclerViewAdapter extends BaseQuickAdapter<Movie.SubjectsB
                 helper.getLayoutPosition() == (getData().size()) ? View.VISIBLE : View.GONE);
         mBottomTitle.setText(String.format(mContext.getResources().getString(R.string.auction_title),
                 item.getTitle() + item.getOriginal_title() + "(" + item.getYear() + ")"));
-        ImageLodeUtils.loadingImage(mContext, item.getImages().getSmall(),
+        ImageLodeUtils.loadingImage(mContext, Constant.tempImg,
                 helper.getView(R.id.iv_auction_cover));
     }
 }

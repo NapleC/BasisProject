@@ -9,11 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dxs.stc.R;
+import com.dxs.stc.activities.LiveRoomActivity;
+import com.dxs.stc.activities.MainActivity;
 import com.dxs.stc.activities.NoticeActivity;
 import com.dxs.stc.activities.NoticeDetailsActivity;
+import com.dxs.stc.activities.SearchActivity;
 import com.dxs.stc.adpater.AuctionHeaderSiteAdapter;
 import com.dxs.stc.adpater.AuctionRecyclerViewAdapter;
 import com.dxs.stc.base.LazyBaseFragment;
@@ -35,6 +39,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -42,6 +47,9 @@ import butterknife.Unbinder;
  * FragmentAuction
  */
 public class FragmentAuction extends LazyBaseFragment implements IBookView {
+
+    @BindView(R.id.tv_bar_text)
+    TextView mBarText;
 
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
@@ -122,13 +130,14 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 Loger.debug("adapter onItemClick");
-                startActivity(new Intent(getActivity(), NoticeDetailsActivity.class));
+                startActivity(new Intent(getActivity(), LiveRoomActivity.class));
             }
         });
     }
 
     private void initViews() {
 
+        mBarText.setText(getString(R.string.live_auction));
         mData = new ArrayList<>();
         mAdapter = new AuctionRecyclerViewAdapter(R.layout.item_auction_book, mData);
 
@@ -146,6 +155,20 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
         mRecyclerView.setAdapter(mAdapter);
     }
 
+
+    @OnClick({R.id.iv_bar_right, R.id.iv_bar_left})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_bar_right:
+                MainActivity parentActivity = (MainActivity) getActivity();
+                assert parentActivity != null;
+                parentActivity.toNewsTab(3);
+                break;
+            case R.id.iv_bar_left:
+                startActivity(new Intent(getActivity(), SearchActivity.class));
+                break;
+        }
+    }
 
     private void initHeaderView() {
 

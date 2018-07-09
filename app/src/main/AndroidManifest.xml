@@ -53,7 +53,6 @@
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -109,13 +108,33 @@
             android:label="@string/title_notice" />
         <activity
             android:name=".activities.AuctionRecordActivity"
-            android:label="@string/auction_record"/>
+            android:label="@string/auction_record" />
         <activity
             android:name=".activities.OrderRecordActivity"
-            android:label="@string/order_record"/>
+            android:label="@string/order_record" />
         <activity
             android:name=".activities.OrderDetailsActivity"
-            android:label="@string/order_details">
+            android:label="@string/order_details" />
+        <activity
+            android:name=".activities.LiveRoomActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="@string/live_room"
+            android:windowSoftInputMode="stateVisible|adjustPan|stateHidden" />
+        <activity
+            android:name=".activities.LotIntroductionActivity"
+            android:label="@string/lot_introduction" />
+        <activity
+            android:name=".activities.SettingCenterActivity"
+            android:label="@string/setting_center" />
+        <activity
+            android:name=".activities.AccountSecurityActivity"
+            android:label="@string/account_security" />
+        <activity
+            android:name=".activities.SetTransactionPasswordActivity"
+            android:label="@string/transaction_password">
+        </activity>
+        <activity android:name=".activities.PaymentResultActivity"
+            android:label="@string/payment_result">
         </activity>
     </application>
 
