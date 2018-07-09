@@ -177,5 +177,10 @@
     <string name="sign_out">退出登录</string>
     <string name="payment_successful">支付成功</string>
     <string name="payment_failed">支付失败</string>
+    <string name="auction_result">拍卖结果</string>
+    <string name="result_top_tip"><![CDATA[恭喜你<落日余晖>,竞拍成功\n竞拍结束]]></string>
+    <string name="the_auction_is_end">本场拍卖已结束</string>
+    <string name="to_pay">去支付</string>
+    <string name="save_screenshot">保存截图</string>
 
 </resources>

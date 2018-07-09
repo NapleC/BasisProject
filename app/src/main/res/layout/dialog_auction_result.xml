@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="@dimen/dp_14"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_white_color"
+        android:contentDescription="@string/close"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:srcCompat="@drawable/icon_close" />
+
+    <TextView
+        android:id="@+id/tv_top_title"
+        android:layout_width="130dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="@dimen/dp_40"
+        android:background="@drawable/shape_main_color"
+        android:gravity="center"
+        android:text="@string/auction_result"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_14"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/iv_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1" />
+
+    <ImageView
+        android:id="@+id/iv_bg"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginStart="52dp"
+        android:contentDescription="@string/title_notice"
+        android:scaleType="fitXY"
+        android:src="@drawable/dialog_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4" />
+
+    <View
+        android:layout_width="@dimen/dp_2"
+        android:layout_height="50dp"
+        android:background="@color/price_color"
+        app:layout_constraintBottom_toTopOf="@+id/iv_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_top_title" />
+
+    <View
+        android:id="@+id/v_result_center"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginStart="74dp"
+        android:background="@color/color_E6"
+        app:layout_constraintBottom_toTopOf="@+id/iv_bg"
+        app:layout_constraintEnd_toStartOf="@+id/iv_bg"
+        app:layout_constraintStart_toEndOf="@+id/iv_bg"
+        app:layout_constraintTop_toBottomOf="@+id/iv_bg" />
+
+
+    <TextView
+        android:id="@+id/tv_result_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:gravity="center"
+        android:text="@string/result_top_tip"
+        android:textColor="@color/color_63"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/v_result_center"
+        app:layout_constraintEnd_toStartOf="@+id/iv_bg"
+        app:layout_constraintStart_toEndOf="@+id/iv_bg" />
+
+    <com.dxs.stc.glideimageview.GlideImageView
+        android:id="@+id/iv_result_pic"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="@dimen/dp_14"
+        android:src="@mipmap/site_eg1"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/iv_bg"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/iv_bg"
+        app:layout_constraintTop_toBottomOf="@+id/v_result_center"
+        app:layout_constraintVertical_bias="0"
+        app:riv_corner_radius="6dp" />
+
+
+    <TextView
+        android:id="@+id/tv_result_title"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/color_63"
+        android:textSize="@dimen/sp_12"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_bg"
+        app:layout_constraintEnd_toEndOf="@+id/iv_bg"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/iv_result_pic"
+        app:layout_constraintTop_toTopOf="@+id/iv_result_pic"
+        app:layout_constraintVertical_bias="0"
+        tools:text="1.翡翠交易所深绿色原宝石2.深绿色原宝石3.翡翠交易所深绿色原宝石4.深绿色原宝石" />
+
+    <TextView
+        android:id="@+id/tv_result_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/price_color"
+        android:textSize="@dimen/sp_14"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_result_pic"
+        app:layout_constraintEnd_toEndOf="@+id/iv_bg"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/iv_result_pic"
+        app:layout_constraintVertical_bias="0"
+        tools:text="成交价 26000000 STC" />
+
+    <TextView
+        android:id="@+id/tv_bottom_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:background="@color/white"
+        android:maxLines="1"
+        android:paddingEnd="@dimen/dp_14"
+        android:paddingStart="@dimen/dp_14"
+        android:text="@string/the_auction_is_end"
+        android:textColor="@color/color_69"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_bg"
+        app:layout_constraintEnd_toStartOf="@+id/iv_bg"
+        app:layout_constraintStart_toEndOf="@+id/iv_bg" />
+
+    <Button
+        android:id="@+id/btn_to_pay"
+        style="@style/button"
+        android:background="@drawable/shape_radius_norm"
+        android:text="@string/to_pay"
+        android:textColor="@color/price_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_bg"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <Button
+        android:id="@+id/btn_save_screenshot"
+        style="@style/button"
+        android:background="@drawable/shape_radius_norm"
+        android:text="@string/save_screenshot"
+        android:textColor="@color/mainColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_to_pay"
+        app:layout_constraintVertical_bias="0.16" />
+
+
+</android.support.constraint.ConstraintLayout>

@@ -7,6 +7,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.dxs.stc.R;
@@ -137,6 +139,22 @@ public class NiftyDialog extends Dialog implements View.OnClickListener {
                 this.dismiss();
                 break;
         }
+    }
+
+
+    @Override
+    public void show() {
+        super.show();
+        /**
+         * 设置宽度全屏，要设置在show的后面
+         */
+        WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
+        layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
+
+        getWindow().getDecorView().setPadding(0, 0, 0, 0);
+
+        getWindow().setAttributes(layoutParams);
     }
 
     public interface OnCloseListener {

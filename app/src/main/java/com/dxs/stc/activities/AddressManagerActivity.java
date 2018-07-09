@@ -124,6 +124,7 @@ public class AddressManagerActivity extends CompatStatusBarActivity {
             case R.id.btn_add_address:
                 Loger.debug("is check position :" + isCheckPosition);
                 Loger.debug("数据：" + mData.toString());
+                startActivity(new Intent(AddressManagerActivity.this, EditAddressActivity.class));
                 break;
         }
     }

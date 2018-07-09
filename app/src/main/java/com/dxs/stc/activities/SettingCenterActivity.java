@@ -28,7 +28,7 @@ public class SettingCenterActivity extends CompatStatusBarActivity {
         setStatus(true, true, ContextCompat.getColor(this, R.color.navColor));
     }
 
-    @OnClick({R.id.iv_bar_left, R.id.mi_account_security})
+    @OnClick({R.id.iv_bar_left, R.id.mi_account_security, R.id.btn_sign_out})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_bar_left:
@@ -54,6 +54,10 @@ public class SettingCenterActivity extends CompatStatusBarActivity {
 //                break;
 //            case R.id.mi_7:
 //                break;
+            case R.id.btn_sign_out:
+                startActivity(new Intent(this, LoginActivity.class));
+                finish();
+                break;
         }
     }
 
