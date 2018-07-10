@@ -14,12 +14,13 @@ import com.dxs.stc.utils.imageloder.ImageLodeUtils;
 import java.util.List;
 
 /**
- * created by hl at 2018/5/16
- * AuctionRecyclerViewAdapter
+ *  created by hl at 2018/7/10
+ *  AuctionHistoryAdapter
+ *  拍卖历史
  */
-public class AuctionRecyclerViewAdapter extends BaseQuickAdapter<Movie.SubjectsBean, BaseViewHolder> {
+public class AuctionHistoryAdapter extends BaseQuickAdapter<Movie.SubjectsBean, BaseViewHolder> {
 
-    public AuctionRecyclerViewAdapter(int layoutResId, @Nullable List<Movie.SubjectsBean> data) {
+    public AuctionHistoryAdapter(int layoutResId, @Nullable List<Movie.SubjectsBean> data) {
         super(layoutResId, data);
     }
 
@@ -28,12 +29,7 @@ public class AuctionRecyclerViewAdapter extends BaseQuickAdapter<Movie.SubjectsB
         TextView mTopTip = helper.getView(R.id.tv_top_tip);
         TextView mBottomTitle = helper.getView(R.id.tv_bottom_title);
         TextView mWatchMore = helper.getView(R.id.tv_watch_this_space);
-        mTopTip.setVisibility(
-                helper.getLayoutPosition() == (getData().size()) ? View.INVISIBLE : View.VISIBLE);
-        mBottomTitle.setVisibility(
-                helper.getLayoutPosition() == (getData().size()) ? View.INVISIBLE : View.VISIBLE);
-        mWatchMore.setVisibility(
-                helper.getLayoutPosition() == (getData().size()) ? View.VISIBLE : View.INVISIBLE);
+        mTopTip.setText(mContext.getResources().getText(R.string.playback));
         mBottomTitle.setText(String.format(mContext.getResources().getString(R.string.auction_title),
                 item.getTitle() + item.getOriginal_title() + "(" + item.getYear() + ")"));
         ImageLodeUtils.loadingImage(mContext, Constant.tempImg,

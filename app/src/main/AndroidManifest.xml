@@ -104,7 +104,7 @@
             android:name=".activities.NoticeDetailsActivity"
             android:label="@string/notice_details" />
         <activity
-            android:name=".activities.NoticeActivity"
+            android:name=".activities.NoticeListActivity"
             android:label="@string/title_notice" />
         <activity
             android:name=".activities.AuctionRecordActivity"
@@ -131,11 +131,16 @@
             android:label="@string/account_security" />
         <activity
             android:name=".activities.SetTransactionPasswordActivity"
-            android:label="@string/transaction_password">
-        </activity>
-        <activity android:name=".activities.PaymentResultActivity"
-            android:label="@string/payment_result">
-        </activity>
+            android:label="@string/transaction_password" />
+        <activity
+            android:name=".activities.PaymentResultActivity"
+            android:label="@string/payment_result" />
+        <activity
+            android:name=".activities.AuctionListActivity"
+            android:label="@string/in_the_auction" />
+        <activity
+            android:name=".activities.AuctionHistoryListActivity"
+            android:label="@string/playback" />
     </application>
 
 </manifest>

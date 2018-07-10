@@ -1,15 +1,15 @@
 package com.dxs.stc.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.dxs.stc.R;
-import com.dxs.stc.adpater.NoticeAdapter;
+import com.dxs.stc.adpater.AuctionListAdapter;
 import com.dxs.stc.base.CompatStatusBarActivity;
 import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.mvp.presenter.IGetBookPresenter;
@@ -17,7 +17,7 @@ import com.dxs.stc.mvp.presenter.impl.GetBookPresenterImpl;
 import com.dxs.stc.mvp.view.IBookView;
 import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.ToastUtils;
-import com.dxs.stc.utils.decoration.HorizontalDividerItemDecoration;
+import com.dxs.stc.utils.decoration.SpacesItemDecoration;
 import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
@@ -28,7 +28,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class NoticeActivity extends CompatStatusBarActivity implements IBookView {
+public class AuctionListActivity extends CompatStatusBarActivity implements IBookView {
 
     @BindView(R.id.tv_bar_text)
     TextView mTitleCenter;
@@ -36,50 +36,32 @@ public class NoticeActivity extends CompatStatusBarActivity implements IBookView
     RecyclerView mRecyclerView;
     @BindView(R.id.refreshLayout)
     RefreshLayout refreshLayout;
-    @BindView(R.id.tv_notice_today)
-    TextView mTodayNoticeTv;
-    @BindView(R.id.tv_notice_last)
-    TextView mLastNoticeTv;
 
-    private NoticeAdapter mAdapter;
+    private AuctionListAdapter mAdapter;
     List<Movie.SubjectsBean> mData;
 
     private IGetBookPresenter iGetBookPresenter;
     private int thePageIndex = 0;
     private LinearLayoutManager linearLayoutManager;
 
-    private boolean isTodayNotice = true;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notice);
-        getWindow().setBackgroundDrawableResource(R.color.color_E6);
+        setContentView(R.layout.activity_auction_list);
+        getWindow().setBackgroundDrawableResource(R.color.white);
         ButterKnife.bind(this);
         setStatus(true, true, ContextCompat.getColor(this, R.color.navColor));
     }
 
-    @OnClick({R.id.iv_bar_left, R.id.tv_notice_today, R.id.tv_notice_last})
+    @OnClick({R.id.iv_bar_left})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_bar_left:
                 onBackPressed();
                 break;
-            case R.id.tv_notice_today:
-                isTodayNotice = true;
-                todayNotice();
-                break;
-            case R.id.tv_notice_last:
-                isTodayNotice = false;
-                todayNotice();
-                break;
         }
     }
 
-    private void todayNotice(){
-        mTodayNoticeTv.setSelected(isTodayNotice);
-        mLastNoticeTv.setSelected(!isTodayNotice);
-    }
 
     @Override
     protected void onStart() {
@@ -88,23 +70,18 @@ public class NoticeActivity extends CompatStatusBarActivity implements IBookView
     }
 
     private void initView() {
-        mTitleCenter.setText(getString(R.string.title_notice));
+        mTitleCenter.setText(getString(R.string.in_the_auction));
         mData = new ArrayList<>();
 
-        isTodayNotice = true;
-        todayNotice();
-
         iGetBookPresenter = new GetBookPresenterImpl(this);
-        mAdapter = new NoticeAdapter(R.layout.item_notice, mData);
+        mAdapter = new AuctionListAdapter(R.layout.item_auction_book, mData);
         mRecyclerView.setAdapter(mAdapter);
 
-        linearLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.addItemDecoration(
-                new HorizontalDividerItemDecoration.Builder(this)
-                        .color(ContextCompat.getColor(this, R.color.color_E6))
-                        .sizeResId(R.dimen.dp_10)
-                        .build());
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));//这里用线性宫格显示 类似于grid view
+        SpacesItemDecoration decoration = new SpacesItemDecoration(
+                getResources().getDimensionPixelSize(R.dimen.dp_14),
+                getResources().getDimensionPixelSize(R.dimen.dp_10), 0);
+        mRecyclerView.addItemDecoration(decoration);
 
         refreshLayout.autoRefresh();
         refreshLayout.setEnableAutoLoadMore(false);
@@ -122,8 +99,7 @@ public class NoticeActivity extends CompatStatusBarActivity implements IBookView
             iGetBookPresenter.getBook(10 * thePageIndex, 10);
         }, mRecyclerView);
         mAdapter.setOnItemClickListener((adapter, view, position) -> {
-            Loger.debug("预告列表");
-            startActivity(new Intent(NoticeActivity.this, NoticeDetailsActivity.class));
+            Loger.debug("竞拍直播页面");
         });
     }
 

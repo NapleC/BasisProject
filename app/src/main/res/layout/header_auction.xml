@@ -18,7 +18,10 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:orientation="horizontal"
-        android:padding="@dimen/dp_10">
+        android:showDividers="middle"
+        android:divider="@drawable/divider_line"
+        android:padding="@dimen/dp_10"
+        android:baselineAligned="false">
 
         <RelativeLayout
             android:id="@+id/rl_notice1"
@@ -26,14 +29,15 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:layout_weight="2"
-            android:paddingStart="@dimen/dp_6">
+            android:paddingStart="@dimen/dp_6"
+            tools:ignore="RtlSymmetry">
 
             <TextView
                 android:id="@+id/tv_topic1_left_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
-                android:text="最新预告"
+                android:text="拍卖进行时"
                 android:layout_marginTop="@dimen/dp_4"
                 android:layout_marginBottom="@dimen/dp_10"
                 android:textColor="@color/color_63"
@@ -59,15 +63,12 @@
 
         </RelativeLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/divider_line" />
-
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
+            android:showDividers="middle"
+            android:divider="@drawable/divider_line"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -87,7 +88,7 @@
                     android:layout_marginTop="@dimen/dp_4"
                     android:layout_marginBottom="@dimen/dp_10"
                     android:includeFontPadding="false"
-                    android:text="热拍中"
+                    android:text="预告篇"
                     android:textColor="@color/color_63"
                     android:textSize="@dimen/sp_14" />
 
@@ -110,11 +111,6 @@
                     app:srcCompat="@mipmap/auction_eg1" />
 
             </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider_line" />
 
             <RelativeLayout
                 android:id="@+id/rl_notice3"

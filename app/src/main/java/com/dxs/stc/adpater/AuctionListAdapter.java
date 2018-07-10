@@ -14,12 +14,13 @@ import com.dxs.stc.utils.imageloder.ImageLodeUtils;
 import java.util.List;
 
 /**
- * created by hl at 2018/5/16
- * AuctionRecyclerViewAdapter
+ *  created by hl at 2018/7/10
+ *  AuctionListAdapter
+ *  正在拍卖的list适配器
  */
-public class AuctionRecyclerViewAdapter extends BaseQuickAdapter<Movie.SubjectsBean, BaseViewHolder> {
+public class AuctionListAdapter extends BaseQuickAdapter<Movie.SubjectsBean, BaseViewHolder> {
 
-    public AuctionRecyclerViewAdapter(int layoutResId, @Nullable List<Movie.SubjectsBean> data) {
+    public AuctionListAdapter(int layoutResId, @Nullable List<Movie.SubjectsBean> data) {
         super(layoutResId, data);
     }
 
@@ -28,12 +29,6 @@ public class AuctionRecyclerViewAdapter extends BaseQuickAdapter<Movie.SubjectsB
         TextView mTopTip = helper.getView(R.id.tv_top_tip);
         TextView mBottomTitle = helper.getView(R.id.tv_bottom_title);
         TextView mWatchMore = helper.getView(R.id.tv_watch_this_space);
-        mTopTip.setVisibility(
-                helper.getLayoutPosition() == (getData().size()) ? View.INVISIBLE : View.VISIBLE);
-        mBottomTitle.setVisibility(
-                helper.getLayoutPosition() == (getData().size()) ? View.INVISIBLE : View.VISIBLE);
-        mWatchMore.setVisibility(
-                helper.getLayoutPosition() == (getData().size()) ? View.VISIBLE : View.INVISIBLE);
         mBottomTitle.setText(String.format(mContext.getResources().getString(R.string.auction_title),
                 item.getTitle() + item.getOriginal_title() + "(" + item.getYear() + ")"));
         ImageLodeUtils.loadingImage(mContext, Constant.tempImg,

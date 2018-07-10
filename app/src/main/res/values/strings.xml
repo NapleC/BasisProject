@@ -28,6 +28,8 @@
     <string name="live_room">直播间</string>
     <string name="lot_introduction">拍卖物详情</string>
     <string name="live_auction">现场拍卖</string>
+    <string name="in_the_auction">竞拍中</string>
+    <string name="historical_lot">历史拍品</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">请输入登录账号</string>
@@ -60,6 +62,7 @@
     <string name="gemstone_site">预告主场</string>
     <string name="the_auction_is_active">即将结拍</string>
     <string name="in_auction_title">直播中</string>
+    <string name="playback">回放</string>
     <string name="watch_this_space">期待更多</string>
     <string name="auction_title">【拍卖】%1$s</string>
     <string name="auction_notice_title">预告篇</string>

@@ -1,5 +1,6 @@
 package com.dxs.stc.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,9 +14,11 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dxs.stc.R;
+import com.dxs.stc.activities.AuctionHistoryListActivity;
+import com.dxs.stc.activities.AuctionListActivity;
 import com.dxs.stc.activities.LiveRoomActivity;
 import com.dxs.stc.activities.MainActivity;
-import com.dxs.stc.activities.NoticeActivity;
+import com.dxs.stc.activities.NoticeListActivity;
 import com.dxs.stc.activities.NoticeDetailsActivity;
 import com.dxs.stc.activities.SearchActivity;
 import com.dxs.stc.adpater.AuctionHeaderSiteAdapter;
@@ -143,11 +146,7 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
 
         mHeaderView = LayoutInflater.from(getActivity()).inflate(R.layout.header_auction, null);
         mAdapter.setHeaderView(mHeaderView);
-
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));//这里用线性显示 类似于listview
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));//这里用线性宫格显示 类似于grid view
-//        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));//这里用线性宫格显示 类似于瀑布流
-
         SpacesItemDecoration decoration = new SpacesItemDecoration(
                 getResources().getDimensionPixelSize(R.dimen.dp_14),
                 getResources().getDimensionPixelSize(R.dimen.dp_10), 1);
@@ -193,8 +192,16 @@ public class FragmentAuction extends LazyBaseFragment implements IBookView {
             startActivity(new Intent(getActivity(), NoticeDetailsActivity.class));
         });
         mHeaderNotice1.setOnClickListener(v -> {
-            Loger.debug("最新预告");
-            startActivity(new Intent(getActivity(), NoticeActivity.class));
+            Loger.debug("拍卖进行中的列表");
+            startActivity(new Intent(getActivity(), AuctionListActivity.class));
+        });
+        mHeaderNotice2.setOnClickListener(v -> {
+            Loger.debug("预告列表");
+            startActivity(new Intent(getActivity(), NoticeListActivity.class));
+        });
+        mHeaderNotice3.setOnClickListener(v -> {
+            Loger.debug("历史拍品");
+            startActivity(new Intent(getActivity(), AuctionHistoryListActivity.class));
         });
     }
 
