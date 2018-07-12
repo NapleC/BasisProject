@@ -38,8 +38,8 @@ import butterknife.OnClick;
 import cn.jzvd.JZVideoPlayer;
 import cn.jzvd.JZVideoPlayerStandard;
 
-import static com.dxs.stc.utils.ScreenShotUtil.GetViewBitmap;
 import static com.dxs.stc.utils.ScreenShotUtil.SaveFile;
+import static com.dxs.stc.utils.ScreenShotUtil.Screenshot;
 
 public class LiveRoomActivity extends CompatStatusBarActivity {
 
@@ -235,12 +235,12 @@ public class LiveRoomActivity extends CompatStatusBarActivity {
             case R.id.iv_prod_title_right:
 //                ToastUtils.showShort("点击分享");
 
-                new AuctionResultDialog(LiveRoomActivity.this, R.style.dialog, new AuctionResultDialog.OnDialogListener() {
+                new AuctionResultDialog(LiveRoomActivity.this, new AuctionResultDialog.OnDialogListener() {
                     @Override
                     public void onClick(Dialog dialog, boolean isComplete, boolean isShot) {
 
                         if (isShot) {
-                            SaveFile(GetViewBitmap(mRootViewRl), "auction_result");
+                            SaveFile(Screenshot(LiveRoomActivity.this, dialog), "AuctionResult");
                         } else if (isComplete) {
                             dialog.dismiss();
                             Intent orderIntent = new Intent(LiveRoomActivity.this, SalesConfirmationActivity.class);

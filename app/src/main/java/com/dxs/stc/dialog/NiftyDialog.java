@@ -19,7 +19,7 @@ import com.dxs.stc.R;
  *
  * @author https://github.com/xiaoxiaoqingyi/mine-android-repository
  * <p>
- * new NiftyDialog(this, R.style.dialog,"content text", new NiftyDialog.OnCloseListener() {
+ * new NiftyDialog(this,"content text", new NiftyDialog.OnCloseListener() {
  * @version V1.0 弹出对话框
  * @Override public void onClick(Dialog dialog, boolean confirm) {
  * if (confirm) {
@@ -51,20 +51,13 @@ public class NiftyDialog extends Dialog implements View.OnClickListener {
     }
 
     public NiftyDialog(@NonNull Context context, String content) {
-        super(context);
+        super(context, R.style.dialog);
         this.mContext = context;
         this.content = content;
     }
 
-
-    public NiftyDialog(@NonNull Context context, int themeResId, String content) {
-        super(context, themeResId);
-        this.mContext = context;
-        this.content = content;
-    }
-
-    public NiftyDialog(@NonNull Context context, int themeResId, String content, OnCloseListener listener) {
-        super(context, themeResId);
+    public NiftyDialog(@NonNull Context context, String content, OnCloseListener listener) {
+        super(context, R.style.dialog);
         this.mContext = context;
         this.content = content;
         this.listener = listener;

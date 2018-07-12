@@ -12,10 +12,8 @@ import com.dxs.stc.R;
 import com.dxs.stc.base.CompatStatusBarActivity;
 import com.dxs.stc.base.Constant;
 import com.dxs.stc.dialog.EnterTransactionPwdDialog;
-import com.dxs.stc.dialog.NiftyDialog;
 import com.dxs.stc.utils.AppManager;
 import com.dxs.stc.utils.Loger;
-import com.dxs.stc.utils.SPUtil;
 import com.dxs.stc.utils.SpanUtil;
 import com.dxs.stc.utils.ToastUtils;
 
@@ -49,12 +47,12 @@ public class PaymentResultActivity extends CompatStatusBarActivity {
         setStatus(true, true, ContextCompat.getColor(this, R.color.navColor));
     }
 
-    @OnClick({R.id.iv_bar_left,R.id.tv_bar_text, R.id.btn_check_out, R.id.btn_looking_around, R.id.tv_payment_result})
+    @OnClick({R.id.iv_bar_left, R.id.tv_bar_text, R.id.btn_check_out, R.id.btn_looking_around, R.id.tv_payment_result})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_bar_left:
                 onBackPressed();
-                Loger.debug("栈顶的activity"+ AppManager.getInstance().getTopActivity());
+                Loger.debug("栈顶的activity" + AppManager.getInstance().getTopActivity());
                 break;
             case R.id.btn_check_out:
                 ToastUtils.showShort("查看订单");
@@ -110,24 +108,24 @@ public class PaymentResultActivity extends CompatStatusBarActivity {
         mTitleCenter.setText(getString(R.string.payment_result));
         setPaymenStatus();
 
-        mDialog = new EnterTransactionPwdDialog(PaymentResultActivity.this, R.style.dialog);
+        mDialog = new EnterTransactionPwdDialog(PaymentResultActivity.this);
         mDialog.setOnCompleteListener(new EnterTransactionPwdDialog.OnCloseListener() {
             @Override
             public void onClick(Dialog dialog, boolean isForget, boolean isComplete) {
 
-                if (isForget){
-                    startActivity(new Intent(PaymentResultActivity.this,SetTransactionPasswordActivity.class));
-                } else if (isComplete){
+                if (isForget) {
+                    startActivity(new Intent(PaymentResultActivity.this, SetTransactionPasswordActivity.class));
+                } else if (isComplete) {
                     mDialog.showIncorrectPwdPrompt(true);
                 }
             }
         });
     }
 
-    private void showDialog(){
+    private void showDialog() {
 
-        if (mDialog==null){
-            mDialog = new EnterTransactionPwdDialog(PaymentResultActivity.this, R.style.dialog);
+        if (mDialog == null) {
+            mDialog = new EnterTransactionPwdDialog(PaymentResultActivity.this);
         }
         mDialog.show();
     }

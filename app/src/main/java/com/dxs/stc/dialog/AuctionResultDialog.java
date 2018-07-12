@@ -35,19 +35,14 @@ public class AuctionResultDialog extends Dialog implements View.OnClickListener 
     private Context mContext;
     private OnDialogListener listener;
 
+
     public AuctionResultDialog(@NonNull Context context) {
-        super(context);
+        super(context, R.style.dialog);
         this.mContext = context;
     }
 
-
-    public AuctionResultDialog(@NonNull Context context, int themeResId) {
-        super(context, themeResId);
-        this.mContext = context;
-    }
-
-    public AuctionResultDialog(@NonNull Context context, int themeResId, OnDialogListener listener) {
-        super(context, themeResId);
+    public AuctionResultDialog(@NonNull Context context, OnDialogListener listener) {
+        super(context, R.style.dialog);
         this.mContext = context;
         this.listener = listener;
     }
@@ -94,11 +89,11 @@ public class AuctionResultDialog extends Dialog implements View.OnClickListener 
                 break;
             case R.id.btn_to_pay:
                 ToastUtils.showShort("点击支付~");
-                listener.onClick(this, true,false);
+                listener.onClick(this, true, false);
                 break;
             case R.id.btn_save_screenshot:
                 ToastUtils.showShort("截屏");
-                listener.onClick(this,false, true);
+                listener.onClick(this, false, true);
                 break;
         }
     }
@@ -112,6 +107,9 @@ public class AuctionResultDialog extends Dialog implements View.OnClickListener 
         WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
         layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
         layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
+
+        //dialog自身的背景 0.0f-1.0f是全透明到全黑，
+//        layoutParams.dimAmount = 0.0f;
 
         getWindow().getDecorView().setPadding(0, 0, 0, 0);
 

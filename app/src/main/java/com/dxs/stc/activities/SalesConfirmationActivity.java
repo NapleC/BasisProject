@@ -95,7 +95,7 @@ public class SalesConfirmationActivity extends CompatStatusBarActivity {
         setChangeText();
 
 
-        mDialog = new EnterTransactionPwdDialog(SalesConfirmationActivity.this, R.style.dialog);
+        mDialog = new EnterTransactionPwdDialog(SalesConfirmationActivity.this);
         mDialog.setOnCompleteListener(new EnterTransactionPwdDialog.OnCloseListener() {
             @Override
             public void onClick(Dialog dialog, boolean isForget, boolean isComplete) {
@@ -111,7 +111,7 @@ public class SalesConfirmationActivity extends CompatStatusBarActivity {
                         needActivity = AppManager.getInstance().getActivity(LiveRoomActivity.class);
                     }
                     needActivity.finish();
-                    Loger.debug("获取指定的activity:" + AppManager.getInstance().getActivity(BannerActivity.class));
+                    Loger.debug("获取指定的activity:" + needActivity);
                     SalesConfirmationActivity.this.finish();
                 }
             }
@@ -121,7 +121,7 @@ public class SalesConfirmationActivity extends CompatStatusBarActivity {
     private void showDialog() {
 
         if (mDialog == null) {
-            mDialog = new EnterTransactionPwdDialog(SalesConfirmationActivity.this, R.style.dialog);
+            mDialog = new EnterTransactionPwdDialog(SalesConfirmationActivity.this);
         }
         mDialog.show();
     }

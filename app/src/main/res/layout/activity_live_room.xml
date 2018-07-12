@@ -1,9 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/rl_root"
     tools:context=".activities.LiveRoomActivity">
 
     <LinearLayout
@@ -141,7 +141,7 @@
 
     </RelativeLayout>
 
-    <android.support.v7.widget.CardView
+    <com.dxs.stc.widget.ShadowLayout
         android:id="@+id/cv_last_bid_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -149,16 +149,19 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/dp_14"
         android:layout_marginRight="@dimen/dp_14"
-        app:cardCornerRadius="@dimen/dp_8"
-        app:cardPreventCornerOverlap="false">
+        app:shadowColor="#66000000"
+        app:shadowDx="0dp"
+        app:shadowDy="2dp"
+        app:shadowRadius="6dp"
+        app:shadowSide="all">
 
         <LinearLayout
             android:id="@+id/ll_last_bid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/shape_white_color"
             android:divider="@drawable/divider_line"
             android:orientation="horizontal"
-            android:padding="@dimen/dp_10"
             android:showDividers="middle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -197,7 +200,7 @@
                 app:vectorWidth="@dimen/dp_14" />
 
         </LinearLayout>
-    </android.support.v7.widget.CardView>
+    </com.dxs.stc.widget.ShadowLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_live_chat"
@@ -211,13 +214,13 @@
         android:id="@+id/rv_bid_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_14"
-        android:layout_marginEnd="@dimen/dp_14"
-        android:padding="@dimen/dp_14"
-        android:visibility="invisible"
-        android:background="@color/transparent70"
         android:layout_above="@+id/et_comment"
-        android:layout_below="@+id/cv_last_bid_info" />
+        android:layout_below="@+id/cv_last_bid_info"
+        android:layout_marginEnd="@dimen/dp_14"
+        android:layout_marginStart="@dimen/dp_14"
+        android:background="@color/transparent70"
+        android:padding="@dimen/dp_14"
+        android:visibility="invisible" />
 
     <LinearLayout
         android:id="@+id/top_title_ll"

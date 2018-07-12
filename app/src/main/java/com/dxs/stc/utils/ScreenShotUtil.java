@@ -1,14 +1,16 @@
 package com.dxs.stc.utils;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -21,43 +23,32 @@ import java.util.Locale;
  */
 public class ScreenShotUtil {
 
-    public static void Screenshot(View v, Activity activity) {
+    public static Bitmap Screenshot(Activity activity, Dialog dialog) {
+        View mainView = activity.getWindow().getDecorView();
+        //也可以用下面的，效果等同于上面的效果
+        //mainView= findViewById(android.R.id.content);
+        mainView.setDrawingCacheEnabled(true);
+        mainView.buildDrawingCache();
+        Bitmap bitmap = Bitmap.createBitmap(mainView.getDrawingCache(), 0, 0, mainView.getWidth(), mainView.getHeight());
 
-        View tempView = v;
-        Activity tempActivity = activity;
-        String fName = activity.getFilesDir().getPath() + "/screenshot.png";
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-//                try {
-//                    Thread.sleep(3000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-                tempActivity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
+        //如果需要同时保存打开的dialog的截图，可以这么做，如果不需要，上面的bitmap就是当前activity的截图了。
+        View dialogView = dialog.getWindow().getDecorView();
+        int location[] = new int[2];
+        mainView.getLocationOnScreen(location);
+        int location2[] = new int[2];
+        dialogView.getLocationOnScreen(location2);
+        dialogView.setDrawingCacheEnabled(true);
+        dialogView.buildDrawingCache();
+        Bitmap bitmap2 = Bitmap.createBitmap(dialogView.getDrawingCache(), 0, 0, dialogView.getWidth(), dialogView.getHeight());
 
-                        View view = tempView.getRootView();
-                        view.setDrawingCacheEnabled(true);
-                        view.buildDrawingCache();
-                        Bitmap bitmap = view.getDrawingCache();
-                        Loger.debug("test");
-                        if (bitmap != null) {
-                            Loger.debug("bitmap got!");
-                            try {
-                                FileOutputStream out = new FileOutputStream(fName);
-                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+        Canvas canvas = new Canvas(bitmap);
+        //给没有背景的dialog绘制一层半透明的图层
+        canvas.drawBitmap(makeSrc(mainView.getWidth(), mainView.getHeight()), 0, 0, new Paint());
+        canvas.drawBitmap(bitmap2, location2[0] - location[0], location2[1] - location[1], new Paint());
+        mainView.destroyDrawingCache();
+        dialogView.destroyDrawingCache();
 
-                                Loger.debug("test fileOutputStream");
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                });
-            }
-        }).start();
+        return bitmap;
     }
 
 
@@ -96,9 +87,14 @@ public class ScreenShotUtil {
      * @return
      */
     public static Bitmap CaptureScreen(Activity activity) {
-        activity.getWindow().getDecorView().setDrawingCacheEnabled(true);
-        Bitmap bmp = activity.getWindow().getDecorView().getDrawingCache();
-        return bmp;
+
+        View mainView = activity.getWindow().getDecorView();
+        //也可以用下面的，效果等同于上面的效果
+        //mainView= findViewById(android.R.id.content);
+        mainView.setDrawingCacheEnabled(true);
+        mainView.buildDrawingCache();
+        Bitmap bitmap = Bitmap.createBitmap(mainView.getDrawingCache(), 0, 0, mainView.getWidth(), mainView.getHeight());
+        return bitmap;
     }
 
     /**
@@ -113,7 +109,7 @@ public class ScreenShotUtil {
         Loger.debug("Date获取当前日期时间: " + simpleDateFormat.format(date));
 
         File extDir = Environment.getExternalStorageDirectory();
-        File fullFilename = new File(extDir, "/Pictures/"+filename + simpleDateFormat.format(date) + ".jpg");
+        File fullFilename = new File(extDir, "/Pictures/" + filename + simpleDateFormat.format(date) + ".jpg");
         FileOutputStream fileOutputStream = null;
         try {
             fileOutputStream = new FileOutputStream(fullFilename);
@@ -125,5 +121,17 @@ public class ScreenShotUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+
+    // create a bitmap with a rect, used for the "src" image
+    static Bitmap makeSrc(int w, int h) {
+        Bitmap bm = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(bm);
+        Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+        p.setColor(Color.parseColor("#80000000"));
+        c.drawRect(0, 0, w, h, p);
+        return bm;
     }
 }

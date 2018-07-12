@@ -40,7 +40,7 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <!--背景透明-->
         <item name="android:backgroundDimEnabled">true</item>
-        <!--模糊-->
+        <!--允许对话框的背景变暗-->
     </style>
 
     <style name="AppCompatFullscreenStyle" parent="Theme.AppCompat.Light.NoActionBar">

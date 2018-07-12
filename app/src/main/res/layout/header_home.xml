@@ -27,7 +27,7 @@
         <RelativeLayout
             android:id="@+id/ll_notice_area"
             android:layout_width="match_parent"
-            android:layout_height="88dp"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -44,7 +44,7 @@
                 android:id="@+id/iv_notice_right"
                 android:layout_width="80dp"
                 android:layout_height="60dp"
-                android:layout_alignParentBottom="true"
+                android:layout_alignBottom="@+id/iv_notice_left"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="@dimen/dp_20"
                 android:contentDescription="@string/jewelry"

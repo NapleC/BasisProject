@@ -26,7 +26,7 @@ import java.util.List;
  * created by hl at 2018/7/6
  * com.dxs.stc.widget.PasswordEditText
  *
- * @version V1.0 <描述当前版本功能>
+ * @version V1.0 仿照支付宝的密码输入框
  */
 public class PasswordEditText extends AppCompatEditText {
     // 画笔

@@ -14,11 +14,11 @@ import com.dxs.stc.adpater.SearchHistoryAdapter;
 import com.dxs.stc.adpater.SearchWannaAdapter;
 import com.dxs.stc.base.CompatStatusBarActivity;
 import com.dxs.stc.base.Constant;
+import com.dxs.stc.dialog.NiftyDialog;
 import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.SPUtil;
 import com.dxs.stc.utils.ToastUtils;
 import com.dxs.stc.widget.EditTextWithAnimator;
-import com.dxs.stc.dialog.NiftyDialog;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
 
@@ -29,7 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SearchActivity extends CompatStatusBarActivity implements TextView.OnEditorActionListener{
+public class SearchActivity extends CompatStatusBarActivity implements TextView.OnEditorActionListener {
 
     @BindView(R.id.iv_back)
     ImageView mSearchBackIv;
@@ -98,8 +98,8 @@ public class SearchActivity extends CompatStatusBarActivity implements TextView.
     protected void onResume() {
         super.onResume();
 
-        Loger.debug("是否有搜索历史纪录："+SPUtil.contains(Constant.SEARCH_HISTORY));
-        if (SPUtil.contains(Constant.SEARCH_HISTORY)){
+        Loger.debug("是否有搜索历史纪录：" + SPUtil.contains(Constant.SEARCH_HISTORY));
+        if (SPUtil.contains(Constant.SEARCH_HISTORY)) {
             mHistoryTags.addAll(SPUtil.getListData(Constant.SEARCH_HISTORY, String.class));
             mHistoryAdapter.setNewData(mHistoryTags);
             mHistoryDelTv.setVisibility(View.VISIBLE);
@@ -133,14 +133,14 @@ public class SearchActivity extends CompatStatusBarActivity implements TextView.
             mHistoryListRv.setVisibility(View.VISIBLE);
             mHistoryAdapter.addData(mSearchEt.getText().toString());
             mHistoryTags = mHistoryAdapter.getData();
-            boolean resultTag = SPUtil.putListData(Constant.SEARCH_HISTORY,mHistoryTags);
-            Loger.debug("是否存储成功："+resultTag);
+            boolean resultTag = SPUtil.putListData(Constant.SEARCH_HISTORY, mHistoryTags);
+            Loger.debug("是否存储成功：" + resultTag);
         }
     }
 
     private void judgeDelAllHistory() {
 
-        new NiftyDialog(this, R.style.dialog,
+        new NiftyDialog(this,
                 "请确认删除全部历史纪录？", new NiftyDialog.OnCloseListener() {
             @Override
             public void onClick(Dialog dialog, boolean confirm) {
@@ -166,7 +166,7 @@ public class SearchActivity extends CompatStatusBarActivity implements TextView.
             case EditorInfo.IME_ACTION_NEXT:
                 handled = true;
                 break;
-            case  EditorInfo.IME_ACTION_SEND:
+            case EditorInfo.IME_ACTION_SEND:
                 handled = true;
                 break;
             case EditorInfo.IME_ACTION_GO:

@@ -21,7 +21,7 @@ import com.dxs.stc.widget.PasswordEditText;
  *
  * @author https://github.com/xiaoxiaoqingyi/mine-android-repository
  * <p>
- * new NiftyDialog(this, R.style.dialog,"content text", new NiftyDialog.OnCloseListener() {
+ * new NiftyDialog(this ,"content text", new NiftyDialog.OnCloseListener() {
  * @version V1.0 弹出对话框
  * @Override public void onClick(Dialog dialog, boolean confirm) {
  * if (confirm) {
@@ -42,18 +42,12 @@ public class EnterTransactionPwdDialog extends Dialog implements View.OnClickLis
     private OnCloseListener listener;
 
     public EnterTransactionPwdDialog(@NonNull Context context) {
-        super(context);
+        super(context, R.style.dialog);
         this.mContext = context;
     }
 
-
-    public EnterTransactionPwdDialog(@NonNull Context context, int themeResId) {
-        super(context, themeResId);
-        this.mContext = context;
-    }
-
-    public EnterTransactionPwdDialog(@NonNull Context context, int themeResId, OnCloseListener listener) {
-        super(context, themeResId);
+    public EnterTransactionPwdDialog(@NonNull Context context, OnCloseListener listener) {
+        super(context, R.style.dialog);
         this.mContext = context;
         this.listener = listener;
     }
