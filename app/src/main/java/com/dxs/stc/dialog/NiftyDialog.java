@@ -17,16 +17,15 @@ import com.dxs.stc.R;
  * created by hl at 2018/5/26
  * com.naple.flaxtabtest.widget.NiftyDialog
  *
- * @version V1.0 弹出对话框
  * @author https://github.com/xiaoxiaoqingyi/mine-android-repository
  * <p>
  * new NiftyDialog(this, R.style.dialog,"content text", new NiftyDialog.OnCloseListener() {
- *     @Override
- *     public void onClick(Dialog dialog, boolean confirm) {
- *         if (confirm) {
- *             Do SomeThing
- *         }
- *     }
+ * @version V1.0 弹出对话框
+ * @Override public void onClick(Dialog dialog, boolean confirm) {
+ * if (confirm) {
+ * Do SomeThing
+ * }
+ * }
  * }).show();
  * </p>
  **/
@@ -150,7 +149,7 @@ public class NiftyDialog extends Dialog implements View.OnClickListener {
          */
         WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
         layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
+        layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
 
         getWindow().getDecorView().setPadding(0, 0, 0, 0);
 

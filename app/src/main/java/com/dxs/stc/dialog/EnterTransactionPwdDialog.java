@@ -1,13 +1,10 @@
 package com.dxs.stc.dialog;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.dxs.stc.R;
-import com.dxs.stc.adpater.MallMoreAdapter;
-import com.dxs.stc.utils.Loger;
-import com.dxs.stc.utils.ToastUtils;
 import com.dxs.stc.widget.PasswordEditText;
 
 /**
@@ -139,7 +133,6 @@ public class EnterTransactionPwdDialog extends Dialog implements View.OnClickLis
     }
 
 
-
     @Override
     public void show() {
         super.show();
@@ -148,7 +141,7 @@ public class EnterTransactionPwdDialog extends Dialog implements View.OnClickLis
          */
         WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
         layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
+        layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
 
         getWindow().getDecorView().setPadding(0, 0, 0, 0);
 

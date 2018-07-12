@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.dxs.stc.R;
 import com.dxs.stc.adpater.BannerAdapter;
 import com.dxs.stc.base.CompatStatusBarActivity;
+import com.dxs.stc.base.Constant;
 import com.dxs.stc.bean.BannerModel;
 import com.dxs.stc.utils.AnimationUtil;
 import com.dxs.stc.utils.DensityUtils;
@@ -288,8 +289,9 @@ public class BannerActivity extends CompatStatusBarActivity {
                 }
                 break;
             case R.id.tv_buy:
-                startActivity(new Intent(BannerActivity.this, SalesConfirmationActivity.class));
-                Loger.debug("BannerActivity: "+BannerActivity.this);
+                Intent orderIntent = new Intent(BannerActivity.this, SalesConfirmationActivity.class);
+                orderIntent.putExtra(Constant.ORDER_TYPE, Constant.ORDER_MALL);
+                startActivity(orderIntent);
                 break;
         }
     }

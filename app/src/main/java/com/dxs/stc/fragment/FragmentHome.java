@@ -1,6 +1,5 @@
 package com.dxs.stc.fragment;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -18,21 +17,17 @@ import com.dxs.stc.activities.BannerActivity;
 import com.dxs.stc.activities.MainActivity;
 import com.dxs.stc.activities.SearchActivity;
 import com.dxs.stc.adpater.HomeRecyclerViewAdapter;
-import com.dxs.stc.base.Constant;
 import com.dxs.stc.base.LazyBaseFragment;
-import com.dxs.stc.dialog.AuctionResultDialog;
-import com.dxs.stc.dialog.NiftyDialog;
 import com.dxs.stc.mvp.bean.Movie;
 import com.dxs.stc.mvp.presenter.IGetBookPresenter;
 import com.dxs.stc.mvp.presenter.impl.GetBookPresenterImpl;
 import com.dxs.stc.mvp.view.IBookView;
 import com.dxs.stc.utils.Loger;
-import com.dxs.stc.utils.SPUtil;
 import com.dxs.stc.utils.ToastUtils;
+import com.dxs.stc.utils.decoration.SpacesItemDecoration;
 import com.dxs.stc.utils.http.ParseErrorMsgUtil;
 import com.dxs.stc.widget.CustomTextOnPic;
 import com.dxs.stc.widget.GlideImageLoad;
-import com.dxs.stc.utils.decoration.SpacesItemDecoration;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.youth.banner.Banner;
 
@@ -174,15 +169,9 @@ public class FragmentHome extends LazyBaseFragment implements IBookView {
         mOrnamentsText = mHeaderView.findViewById(R.id.tv_topic3_ornaments);
 
         mTopNoticeArea.setOnClickListener(v -> {
-//            ToastUtils.showShort("进入预告");
-//            mCustomAuction1.setRoundImageUrl(getActivity(), "https://image2.wbiao.co/upload/article/201702/17/1487323723401153512.jpg");
-//            mCustomAuction1.setTipText("拍卖已结束");
-            new AuctionResultDialog(getActivity(), R.style.dialog, new AuctionResultDialog.OnDialogListener() {
-                @Override
-                public void onClick(Dialog dialog, boolean isComplete) {
-
-                }
-            }).show();
+            ToastUtils.showShort("进入预告");
+            mCustomAuction1.setRoundImageUrl(getActivity(), "https://image2.wbiao.co/upload/article/201702/17/1487323723401153512.jpg");
+            mCustomAuction1.setTipText("拍卖已结束");
         });
         mCustomAuction1.setOnClickListener(new View.OnClickListener() {
             @Override

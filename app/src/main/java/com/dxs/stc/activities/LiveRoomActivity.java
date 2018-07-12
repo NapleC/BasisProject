@@ -1,5 +1,6 @@
 package com.dxs.stc.activities;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -11,18 +12,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dxs.stc.R;
-import com.dxs.stc.adpater.AddressManagerAdapter;
 import com.dxs.stc.adpater.BidHistoryAdapter;
 import com.dxs.stc.adpater.LiveChatAdapter;
-import com.dxs.stc.adpater.MallMoreAdapter;
 import com.dxs.stc.base.CompatStatusBarActivity;
+import com.dxs.stc.base.Constant;
 import com.dxs.stc.bean.BidHistoryBean;
 import com.dxs.stc.bean.LiveChatBean;
-import com.dxs.stc.mvp.bean.Movie;
-import com.dxs.stc.utils.AndroidBug5497Workaround;
+import com.dxs.stc.dialog.AuctionResultDialog;
 import com.dxs.stc.utils.DensityUtils;
 import com.dxs.stc.utils.Loger;
 import com.dxs.stc.utils.SpanUtil;
@@ -38,6 +38,9 @@ import butterknife.OnClick;
 import cn.jzvd.JZVideoPlayer;
 import cn.jzvd.JZVideoPlayerStandard;
 
+import static com.dxs.stc.utils.ScreenShotUtil.GetViewBitmap;
+import static com.dxs.stc.utils.ScreenShotUtil.SaveFile;
+
 public class LiveRoomActivity extends CompatStatusBarActivity {
 
 
@@ -49,6 +52,9 @@ public class LiveRoomActivity extends CompatStatusBarActivity {
     ImageView mTitleCenter;
     @BindView(R.id.iv_prod_title_right)
     ImageView mTitleRight;
+
+    @BindView(R.id.rl_root)
+    RelativeLayout mRootViewRl;
 
     @BindView(R.id.notice_video)
     JZVideoPlayerStandard jzVideoPlayerStandard;
@@ -203,7 +209,7 @@ public class LiveRoomActivity extends CompatStatusBarActivity {
         mBidAmount.setText("" + currentBid);
 
         // 增加出价记录
-        BidHistoryBean bidHistoryBean = new BidHistoryBean("30秒前", "张三", currentBid+"");
+        BidHistoryBean bidHistoryBean = new BidHistoryBean("30秒前", "张三", currentBid + "");
         mBidHistoryAdapter.addData(0, bidHistoryBean);
         mBidHistoryRv.scrollToPosition(0);
     }
@@ -227,7 +233,22 @@ public class LiveRoomActivity extends CompatStatusBarActivity {
                 onBackPressed();
                 break;
             case R.id.iv_prod_title_right:
-                ToastUtils.showShort("点击分享");
+//                ToastUtils.showShort("点击分享");
+
+                new AuctionResultDialog(LiveRoomActivity.this, R.style.dialog, new AuctionResultDialog.OnDialogListener() {
+                    @Override
+                    public void onClick(Dialog dialog, boolean isComplete, boolean isShot) {
+
+                        if (isShot) {
+                            SaveFile(GetViewBitmap(mRootViewRl), "auction_result");
+                        } else if (isComplete) {
+                            dialog.dismiss();
+                            Intent orderIntent = new Intent(LiveRoomActivity.this, SalesConfirmationActivity.class);
+                            orderIntent.putExtra(Constant.ORDER_TYPE, Constant.ORDER_AUCTION);
+                            startActivity(orderIntent);
+                        }
+                    }
+                }).show();
                 break;
             case R.id.tv_lot_introduction:
                 startActivity(new Intent(LiveRoomActivity.this, LotIntroductionActivity.class));
@@ -241,7 +262,7 @@ public class LiveRoomActivity extends CompatStatusBarActivity {
 //                setLastBidInfo();
                 break;
             case R.id.btn_price_bid:
-                Loger.debug("出价=="+mBidAmount.getText().toString()+"");
+                Loger.debug("出价==" + mBidAmount.getText().toString() + "");
                 Loger.debug("");
                 if (Integer.parseInt(mBidAmount.getText().toString()) > currentBid) {
                     currentBid = Integer.parseInt(mBidAmount.getText().toString());

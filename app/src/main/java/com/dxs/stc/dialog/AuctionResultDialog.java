@@ -5,28 +5,22 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dxs.stc.R;
-import com.dxs.stc.activities.BannerActivity;
 import com.dxs.stc.glideimageview.GlideImageView;
 import com.dxs.stc.utils.SpanUtil;
 import com.dxs.stc.utils.ToastUtils;
-import com.dxs.stc.widget.PasswordEditText;
 
 /**
- *  created by hl at 2018/7/9
- *  AuctionResultDialog
- *  拍卖结果页面
+ * created by hl at 2018/7/9
+ * AuctionResultDialog
+ * 拍卖结果页面
  */
 public class AuctionResultDialog extends Dialog implements View.OnClickListener {
 
@@ -82,7 +76,7 @@ public class AuctionResultDialog extends Dialog implements View.OnClickListener 
 
         SpanUtil.create()
                 .addSection("恭喜你")
-                .addForeColorSection("<xzxxxxxx>", ContextCompat.getColor(mContext,R.color.mainColor))
+                .addForeColorSection("<xzxxxxxx>", ContextCompat.getColor(mContext, R.color.mainColor))
                 .addSection(",竞拍成功\n")
                 .addSection("当前竞拍价触发最高价，竞拍结束")
                 .setAbsSize("当前竞拍价触发最高价，竞拍结束", 12)
@@ -100,9 +94,11 @@ public class AuctionResultDialog extends Dialog implements View.OnClickListener 
                 break;
             case R.id.btn_to_pay:
                 ToastUtils.showShort("点击支付~");
+                listener.onClick(this, true,false);
                 break;
             case R.id.btn_save_screenshot:
                 ToastUtils.showShort("截屏");
+                listener.onClick(this,false, true);
                 break;
         }
     }
@@ -127,7 +123,6 @@ public class AuctionResultDialog extends Dialog implements View.OnClickListener 
     }
 
     public interface OnDialogListener {
-        void onClick(Dialog dialog, boolean isComplete);
+        void onClick(Dialog dialog, boolean isComplete, boolean isShot);
     }
-
 }

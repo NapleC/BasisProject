@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.dxs.stc.R;
 import com.dxs.stc.base.CompatStatusBarActivity;
+import com.dxs.stc.base.Constant;
 import com.dxs.stc.dialog.EnterTransactionPwdDialog;
 import com.dxs.stc.glideimageview.GlideImageView;
 import com.dxs.stc.utils.AppManager;
@@ -54,6 +56,9 @@ public class SalesConfirmationActivity extends CompatStatusBarActivity {
     private float mTotalAmount = 0;
     EnterTransactionPwdDialog mDialog;
 
+    private String orderType;
+    private Activity needActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +67,14 @@ public class SalesConfirmationActivity extends CompatStatusBarActivity {
         ButterKnife.bind(this);
         setStatus(true, true,
                 ContextCompat.getColor(SalesConfirmationActivity.this, R.color.navColor));
+        getIntentData();
+    }
 
+    private void getIntentData() {
 
+        Intent intent = getIntent();
+        orderType = intent.getStringExtra(Constant.ORDER_TYPE);
+        Loger.debug("orderType:" + orderType);
     }
 
     @Override
@@ -94,8 +105,12 @@ public class SalesConfirmationActivity extends CompatStatusBarActivity {
                 } else if (isComplete) {
                     startActivity(new Intent(SalesConfirmationActivity.this, PaymentResultActivity.class));
 
-                    Activity activity = AppManager.getInstance().getActivity(BannerActivity.class);
-                    activity.finish();
+                    if (TextUtils.equals(orderType, Constant.ORDER_MALL)) {
+                        needActivity = AppManager.getInstance().getActivity(BannerActivity.class);
+                    } else {
+                        needActivity = AppManager.getInstance().getActivity(LiveRoomActivity.class);
+                    }
+                    needActivity.finish();
                     Loger.debug("获取指定的activity:" + AppManager.getInstance().getActivity(BannerActivity.class));
                     SalesConfirmationActivity.this.finish();
                 }

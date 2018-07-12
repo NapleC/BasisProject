@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginEnd="52dp"
+    android:layout_marginStart="52dp"
     android:background="@drawable/dialog_bg"
     android:orientation="vertical">
 
@@ -9,11 +11,11 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:layout_marginBottom="20dp"
-        android:visibility="gone"
+        android:gravity="center_horizontal"
         android:textColor="#333333"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:visibility="gone" />
 
 
     <TextView
@@ -22,12 +24,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="20dp"
-        android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
         android:gravity="center"
         android:lineSpacingExtra="3dp"
         android:textColor="#333333"
-        android:textSize="14sp"/>
+        android:textSize="14sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,8 +51,8 @@
         <Space
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:minWidth="@dimen/dp_40"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:minWidth="@dimen/dp_40" />
 
         <TextView
             android:id="@+id/submit"
