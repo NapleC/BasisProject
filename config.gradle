@@ -30,5 +30,9 @@ ext {
             fragmentation    : "1.2.5",
             flexbox          : "1.0.0",
             smartRefresh     : "1.1.0-alpha-6",
+            multidex         : "1.0.3",
+            videoplayer      : "6.2.12",
+            playerbase       : "3.3.1",
+            jdAddress        : "1.0.3",
     ]
 }
